@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: 3857ad75080c8a14791e1e1819442acd
+  productGUID: d5a4ebed7a1cdb5489e39ef4dc62bb06
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -701,10 +701,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: db20c2ba-bd78-48d9-9936-b3fe46192439
+  cloudProjectId: b2f659b8-bcf4-449e-851a-c41da421ab2b
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Bungeo-ppang
+  projectName: Bungeo-ppang 2024-03-16_01-07-38
   organizationId: ta47230916
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
