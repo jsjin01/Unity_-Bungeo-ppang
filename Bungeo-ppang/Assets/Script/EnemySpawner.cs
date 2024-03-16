@@ -19,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
         {
             float randomX = Random.Range(-2.3f, 2.3f);
             
-            GameObject newEnemy = Instantiate(enemy, new Vector3(randomX, transform.position.y, 0f), Quaternion.identity);
+            GameObject newEnemy = Instantiate(enemy, new Vector3(randomX, 5.7f, 0f), Quaternion.identity);
             
             newEnemy.AddComponent<EnemyMoveControl>();
         }
