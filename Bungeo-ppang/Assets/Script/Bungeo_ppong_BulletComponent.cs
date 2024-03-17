@@ -6,7 +6,7 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
 {
     [SerializeField]Rigidbody2D rb;
     [SerializeField] float BulletSpeed = 30f;   //총알 속도
-    float dmg;                                  //공격력
+    [SerializeField] public float dmg=1f;                                  //공격력
     // Start is called before the first frame update
     void Start()
     {
