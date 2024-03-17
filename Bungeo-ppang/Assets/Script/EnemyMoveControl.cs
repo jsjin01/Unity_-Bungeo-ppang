@@ -31,7 +31,7 @@ public class EnemyMoveControl : MonoBehaviour
                 Destroy (gameObject);
             }
 
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
         }
     }
     
