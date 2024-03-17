@@ -5,8 +5,9 @@ using UnityEngine;
 public class Bungeo_ppong_PoolManager : MonoBehaviour
 {
     public static Bungeo_ppong_PoolManager i;
-    [SerializeField]GameObject bungeo_ppong_Prefeds;
-    [SerializeField] int initBungeo_ppongCount = 30;
+
+    [SerializeField]GameObject bungeo_ppong_Prefeds; //프리팹
+    [SerializeField] int initBungeo_ppongCount = 30; //초기 생성량
 
     private void Awake()
     {
@@ -19,7 +20,7 @@ public class Bungeo_ppong_PoolManager : MonoBehaviour
         CreatBungeo_ppong(initBungeo_ppongCount);
     }
 
-    public void CreatBungeo_ppong(int cnt = 1)
+    public void CreatBungeo_ppong(int cnt = 1)              //붕어빵 생성 부분
     {
         for (int i = 0; i <cnt; i++)
         {
@@ -27,7 +28,7 @@ public class Bungeo_ppong_PoolManager : MonoBehaviour
         }
     }
 
-    public void UseBuneo_ppong(Vector2 p, Quaternion rot)
+    public void UseBuneo_ppong(Vector2 p, Quaternion rot)   //붕어빵 사용하는 부분
     {
         if(transform.childCount == 0)
         {
@@ -48,6 +49,5 @@ public class Bungeo_ppong_PoolManager : MonoBehaviour
         bbp.gameObject.SetActive(false);
         bbp.transform.SetParent(transform);
         //사용 후 다시 pool안으로 가져옴
-
     }
 }

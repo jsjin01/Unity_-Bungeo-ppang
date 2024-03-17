@@ -169,6 +169,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bungeo_ppong_Prefeds: {fileID: 7078709241388728170, guid: 743352c07a1cad1448c99ea94e8720f3, type: 3}
   initBungeo_ppongCount: 30
+--- !u!1 &295996397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 295996398}
+  - component: {fileID: 295996399}
+  m_Layer: 0
+  m_Name: Enemy Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &295996398
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295996397}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1678422035}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &295996399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295996397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 737190cd65bcdfd4caea1ba0db6e4ef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy_Prefeds: {fileID: 5753310713596020997, guid: 1626700477a30d44d943c26930a4885c, type: 3}
+  initEnemyCount: 50
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,11 +736,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a726718b1fddd3843bf3ed6fd083010a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atk: 10
-  atk_spd: 0.1
-  cri: 5
-  speed: 10
-  mhp: 100
 --- !u!1 &1330909590
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,9 +765,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36f779829fe72843854530385e5512f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 5753310713596020997, guid: 1626700477a30d44d943c26930a4885c, type: 3}
-  numberOfEnemies: 5
-  activeEnemies: []
 --- !u!4 &1330909592
 Transform:
   m_ObjectHideFlags: 0
@@ -772,6 +810,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 83989875}
+  - {fileID: 295996398}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1683986738
