@@ -1,9 +1,11 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMoveControl : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] bool autoAttack;
 
     float atkspd;     //공격속도
     float speed;      //이동속도
@@ -14,6 +16,8 @@ public class PlayerMoveControl : MonoBehaviour
     bool isShot = true;     //발사 가능 변수
 
     [SerializeField]GameObject[] magicPrefebs;
+    [SerializeField] GameObject shieldPrefebs;
+    //[SerializeField] GameObject swordPrefebs;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -25,12 +29,23 @@ public class PlayerMoveControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (autoAttack == false)
         {
-            if (isShot)
+            if (Input.GetKey(KeyCode.Space))
+            {
+                if (isShot)
+                {
+                    Attack();
+                }
+            }
+        }
+        else
+        {
+            if(isShot)
             {
                 Attack();
             }
+           
         }
     }
 
@@ -50,10 +65,17 @@ public class PlayerMoveControl : MonoBehaviour
     void Attack()
     {
         StartCoroutine(ShootCol());
+        
         Bungeo_ppong_PoolManager.i.UseBuneo_ppong(transform.position, rotation);
         Instantiate(magicPrefebs[0], transform.position - new Vector3(1, 0, 0) ,rotation);
         Instantiate(magicPrefebs[1], transform.position - new Vector3(-1, 0, 0), rotation);
-
+        Instantiate(shieldPrefebs, transform.position, rotation);
+        /*Bungeo_ppong_BulletComponent.b.transform.position = transform.position;
+        if(Bungeo_ppong_BulletComponent.b.isDestroy==true)
+        {
+            Instantiate(swordPrefebs,transform.position, Sword.s.rotation);
+        }*/
+                
     }
 
     IEnumerator ShootCol()

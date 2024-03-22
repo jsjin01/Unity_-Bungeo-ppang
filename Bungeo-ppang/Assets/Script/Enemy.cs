@@ -78,6 +78,15 @@ public class Enemy : MonoBehaviour
                 StartCoroutine(magicCor);
             }
         }
+        else if (other.CompareTag("Shield"))
+        {
+            Shield shield = other.gameObject.GetComponent<Shield>();
+            hp -= shield.dmg;
+            if (hp <= 0f)
+            {
+                EnemyDestroy();
+            }
+        }
     }
 
     void EnemyDestroy() //Àû »èÁ¦

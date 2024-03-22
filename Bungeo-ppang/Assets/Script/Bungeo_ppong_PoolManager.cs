@@ -34,7 +34,7 @@ public class Bungeo_ppong_PoolManager : MonoBehaviour
         }
 
         Bungeo_ppong_BulletComponent bbp = transform.GetChild(0).GetComponent<Bungeo_ppong_BulletComponent>(); //pool 0번째 오브젝트에 접근
-
+        
         bbp.transform.position = p;         //붕어빵 위치 설정
         bbp.transform.rotation = rot;       //붕어빵 각도 설정
         bbp.gameObject.SetActive(true);     //옵젝 활성화

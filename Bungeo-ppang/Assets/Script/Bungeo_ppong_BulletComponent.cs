@@ -2,11 +2,18 @@ using UnityEngine;
 
 public class Bungeo_ppong_BulletComponent : MonoBehaviour
 {
+    public static Bungeo_ppong_BulletComponent b;
     [SerializeField] Rigidbody2D rb;
-    [SerializeField] float BulletSpeed = 30f;   //총알 속도
+    [SerializeField] public float BulletSpeed = 30f;   //총알 속도
     [SerializeField] public float dmg;          //공격력
-    [SerializeField] int monsterPass = 0;       //관통 횟수
+    [SerializeField] public int monsterPass = 0;       //관통 횟수
+    public bool isDestroy=false;
     float size = 1;                             //사이즈
+
+    private void Awake()
+    {
+        b = this;
+    }
 
     void Start()
     {
@@ -32,6 +39,7 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
             {
                 BulletDestory();
                 CancelInvoke("BulletDestory");
+                
             }
             else//아니라면 관통 가능 횟수를 한번 뺌
             {

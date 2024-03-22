@@ -10,6 +10,8 @@ TagManager:
   - ICE
   - FIRE
   - THUNDER
+  - Shield
+  - Sword
   layers:
   - Default
   - TransparentFX
