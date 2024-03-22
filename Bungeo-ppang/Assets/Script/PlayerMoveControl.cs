@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMoveControl : MonoBehaviour
@@ -13,6 +12,8 @@ public class PlayerMoveControl : MonoBehaviour
     Quaternion rotation;    //회전값
 
     bool isShot = true;     //발사 가능 변수
+
+    [SerializeField]GameObject[] magicPrefebs;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -50,6 +51,9 @@ public class PlayerMoveControl : MonoBehaviour
     {
         StartCoroutine(ShootCol());
         Bungeo_ppong_PoolManager.i.UseBuneo_ppong(transform.position, rotation);
+        Instantiate(magicPrefebs[0], transform.position - new Vector3(1, 0, 0) ,rotation);
+        Instantiate(magicPrefebs[1], transform.position - new Vector3(-1, 0, 0), rotation);
+
     }
 
     IEnumerator ShootCol()

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7078709241388728170
+--- !u!1 &633283411240183375
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 710724849152919853}
-  - component: {fileID: 1293223277239474755}
-  - component: {fileID: 7394668949463452964}
-  - component: {fileID: 2201295549229527347}
-  - component: {fileID: 457151487421072729}
+  - component: {fileID: 5610167018999492754}
+  - component: {fileID: 5540299074256581482}
+  - component: {fileID: 7581897568506410303}
+  - component: {fileID: 3083536928276704303}
+  - component: {fileID: 1609228919817224149}
   m_Layer: 0
-  m_Name: Bungeo_ppong_Bullet
-  m_TagString: Bullet
+  m_Name: FireBall
+  m_TagString: FIRE
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &710724849152919853
+  m_IsActive: 1
+--- !u!4 &5610167018999492754
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7078709241388728170}
+  m_GameObject: {fileID: 633283411240183375}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1293223277239474755
+--- !u!212 &5540299074256581482
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7078709241388728170}
+  m_GameObject: {fileID: 633283411240183375}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.34082586, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -87,14 +87,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &7394668949463452964
+--- !u!50 &7581897568506410303
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7078709241388728170}
+  m_GameObject: {fileID: 633283411240183375}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -114,13 +114,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &2201295549229527347
+--- !u!61 &3083536928276704303
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7078709241388728170}
+  m_GameObject: {fileID: 633283411240183375}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -159,19 +159,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!114 &457151487421072729
+--- !u!114 &1609228919817224149
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7078709241388728170}
+  m_GameObject: {fileID: 633283411240183375}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d3a12d62bf5fc04bacd0abbaa76f523, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e2a04ad5e2f5a64d819dbef0d94c020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 7394668949463452964}
-  BulletSpeed: 20
+  rb: {fileID: 0}
+  ballSpeed: 30
   dmg: 0
-  monsterPass: 0
+  type: 0
+  firedmg: 5
+  iceSpeedDown: 0.8

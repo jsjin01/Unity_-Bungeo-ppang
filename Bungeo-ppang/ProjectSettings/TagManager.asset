@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Wall
   - Bullet
+  - Enemy
+  - ICE
+  - FIRE
+  - THUNDER
   layers:
   - Default
   - TransparentFX

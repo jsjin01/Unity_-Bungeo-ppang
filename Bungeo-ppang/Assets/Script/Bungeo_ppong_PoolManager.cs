@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bungeo_ppong_PoolManager : MonoBehaviour
 {
     public static Bungeo_ppong_PoolManager i;
 
-    [SerializeField]GameObject bungeo_ppong_Prefeds; //橇府普
+    [SerializeField] GameObject bungeo_ppong_Prefeds; //橇府普
     [SerializeField] int initBungeo_ppongCount = 30; //檬扁 积己樊
 
     private void Awake()
@@ -22,7 +20,7 @@ public class Bungeo_ppong_PoolManager : MonoBehaviour
 
     public void CreatBungeo_ppong(int cnt = 1)              //贺绢户 积己 何盒
     {
-        for (int i = 0; i <cnt; i++)
+        for (int i = 0; i < cnt; i++)
         {
             Instantiate(bungeo_ppong_Prefeds, transform);   //贺绢户 积己
         }
@@ -30,7 +28,7 @@ public class Bungeo_ppong_PoolManager : MonoBehaviour
 
     public void UseBuneo_ppong(Vector2 p, Quaternion rot)   //贺绢户 荤侩窍绰 何盒
     {
-        if(transform.childCount == 0)
+        if (transform.childCount == 0)
         {
             CreatBungeo_ppong(); //贺绢户捞 绝促搁 积己
         }
