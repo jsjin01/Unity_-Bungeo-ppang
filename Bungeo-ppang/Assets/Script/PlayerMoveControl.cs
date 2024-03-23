@@ -93,6 +93,6 @@ public class PlayerMoveControl : MonoBehaviour
         float x2 = Random.Range(-2.7f, 2.7f);
         float thunderangle = Mathf.Atan2(8f,x2-x1)*Mathf.Rad2Deg;
         Quaternion rot = Quaternion.Euler(0f,0f,thunderangle);
-        Instantiate(magicPrefebs[2], new Vector3(x1, 0, 0), rot);
+        Instantiate(magicPrefebs[2], new Vector3(x1, -4, 0), rot);
     }
 }

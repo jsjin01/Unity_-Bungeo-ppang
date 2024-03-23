@@ -589,7 +589,7 @@ MonoBehaviour:
   magicPrefebs:
   - {fileID: 633283411240183375, guid: dcd937ede5445ab4caaa76f648e69c04, type: 3}
   - {fileID: 8572150685768489180, guid: b1db60851fb3cb2449e25ffa27767ade, type: 3}
-  - {fileID: 1337985690014617494, guid: 42a42d2d4b8762e4589a7b85609d869a, type: 3}
+  - {fileID: 4163866305997074085, guid: 42a42d2d4b8762e4589a7b85609d869a, type: 3}
   shieldPrefebs: {fileID: 2275484385714578623, guid: ea625178225b6274689e0fffcc1cd698, type: 3}
 --- !u!61 &1167435723
 BoxCollider2D:
