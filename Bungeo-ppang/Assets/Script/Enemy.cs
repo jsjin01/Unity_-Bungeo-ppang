@@ -87,6 +87,24 @@ public class Enemy : MonoBehaviour
                 EnemyDestroy();
             }
         }
+        else if (other.CompareTag("THUNDER"))
+        {
+            Thunder t = other.gameObject.GetComponentInParent<Thunder>();
+            hp -= t.dmg;
+            if (hp <= 0f)
+            {
+                EnemyDestroy();
+            }
+            else
+            {
+                if (magicCor != null)
+                {
+                    StopCoroutine(magicCor);
+                }
+                magicCor = Stun(t.stunTime);
+                StartCoroutine(magicCor);
+            }
+        }
     }
 
     void EnemyDestroy() //적 삭제
@@ -118,6 +136,15 @@ public class Enemy : MonoBehaviour
         rb.velocity = pos.normalized * speed;
     }
 
+    IEnumerator Stun(float time) //경직
+    {
+        float nowSpeed = speed;// 현재 속도 저장
+        speed = 0;//감속
+        rb.velocity = pos.normalized * speed;
+        yield return new WaitForSeconds(time);
+        speed = nowSpeed; //다시 되돌아옴
+        rb.velocity = pos.normalized * speed;
+    }
 }
 
 
