@@ -2,17 +2,19 @@ using UnityEngine;
 
 public class Bungeo_ppong_BulletComponent : MonoBehaviour
 {
-    public static Bungeo_ppong_BulletComponent b;
+    public static Bungeo_ppong_BulletComponent i;       //객체마다 다른데 static?
     [SerializeField] Rigidbody2D rb;
     [SerializeField] public float BulletSpeed = 30f;   //총알 속도
     [SerializeField] public float dmg;          //공격력
     [SerializeField] public int monsterPass = 0;       //관통 횟수
-    public bool isDestroy = false;
+    [SerializeField] GameObject swordPrefebs;        //검기
     float size = 1;                             //사이즈
+
+
     //public Vector3 collisionPosition;
     private void Awake()
     {
-        b = this;
+        i = this;
     }
 
     void Start()
@@ -51,6 +53,7 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
     public void BulletDestory()
     {
         Bungeo_ppong_PoolManager.i.ReturnBungeo_ppong(gameObject);
+        Instantiate(swordPrefebs, transform.position, Quaternion.identity);
     }
 
     //일반 보상 함수 

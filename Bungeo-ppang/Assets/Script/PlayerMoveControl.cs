@@ -16,6 +16,7 @@ public class PlayerMoveControl : MonoBehaviour
     bool isShot = true;     //발사 가능 변수
 
     [SerializeField]GameObject[] magicPrefebs;
+    [SerializeField] GameObject swordPrefebs;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -65,17 +66,17 @@ public class PlayerMoveControl : MonoBehaviour
         StartCoroutine(ShootCol());
         
         Bungeo_ppong_PoolManager.i.UseBuneo_ppong(transform.position, rotation);
-        Instantiate(magicPrefebs[0], transform.position - new Vector3(1, 0, 0) ,rotation);//파이어볼이 잘되는지 실험
-        Instantiate(magicPrefebs[1], transform.position - new Vector3(-1, 0, 0), rotation);//아이스볼이 잘 되는지 실험
-        ThunderCreat();//번개 실험
+        //Instantiate(magicPrefebs[0], transform.position - new Vector3(1, 0, 0) ,rotation);//파이어볼이 잘되는지 실험
+        //Instantiate(magicPrefebs[1], transform.position - new Vector3(-1, 0, 0), rotation);//아이스볼이 잘 되는지 실험
+        //ThunderCreat();//번개 실험
 
         //Instantiate(shieldPrefebs, transform.position, rotation);
-        /*Bungeo_ppong_BulletComponent.b.transform.position = transform.position;
-        if(Bungeo_ppong_BulletComponent.b.isDestroy==true)
-        {
-            Instantiate(swordPrefebs,transform.position, Sword.s.rotation);
-        }*/
-                
+        Bungeo_ppong_BulletComponent.i.transform.position = transform.position;
+        //if (Bungeo_ppong_BulletComponent.i.isDestroy == true)
+        //{
+        //    Instantiate(swordPrefebs, Bungeo_ppong_BulletComponent.i.transform.position, rotation);
+        //}
+
     }
 
     IEnumerator ShootCol()
