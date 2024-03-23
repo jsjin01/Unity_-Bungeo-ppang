@@ -87,6 +87,15 @@ public class Enemy : MonoBehaviour
                 EnemyDestroy();
             }
         }
+        else if (other.CompareTag("Sword"))
+        {
+            Sword sword = other.gameObject.GetComponent<Sword>();
+            hp -= sword.dmg;
+            if (hp <= 0f)
+            {
+                EnemyDestroy();
+            }
+        }
         else if (other.CompareTag("THUNDER"))
         {
             Thunder t = other.gameObject.GetComponentInParent<Thunder>();

@@ -5,17 +5,22 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
+    public static Shield s;
     [SerializeField] Rigidbody2D rb;
-    [SerializeField] int passcnt=0;       //관통횟수
+    [SerializeField] public int passcnt=0;       //관통횟수
     public float dmg;       //방패 데미지
     float size = 1;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        s = this;
+    }
     void Start()
     {
         rb=GetComponent<Rigidbody2D>();
         Bungeo_ppong_BulletComponent.b.monsterPass = 1;
-        Bungeo_ppong_BulletComponent.b.dmg = 0f;
+        //Bungeo_ppong_BulletComponent.b.dmg = 0f;
         dmg = Bungeo_ppong_BulletComponent.b.dmg;
         Move();
     }
