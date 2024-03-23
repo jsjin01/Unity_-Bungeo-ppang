@@ -551,37 +551,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &970618509
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 970618510}
-  m_Layer: 0
-  m_Name: Thunder
-  m_TagString: THUNDER
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &970618510
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 970618509}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1167435721
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,6 +589,7 @@ MonoBehaviour:
   magicPrefebs:
   - {fileID: 633283411240183375, guid: dcd937ede5445ab4caaa76f648e69c04, type: 3}
   - {fileID: 8572150685768489180, guid: b1db60851fb3cb2449e25ffa27767ade, type: 3}
+  - {fileID: 1337985690014617494, guid: 42a42d2d4b8762e4589a7b85609d869a, type: 3}
   shieldPrefebs: {fileID: 2275484385714578623, guid: ea625178225b6274689e0fffcc1cd698, type: 3}
 --- !u!61 &1167435723
 BoxCollider2D:
@@ -965,4 +935,3 @@ SceneRoots:
   - {fileID: 529477203}
   - {fileID: 1678422035}
   - {fileID: 1330909592}
-  - {fileID: 970618510}

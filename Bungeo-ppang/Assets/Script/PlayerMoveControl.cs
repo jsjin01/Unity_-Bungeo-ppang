@@ -67,8 +67,10 @@ public class PlayerMoveControl : MonoBehaviour
         StartCoroutine(ShootCol());
         
         Bungeo_ppong_PoolManager.i.UseBuneo_ppong(transform.position, rotation);
-        Instantiate(magicPrefebs[0], transform.position - new Vector3(1, 0, 0) ,rotation);
-        Instantiate(magicPrefebs[1], transform.position - new Vector3(-1, 0, 0), rotation);
+        Instantiate(magicPrefebs[0], transform.position - new Vector3(1, 0, 0) ,rotation);//파이어볼이 잘되는지 실험
+        Instantiate(magicPrefebs[1], transform.position - new Vector3(-1, 0, 0), rotation);//아이스볼이 잘 되는지 실험
+        ThunderCreat();//번개 실험
+        
         Instantiate(shieldPrefebs, transform.position, rotation);
         /*Bungeo_ppong_BulletComponent.b.transform.position = transform.position;
         if(Bungeo_ppong_BulletComponent.b.isDestroy==true)
@@ -83,5 +85,17 @@ public class PlayerMoveControl : MonoBehaviour
         isShot = false;
         yield return new WaitForSeconds(atkspd);
         isShot = true;
+    }
+
+    void ThunderCreat()
+    {
+        float x1 = Random.Range(-2.7f, 2.7f);
+        float x2 = Random.Range(-2.7f, 2.7f);
+        Debug.Log(x1 + " " + x2);
+        Vector2 thunderAngle = new Vector2(x2, 8)- new Vector2(x1, 0);
+        thunderAngle.Normalize();
+        Quaternion thunderQ = new Quaternion();
+        thunderQ.eulerAngles = thunderAngle;
+        Instantiate(magicPrefebs[2], new Vector3(x1, 0, 0), thunderQ);
     }
 }
