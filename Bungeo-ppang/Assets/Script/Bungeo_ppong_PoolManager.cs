@@ -3,7 +3,6 @@ using UnityEngine;
 public class Bungeo_ppong_PoolManager : MonoBehaviour
 {
     public static Bungeo_ppong_PoolManager i;
-
     [SerializeField] GameObject bungeo_ppong_Prefeds; //프리팹
     [SerializeField] int initBungeo_ppongCount = 30; //초기 생성량
 
