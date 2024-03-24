@@ -43,7 +43,4 @@ public class MagicBall : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
-
-
 }
