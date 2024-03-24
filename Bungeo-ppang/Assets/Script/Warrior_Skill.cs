@@ -5,9 +5,9 @@ public class Warrior_Skill : MonoBehaviour
 {
     public static Warrior_Skill w;
     [SerializeField] GameObject shieldPrefebs;
-    [SerializeField] GameObject swordPrefebs;
+    //[SerializeField] GameObject swordPrefebs;
     [SerializeField] public bool warriorOn = false;    //전사붕
-    [SerializeField] bool swordOn = false;    //검격(반달검격)
+    //[SerializeField] bool swordOn = false;    //검격(반달검격)
     bool isShot = true;
     public float index;
     public float radian;
@@ -29,13 +29,13 @@ public class Warrior_Skill : MonoBehaviour
             }
             
         }
-        if (swordOn)
+        /*if (swordOn)
         {
             if (isShot)
             {
                 swordMove();
             }
-        }
+        }*/
 
     }
 
@@ -44,7 +44,7 @@ public class Warrior_Skill : MonoBehaviour
         StartCoroutine(ShootCol());
         Instantiate(shieldPrefebs, transform.position, Quaternion.identity);
     }
-    void swordMove()
+    /*void swordMove()
     {
         StartCoroutine(ShootCol());
 
@@ -52,7 +52,7 @@ public class Warrior_Skill : MonoBehaviour
         radian = index * Mathf.Deg2Rad;
 
         Instantiate(swordPrefebs, transform.position, Quaternion.Euler(0, 0, index));
-    }
+    }*/
 
     IEnumerator ShootCol()
     {

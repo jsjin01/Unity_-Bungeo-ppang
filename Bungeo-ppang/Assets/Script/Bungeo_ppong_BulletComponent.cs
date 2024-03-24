@@ -1,3 +1,4 @@
+//using System;
 using UnityEngine;
 
 public class Bungeo_ppong_BulletComponent : MonoBehaviour
@@ -9,7 +10,7 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
     [SerializeField] public int monsterPass = 0;       //관통 횟수
     [SerializeField] GameObject swordPrefebs;        //검기
     float size = 1;                             //사이즈
-
+    float index;
 
     //public Vector3 collisionPosition;
     private void Awake()
@@ -52,8 +53,9 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
 
     public void BulletDestory()
     {
+        index = Random.Range(0f, 360f);
         Bungeo_ppong_PoolManager.i.ReturnBungeo_ppong(gameObject);
-        Instantiate(swordPrefebs, transform.position, Quaternion.identity);
+        Instantiate(swordPrefebs, transform.position, Quaternion.Euler(0, 0, index));
     }
 
     //일반 보상 함수 
