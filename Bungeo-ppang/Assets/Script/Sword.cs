@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
-    public static Sword s;
+    //public static Sword i;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] public int passcnt = 0;         //관통횟수
     [SerializeField] public int numberOfSwords = 1;  //검격의 수
-    [SerializeField] float SwordSpeed = 30f;  //검격 속도
+    [SerializeField] float SwordSpeed = 20f;  //검격 속도
     public float dmg;       //검격 데미지
     float size = 1;
     // Start is called before the first frame update
     private void Awake()
     {
-        s = this;
+        //i = this;
     }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        dmg = Bungeo_ppong_BulletComponent.b.dmg;
+        dmg = Bungeo_ppong_BulletComponent.i.dmg;
         //Move();
     }
     void FixedUpdate()
@@ -38,7 +38,7 @@ public class Sword : MonoBehaviour
             rb.velocity = shootPos.normalized * SwordSpeed; //검격이 날라가는 부분
             Invoke("SwordDestory", 3);
         }*/
-        Vector3 forceDirection = rb.transform.right;
+        Vector3 forceDirection = rb.transform.up;
         rb.AddForce(forceDirection * SwordSpeed);
         Invoke("SwordDestory", 3);
 

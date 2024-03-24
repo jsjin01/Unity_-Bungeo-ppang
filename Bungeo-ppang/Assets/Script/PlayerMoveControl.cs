@@ -10,6 +10,10 @@ public class PlayerMoveControl : MonoBehaviour
     float atkspd;     //공격속도
     float speed;      //이동속도
 
+    float firebalRate = 3f;
+    float iceballRate = 3f;
+    float thunderRate = 3f;
+
     Vector3 movement;       //move에서 사용할 변수 => 이동할 위치의 변수
     Quaternion rotation;    //회전값
 
@@ -22,6 +26,9 @@ public class PlayerMoveControl : MonoBehaviour
         speed = PlayerManager.i.speed;
         atkspd = PlayerManager.i.atk_spd;
         rotation = Quaternion.Euler(0, 0, 0); //회전하지 않은 상태
+        //StartCoroutine(Fireball());
+        //StartCoroutine(Thunder());
+        //StartCoroutine(Iceball());
     }
 
     // Update is called once per frame
@@ -65,17 +72,14 @@ public class PlayerMoveControl : MonoBehaviour
         StartCoroutine(ShootCol());
         
         Bungeo_ppong_PoolManager.i.UseBuneo_ppong(transform.position, rotation);
-        Instantiate(magicPrefebs[0], transform.position - new Vector3(1, 0, 0) ,rotation);//파이어볼이 잘되는지 실험
-        Instantiate(magicPrefebs[1], transform.position - new Vector3(-1, 0, 0), rotation);//아이스볼이 잘 되는지 실험
-        ThunderCreat();//번개 실험
 
         //Instantiate(shieldPrefebs, transform.position, rotation);
-        /*Bungeo_ppong_BulletComponent.b.transform.position = transform.position;
-        if(Bungeo_ppong_BulletComponent.b.isDestroy==true)
-        {
-            Instantiate(swordPrefebs,transform.position, Sword.s.rotation);
-        }*/
-                
+
+        //if (Bungeo_ppong_BulletComponent.i.isDestroy == true)
+        //{
+        //    Instantiate(swordPrefebs, Bungeo_ppong_BulletComponent.i.transform.position, rotation);
+        //}
+
     }
 
     IEnumerator ShootCol()
@@ -92,5 +96,47 @@ public class PlayerMoveControl : MonoBehaviour
         float thunderangle = -Mathf.Atan2(x2- x1,12f)*Mathf.Rad2Deg;
         Quaternion rot = Quaternion.Euler(0f,0f,thunderangle);
         Instantiate(magicPrefebs[2], new Vector3(x1, -4, 0), rot);
+    }
+
+    IEnumerator Fireball()
+    {
+        while (true)
+        {
+            Instantiate(magicPrefebs[0], transform.position - new Vector3(1, 0, 0), rotation);
+            yield return new WaitForSeconds(firebalRate);
+        }
+    }
+
+    IEnumerator Iceball()
+    {
+        while (true)
+        {
+            Instantiate(magicPrefebs[1], transform.position - new Vector3(-1, 0, 0), rotation);
+            yield return new WaitForSeconds(iceballRate);
+        }
+    }
+    IEnumerator Thunder()
+    {
+        while (true)
+        {
+            ThunderCreat();
+            yield return new WaitForSeconds(thunderRate);
+        }
+    }
+
+    void ColDown(int a)
+    {
+        if (a == 0)
+        {
+            firebalRate -= 1f;
+        }
+        else if (a == 1)
+        {
+            iceballRate -= 1f;
+        }
+        else if (a ==2)
+        {
+            thunderRate -= 1f;
+        }
     }
 }

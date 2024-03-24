@@ -4,7 +4,6 @@ enum MAGICBALLTYPE
 {
     FIRE,
     ICE
-
 }
 public class MagicBall : MonoBehaviour
 {

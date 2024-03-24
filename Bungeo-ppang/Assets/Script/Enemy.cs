@@ -8,8 +8,9 @@ public class Enemy : MonoBehaviour
     Vector2 pos = new Vector2(0, -1);
     Rigidbody2D rb;
 
-    IEnumerator magicCor; //마법 적용 코루틴 함수
-
+    IEnumerator fireCor; //마법 적용 코루틴 함수
+    IEnumerator iceCor;
+    IEnumerator thunderCor;
     private void Update()
     {
         if (transform.position.y <= -6f || hp <= 0f)
@@ -52,12 +53,12 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                if (magicCor != null)
+                if (fireCor != null)
                 {
-                    StopCoroutine(magicCor);
+                    StopCoroutine(fireCor);
                 }
-                magicCor = Fire(fireball.firedmg);
-                StartCoroutine(magicCor);
+                fireCor = Fire(fireball.firedmg);
+                StartCoroutine(fireCor);
             }
         }
         else if (other.CompareTag("ICE"))
@@ -70,12 +71,12 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                if (magicCor != null)
+                if (iceCor != null)
                 {
-                    StopCoroutine(magicCor);
+                    StopCoroutine(iceCor);
                 }
-                magicCor = Ice(iceball.iceSpeedDown);
-                StartCoroutine(magicCor);
+                iceCor = Ice(iceball.iceSpeedDown);
+                StartCoroutine(iceCor);
             }
         }
         else if (other.CompareTag("Shield"))
@@ -106,12 +107,12 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                if (magicCor != null)
+                if (thunderCor != null)
                 {
-                    StopCoroutine(magicCor);
+                    StopCoroutine(thunderCor);
                 }
-                magicCor = Stun(t.stunTime);
-                StartCoroutine(magicCor);
+                thunderCor = Stun(t.stunTime);
+                StartCoroutine(thunderCor);
             }
         }
     }
@@ -120,9 +121,17 @@ public class Enemy : MonoBehaviour
     {
         hp = 100f; //나중에 다시 사용할 때 Hp 100
         EnemyPoolManager.i.ReturnEnemy(gameObject);
-        if(magicCor != null)
+        if(fireCor != null)
         {
-            StopCoroutine(magicCor);
+            StopCoroutine(fireCor);
+        }
+        if(iceCor != null)
+        {
+            StopCoroutine(iceCor);
+        }
+        if (thunderCor != null)
+        {
+            StopCoroutine(thunderCor);
         }
     }
 
