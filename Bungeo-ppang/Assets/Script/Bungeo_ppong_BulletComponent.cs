@@ -53,7 +53,7 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
     public void BulletDestory()
     {
         Bungeo_ppong_PoolManager.i.ReturnBungeo_ppong(gameObject);
-        Instantiate(swordPrefebs, transform.position, Quaternion.identity);
+        //Instantiate(swordPrefebs, transform.position, Quaternion.identity);
     }
 
     //일반 보상 함수 

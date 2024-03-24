@@ -7,10 +7,11 @@ public class Warrior_Skill : MonoBehaviour
     [SerializeField] GameObject shieldPrefebs;
     [SerializeField] GameObject swordPrefebs;
     [SerializeField] public bool warriorOn = false;    //전사붕
-    [SerializeField] bool swordOn = false;    //검격(반달검격)
+    [SerializeField] bool swordOn = false;    //검격(반달검격) 
     bool isShot = true;
     public float index;
     public float radian;
+    
     // Start is called before the first frame update
     
     void Start()

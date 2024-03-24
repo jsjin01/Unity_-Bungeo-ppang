@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    public static Shield s;
+    //public static Shield s;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] public int passcnt=0;       //관통횟수
     public float dmg;       //방패 데미지
@@ -14,7 +14,7 @@ public class Shield : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        s = this;
+        //s = this;
     }
     void Start()
     {
