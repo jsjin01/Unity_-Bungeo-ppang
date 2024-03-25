@@ -6,8 +6,8 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
     public static Bungeo_ppong_BulletComponent i;       //객체마다 다른데 static?
     [SerializeField] Rigidbody2D rb;
     [SerializeField] public float BulletSpeed = 30f;   //총알 속도
-    [SerializeField] public float dmg;          //공격력
-    [SerializeField] public int monsterPass = 0;       //관통 횟수
+    public float dmg;          //공격력
+    public int monsterPass = 0;       //관통 횟수
     [SerializeField] GameObject swordPrefebs;        //검기
     float size = 1;                             //사이즈
     float index;
@@ -37,6 +37,9 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        {
+            dmg = 0;
+        }
         if (collision.CompareTag("Enemy"))
         {
             if (monsterPass == 0)//관통 횟수가 0일때는 파괴
@@ -86,4 +89,5 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
         transform.localScale = new Vector3(size, size, 1);
     }
 
+    
 }

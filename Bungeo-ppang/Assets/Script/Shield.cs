@@ -13,9 +13,6 @@ public class Shield : MonoBehaviour
     public float dmg;       //방패 데미지
     float size = 1;
 
-    float atkspd;
-    bool isShot = true;
-
     // Start is called before the first frame update
     private void Awake()
     {
@@ -25,7 +22,6 @@ public class Shield : MonoBehaviour
     {
         rb =GetComponent<Rigidbody2D>();
         dmg = PlayerManager.i.atk;
-        atkspd = PlayerManager.i.atk_spd;
         Move();
     }
 
@@ -46,13 +42,10 @@ public class Shield : MonoBehaviour
             if(passcnt==0)
             {
                 CancelInvoke("ShieldDestory");
+                Bungeo_ppong_PoolManager.i.UseBuneo_ppong(transform.position, Quaternion.identity);
                 Destroy(gameObject);
-
                 //StartCoroutine(delaytime());
-                if (isShot)
-                {
-                    Attack();
-                }
+
             }
             else
             {
@@ -60,22 +53,7 @@ public class Shield : MonoBehaviour
             }
         }
     }
-    /*IEnumerator delaytime()
-    {
-        yield return new WaitForSeconds(0.3f);
-    }*/
-    void Attack()
-    {
-        StartCoroutine(ShootCol());
-        Bungeo_ppong_PoolManager.i.UseBuneo_ppong(transform.position, Quaternion.identity);
-    }
 
-    IEnumerator ShootCol()
-    {
-        isShot = false;
-        yield return new WaitForSeconds(atkspd);
-        isShot = true;
-    }
     void ShieldDestory()
     {
         Destroy(gameObject);

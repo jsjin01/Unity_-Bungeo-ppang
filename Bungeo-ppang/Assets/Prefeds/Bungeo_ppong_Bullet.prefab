@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 710724849152919853}
   - component: {fileID: 1293223277239474755}
   - component: {fileID: 7394668949463452964}
-  - component: {fileID: 2201295549229527347}
   - component: {fileID: 457151487421072729}
+  - component: {fileID: 367076486417305376}
   m_Layer: 0
   m_Name: Bungeo_ppong_Bullet
   m_TagString: Bullet
@@ -114,8 +114,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &2201295549229527347
-BoxCollider2D:
+--- !u!114 &457151487421072729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7078709241388728170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d3a12d62bf5fc04bacd0abbaa76f523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 7394668949463452964}
+  BulletSpeed: 10
+  dmg: 0
+  monsterPass: 0
+  swordPrefebs: {fileID: 7161014317186832076, guid: b7b38d2c4058d92479c3a1ce46bfa31e, type: 3}
+  lifespan: 0.3
+--- !u!70 &367076486417305376
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -143,36 +161,9 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.57, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.8, y: 19.2}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 9.64, y: 6.05}
-  m_EdgeRadius: 0
---- !u!114 &457151487421072729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7078709241388728170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d3a12d62bf5fc04bacd0abbaa76f523, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 7394668949463452964}
-  BulletSpeed: 10
-  dmg: 0
-  monsterPass: 0
-  swordPrefebs: {fileID: 7161014317186832076, guid: b7b38d2c4058d92479c3a1ce46bfa31e, type: 3}
+  m_Offset: {x: 0.62, y: -0.58}
+  m_Size: {x: 9.28, y: 6.27}
+  m_Direction: 1
