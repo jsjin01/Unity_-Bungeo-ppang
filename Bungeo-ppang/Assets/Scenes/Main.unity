@@ -1245,10 +1245,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   autoAttack: 1
+  warriorOn: 1
+  index: 0
   magicPrefebs:
   - {fileID: 633283411240183375, guid: dcd937ede5445ab4caaa76f648e69c04, type: 3}
   - {fileID: 8572150685768489180, guid: b1db60851fb3cb2449e25ffa27767ade, type: 3}
   - {fileID: 4163866305997074085, guid: 42a42d2d4b8762e4589a7b85609d869a, type: 3}
+  shieldPrefebs: {fileID: 2275484385714578623, guid: ea625178225b6274689e0fffcc1cd698, type: 3}
 --- !u!61 &1167435723
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1409,7 +1412,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167435721}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 816d41afd9bc6b7478e0d85eab203faf, type: 3}
   m_Name: 

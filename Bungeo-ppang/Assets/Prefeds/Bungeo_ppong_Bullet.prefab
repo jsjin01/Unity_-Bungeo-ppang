@@ -174,5 +174,5 @@ MonoBehaviour:
   rb: {fileID: 7394668949463452964}
   BulletSpeed: 10
   dmg: 0
-  monsterPass: 1
+  monsterPass: 0
   swordPrefebs: {fileID: 7161014317186832076, guid: b7b38d2c4058d92479c3a1ce46bfa31e, type: 3}

@@ -11,6 +11,7 @@ public class Sword : MonoBehaviour
     [SerializeField] float SwordSpeed = 20f;  //검격 속도
     public float dmg;       //검격 데미지
     float size = 1;
+    
     // Start is called before the first frame update
     private void Awake()
     {
@@ -32,12 +33,6 @@ public class Sword : MonoBehaviour
         {
             rb = rb.GetComponent<Rigidbody2D>();
         }
-        /*if (Warrior_Skill.w != null && Warrior_Skill.w.radian >= 0 && Warrior_Skill.w.radian < Mathf.PI * 2)
-        {
-            Vector2 shootPos = new Vector2(Mathf.Cos(Warrior_Skill.w.radian), Mathf.Sin(Warrior_Skill.w.radian));
-            rb.velocity = shootPos.normalized * SwordSpeed; //검격이 날라가는 부분
-            Invoke("SwordDestory", 3);
-        }*/
         Vector3 forceDirection = rb.transform.up;
         rb.AddForce(forceDirection * SwordSpeed);
         Invoke("SwordDestory", 3);

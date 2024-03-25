@@ -75,9 +75,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 0.92001307, b: 0.4433962, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -126,9 +126,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd09f1154277b64408ddfb19c08499b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s: {fileID: 0}
   rb: {fileID: 0}
-  passcnt: 1
+  bungeo_ppong_Prefeds: {fileID: 7078709241388728170, guid: 743352c07a1cad1448c99ea94e8720f3, type: 3}
+  passcnt: 0
+  shieldSpeed: 10
   dmg: 0
 --- !u!61 &-4609091954014888920
 BoxCollider2D:

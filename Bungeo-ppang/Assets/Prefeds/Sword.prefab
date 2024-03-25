@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  passcnt: 2
+  passcnt: 0
   numberOfSwords: 1
   SwordSpeed: 50
   dmg: 0

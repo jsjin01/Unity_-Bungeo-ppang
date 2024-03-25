@@ -11,6 +11,7 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
     [SerializeField] GameObject swordPrefebs;        //검기
     float size = 1;                             //사이즈
     float index;
+    public float lifespan = 0.3f;
 
     //public Vector3 collisionPosition;
     private void Awake()
@@ -40,7 +41,7 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
         {
             if (monsterPass == 0)//관통 횟수가 0일때는 파괴
             {
-                //collisionPosition = transform.position;
+
                 BulletDestory();
                 CancelInvoke("BulletDestory");
             }
