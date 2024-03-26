@@ -1,23 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    public static Shield s;
     [SerializeField] Rigidbody2D rb;
-    [SerializeField] GameObject bungeo_ppong_Prefeds;
     [SerializeField] public int passcnt=0;       //관통횟수
     [SerializeField] public float shieldSpeed = 30f;
     public float dmg;       //방패 데미지
     float size = 1;
 
-    // Start is called before the first frame update
-    private void Awake()
-    {
-        s = this;
-    }
     void Start()
     {
         rb =GetComponent<Rigidbody2D>();
@@ -44,7 +38,6 @@ public class Shield : MonoBehaviour
                 CancelInvoke("ShieldDestory");
                 Bungeo_ppong_PoolManager.i.UseBuneo_ppong(transform.position, Quaternion.identity);
                 Destroy(gameObject);
-                //StartCoroutine(delaytime());
 
             }
             else

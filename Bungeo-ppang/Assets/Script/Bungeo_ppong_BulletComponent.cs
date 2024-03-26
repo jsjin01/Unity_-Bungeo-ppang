@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Bungeo_ppong_BulletComponent : MonoBehaviour
 {
-    public static Bungeo_ppong_BulletComponent i;       //객체마다 다른데 static?
     [SerializeField] Rigidbody2D rb;
     [SerializeField] public float BulletSpeed = 30f;   //총알 속도
     public float dmg;          //공격력
@@ -11,17 +10,11 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
     [SerializeField] GameObject swordPrefebs;        //검기
     float size = 1;                             //사이즈
     float index;
-    public float lifespan = 0.3f;
-
-    //public Vector3 collisionPosition;
-    private void Awake()
-    {
-        i = this;
-    }
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        /*Invoke("Collider", 0.3f);
+        gameObject.GetComponent<CapsuleCollider2D>().enabled = false;*/
         dmg = PlayerManager.i.atk;
     }
 
@@ -44,7 +37,6 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
         {
             if (monsterPass == 0)//관통 횟수가 0일때는 파괴
             {
-
                 BulletDestory();
                 CancelInvoke("BulletDestory");
             }
@@ -58,8 +50,8 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
     public void BulletDestory()
     {
         index = Random.Range(0f, 360f);
-        Bungeo_ppong_PoolManager.i.ReturnBungeo_ppong(gameObject);
         Instantiate(swordPrefebs, transform.position, Quaternion.Euler(0, 0, index));
+        Bungeo_ppong_PoolManager.i.ReturnBungeo_ppong(gameObject);
     }
 
     //일반 보상 함수 
@@ -88,6 +80,8 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
         size *= 1.5f;
         transform.localScale = new Vector3(size, size, 1);
     }
-
-    
+    /*public void Collider()   //충돌 활성화
+    {
+        gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
+    }*/
 }

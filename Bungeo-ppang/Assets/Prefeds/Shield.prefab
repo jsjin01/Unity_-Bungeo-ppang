@@ -127,7 +127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  bungeo_ppong_Prefeds: {fileID: 7078709241388728170, guid: 743352c07a1cad1448c99ea94e8720f3, type: 3}
   passcnt: 0
   shieldSpeed: 10
   dmg: 0

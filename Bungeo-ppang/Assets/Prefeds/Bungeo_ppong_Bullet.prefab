@@ -131,7 +131,6 @@ MonoBehaviour:
   dmg: 0
   monsterPass: 0
   swordPrefebs: {fileID: 7161014317186832076, guid: b7b38d2c4058d92479c3a1ce46bfa31e, type: 3}
-  lifespan: 0.3
 --- !u!70 &367076486417305376
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -161,7 +160,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.62, y: -0.58}

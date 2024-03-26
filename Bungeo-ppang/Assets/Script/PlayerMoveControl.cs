@@ -55,7 +55,6 @@ public class PlayerMoveControl : MonoBehaviour
                 if (isShot)
                 {
                     shieldMove();
-                    //Attack();
                 }
 
             }

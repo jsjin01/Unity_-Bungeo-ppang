@@ -1878,7 +1878,6 @@ GameObject:
   - component: {fileID: 1167435723}
   - component: {fileID: 1167435722}
   - component: {fileID: 1167435727}
-  - component: {fileID: 1167435728}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1900,7 +1899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   autoAttack: 1
-  warriorOn: 1
+  warriorOn: 0
   index: 0
   magicPrefebs:
   - {fileID: 633283411240183375, guid: dcd937ede5445ab4caaa76f648e69c04, type: 3}
@@ -1967,7 +1966,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2060,21 +2059,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atk: 10
   atk_spd: 0.5
---- !u!114 &1167435728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167435721}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 816d41afd9bc6b7478e0d85eab203faf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shieldPrefebs: {fileID: 2275484385714578623, guid: ea625178225b6274689e0fffcc1cd698, type: 3}
-  warriorOn: 1
-  index: 0
 --- !u!1 &1330909590
 GameObject:
   m_ObjectHideFlags: 0
