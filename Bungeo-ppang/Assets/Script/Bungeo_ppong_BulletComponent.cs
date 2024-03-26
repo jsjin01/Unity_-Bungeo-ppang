@@ -80,8 +80,8 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
         size *= 1.5f;
         transform.localScale = new Vector3(size, size, 1);
     }
-    /*public void Collider()   //충돌 활성화
-    {
-        gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
-    }*/
+   //public void Collider()   //충돌 활성화
+   // {
+   //     gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
+   // }
 }
