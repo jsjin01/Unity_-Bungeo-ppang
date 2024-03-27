@@ -9,7 +9,7 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
     [SerializeField] public float BulletSpeed = 30f;   //총알 속도
     public float dmg;          //공격력
     public int monsterPass = 0;       //관통 횟수
-    int maxMonsterPass = 0;          //최대 관통횟수
+    int maxMonsterPass = 2;          //최대 관통횟수
     [SerializeField] GameObject swordPrefebs;        //검기
     float size = 1;                             //사이즈
     float index;
