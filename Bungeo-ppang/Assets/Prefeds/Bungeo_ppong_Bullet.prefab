@@ -127,9 +127,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7394668949463452964}
+  cd: {fileID: 367076486417305376}
   BulletSpeed: 10
   dmg: 0
-  monsterPass: 0
+  monsterPass: 2
   swordPrefebs: {fileID: 7161014317186832076, guid: b7b38d2c4058d92479c3a1ce46bfa31e, type: 3}
 --- !u!70 &367076486417305376
 CapsuleCollider2D:

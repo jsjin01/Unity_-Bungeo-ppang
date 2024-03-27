@@ -1,23 +1,38 @@
 //using System;
+using System.Collections;
 using UnityEngine;
 
 public class Bungeo_ppong_BulletComponent : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
+    [SerializeField]Collider2D cd;
     [SerializeField] public float BulletSpeed = 30f;   //총알 속도
     public float dmg;          //공격력
     public int monsterPass = 0;       //관통 횟수
+    int maxMonsterPass = 2;          //최대 관통횟수
     [SerializeField] GameObject swordPrefebs;        //검기
     float size = 1;                             //사이즈
     float index;
+    bool isSword = false;                       //검기 온오프
+
+    IEnumerator passCor; //관통 코루틴
     void Start()
     {
+        cd = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
         /*Invoke("Collider", 0.3f);
         gameObject.GetComponent<CapsuleCollider2D>().enabled = false;*/
         dmg = PlayerManager.i.atk;
     }
 
+    private void OnEnable()
+    {
+        if(cd = null)
+        {
+            cd = GetComponent<Collider2D>();    
+        }
+        monsterPass = maxMonsterPass;
+    }
     public void Move()
     {
         if (rb == null)
@@ -42,6 +57,16 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
             }
             else//아니라면 관통 가능 횟수를 한번 뺌
             {
+                if(passCor == null)
+                {
+                    passCor = MonsterPass();
+                    StartCoroutine(passCor);
+                }
+                else
+                {
+                    StartCoroutine(passCor);
+                }
+
                 monsterPass--;
             }
         }
@@ -49,9 +74,17 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
 
     public void BulletDestory()
     {
+        if (isSword)//검기 소환
+        {
+            SwordCreat();
+        }
+        Bungeo_ppong_PoolManager.i.ReturnBungeo_ppong(gameObject);
+    }
+
+    public void SwordCreat()
+    {
         index = Random.Range(0f, 360f);
         Instantiate(swordPrefebs, transform.position, Quaternion.Euler(0, 0, index));
-        Bungeo_ppong_PoolManager.i.ReturnBungeo_ppong(gameObject);
     }
 
     //일반 보상 함수 
@@ -79,6 +112,13 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
     {
         size *= 1.5f;
         transform.localScale = new Vector3(size, size, 1);
+    }
+
+    IEnumerator MonsterPass()
+    {
+        cd.enabled = false;
+        yield return new WaitForSeconds(0.1f);
+        cd.enabled = true;
     }
    //public void Collider()   //충돌 활성화
    // {
