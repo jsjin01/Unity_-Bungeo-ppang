@@ -36,7 +36,7 @@ public class Shield : MonoBehaviour
             if(passcnt==0)
             {
                 CancelInvoke("ShieldDestory");
-                Bungeo_ppong_PoolManager.i.UseBuneo_ppong(transform.position, Quaternion.identity);
+                Bungeo_ppong_PoolManager.i.UseBuneo_ppong(transform.position, Quaternion.identity, true);
                 Destroy(gameObject);
 
             }

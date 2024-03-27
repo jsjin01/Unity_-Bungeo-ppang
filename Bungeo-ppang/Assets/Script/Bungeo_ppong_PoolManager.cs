@@ -25,7 +25,7 @@ public class Bungeo_ppong_PoolManager : MonoBehaviour
         }
     }
 
-    public void UseBuneo_ppong(Vector2 p, Quaternion rot )   //붕어빵 사용하는 부분
+    public void UseBuneo_ppong(Vector2 p, Quaternion rot, bool isShield = false)   //붕어빵 사용하는 부분
     {
         if (transform.childCount == 0)
         {
@@ -33,7 +33,7 @@ public class Bungeo_ppong_PoolManager : MonoBehaviour
         }
 
         Bungeo_ppong_BulletComponent bbp = transform.GetChild(0).GetComponent<Bungeo_ppong_BulletComponent>(); //pool 0번째 오브젝트에 접근
-
+        bbp.isShield = isShield;            //쉴드 온오프에 따른 변화
         bbp.transform.position = p;         //붕어빵 위치 설정
         bbp.transform.rotation = rot;       //붕어빵 각도 설정
         bbp.gameObject.SetActive(true);     //옵젝 활성화

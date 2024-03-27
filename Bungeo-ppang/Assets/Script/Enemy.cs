@@ -5,8 +5,10 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] float speed = 2f; // 적의 이동 속도
     [SerializeField] float hp = 100f;//적의 체력
+    [SerializeField] float MaxHp = 100f;//적의 최대 체력
     Vector2 pos = new Vector2(0, -1);
     Rigidbody2D rb;
+    SpriteRenderer sr;
 
     IEnumerator fireCor; //마법 적용 코루틴 함수
     IEnumerator iceCor;
@@ -20,7 +22,9 @@ public class Enemy : MonoBehaviour
     }
     private void OnEnable()
     {
+        hp = MaxHp;
         speed = 2f;
+
     }
 
     public void Move()
@@ -28,6 +32,11 @@ public class Enemy : MonoBehaviour
         if (rb == null)
         {
             rb = GetComponent<Rigidbody2D>();
+            
+        }
+        if(sr == null)
+        {
+            sr = GetComponent<SpriteRenderer>();
         }
         rb.velocity = pos.normalized * speed;
     }
@@ -37,10 +46,18 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             Bungeo_ppong_BulletComponent bullet = other.gameObject.GetComponent<Bungeo_ppong_BulletComponent>();
-            hp -= bullet.dmg;
-            if (hp <= 0f)
+            StartCoroutine(Hitchange());
+            if (bullet.isShield)
             {
-                EnemyDestroy();
+                bullet.isShield = false;
+            }
+            else
+            {
+                hp -= bullet.dmg;
+                if (hp <= 0f)
+                {
+                    EnemyDestroy();
+                }
             }
         }
         else if (other.CompareTag("FIRE"))
@@ -162,6 +179,13 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(time);
         speed = nowSpeed; //다시 되돌아옴
         rb.velocity = pos.normalized * speed;
+    }
+
+    IEnumerator Hitchange()
+    {
+        sr.color = Color.red;
+        yield return new WaitForSeconds(0.5f);
+        sr.color = Color.white;
     }
 }
 

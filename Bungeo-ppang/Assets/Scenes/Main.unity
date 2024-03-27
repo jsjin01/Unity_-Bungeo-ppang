@@ -1899,7 +1899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   autoAttack: 1
-  warriorOn: 0
+  warriorOn: 1
   index: 0
   magicPrefebs:
   - {fileID: 633283411240183375, guid: dcd937ede5445ab4caaa76f648e69c04, type: 3}

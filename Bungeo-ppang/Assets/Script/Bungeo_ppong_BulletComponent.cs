@@ -5,20 +5,21 @@ using UnityEngine;
 public class Bungeo_ppong_BulletComponent : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
-    [SerializeField]Collider2D cd;
+    [SerializeField] CapsuleCollider2D cd;
     [SerializeField] public float BulletSpeed = 30f;   //총알 속도
     public float dmg;          //공격력
     public int monsterPass = 0;       //관통 횟수
-    int maxMonsterPass = 2;          //최대 관통횟수
+    int maxMonsterPass = 0;          //최대 관통횟수
     [SerializeField] GameObject swordPrefebs;        //검기
     float size = 1;                             //사이즈
     float index;
     bool isSword = false;                       //검기 온오프
+    [SerializeField]public bool isShield = false;               //쉴드 상태일때
 
     IEnumerator passCor; //관통 코루틴
     void Start()
     {
-        cd = GetComponent<Collider2D>();
+        cd = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         /*Invoke("Collider", 0.3f);
         gameObject.GetComponent<CapsuleCollider2D>().enabled = false;*/
@@ -27,11 +28,16 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
 
     private void OnEnable()
     {
-        if(cd = null)
-        {
-            cd = GetComponent<Collider2D>();    
-        }
         monsterPass = maxMonsterPass;
+        if (isShield)
+        {
+        if(cd == null)
+            {
+                cd = GetComponent<CapsuleCollider2D>();
+            }
+            cd.enabled = false;
+            Invoke("MonsterPass", 0.2f);
+        }
     }
     public void Move()
     {
@@ -45,9 +51,6 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        {
-            dmg = 0;
-        }
         if (collision.CompareTag("Enemy"))
         {
             if (monsterPass == 0)//관통 횟수가 0일때는 파괴
@@ -57,16 +60,12 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
             }
             else//아니라면 관통 가능 횟수를 한번 뺌
             {
-                if(passCor == null)
+                if (cd == null)
                 {
-                    passCor = MonsterPass();
-                    StartCoroutine(passCor);
+                    cd = GetComponent<CapsuleCollider2D>();
                 }
-                else
-                {
-                    StartCoroutine(passCor);
-                }
-
+                cd.enabled = false;
+                Invoke("MonsterPass", 0.2f);
                 monsterPass--;
             }
         }
@@ -114,12 +113,11 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
         transform.localScale = new Vector3(size, size, 1);
     }
 
-    IEnumerator MonsterPass()
+    void MonsterPass()
     {
-        cd.enabled = false;
-        yield return new WaitForSeconds(0.1f);
         cd.enabled = true;
     }
+
    //public void Collider()   //충돌 활성화
    // {
    //     gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
