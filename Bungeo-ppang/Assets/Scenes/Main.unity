@@ -656,6 +656,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy_Prefeds: {fileID: 5753310713596020997, guid: 1626700477a30d44d943c26930a4885c, type: 3}
+  Boss_Prefeds: {fileID: 5753310713596020997, guid: 3f005636e41fc3849923b695ace9652c, type: 3}
+  Seed_Prefeds: {fileID: 6705313839622664035, guid: a6b69bdb6688cae4c8b21e1879ddf5b3, type: 3}
+  Enemies_Prefeds:
+  - {fileID: 6607137493993982585, guid: 2cd0c56a3412d8e43bad752e58285661, type: 3}
+  - {fileID: 3420537283313021164, guid: 96e5e9c7ec5d27a458c3a878c0c15a7d, type: 3}
+  - {fileID: 110605858803114072, guid: fc582445fc01c6f418556ddb8eb58201, type: 3}
   initEnemyCount: 50
 --- !u!1 &346046595
 GameObject:
@@ -1899,7 +1905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   autoAttack: 1
-  warriorOn: 1
+  warriorOn: 0
   index: 0
   magicPrefebs:
   - {fileID: 633283411240183375, guid: dcd937ede5445ab4caaa76f648e69c04, type: 3}
@@ -2088,6 +2094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36f779829fe72843854530385e5512f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boss: 1
 --- !u!4 &1330909592
 Transform:
   m_ObjectHideFlags: 0

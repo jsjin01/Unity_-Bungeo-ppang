@@ -1,46 +1,45 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Boss : MonoBehaviour
 {
-    [SerializeField] protected float speed = 2f; // 적의 이동 속도
-    [SerializeField] protected float hp = 100f;//적의 체력
-    [SerializeField] protected float MaxHp = 100f;//적의 최대 체력
-    protected Vector2 pos = new Vector2(0, -1);
-    protected Rigidbody2D rb;
-    protected SpriteRenderer sr;
+    [SerializeField] float speed = 2f; // 적의 이동 속도
+    [SerializeField] float hp = 500f;//적의 체력
+    [SerializeField] float MaxHp = 500f;//적의 최대 체력
+    Vector2 pos = new Vector2(0, -1);
+    Rigidbody2D rb;
+    SpriteRenderer sr;
 
-    protected IEnumerator fireCor; //마법 적용 코루틴 함수
-    protected IEnumerator iceCor;
-    protected IEnumerator thunderCor;
-    public virtual void Update()
+    IEnumerator fireCor; //마법 적용 코루틴 함수
+    IEnumerator iceCor;
+    IEnumerator thunderCor;
+    private void Start()
     {
-        if (transform.position.y <= -6f || hp <= 0f)
-        {
-            EnemyDestroy();
-        }
-    }
-    public virtual void OnEnable()
-    {
-        hp = MaxHp;
-        speed = 2f;
-    }
-
-    public virtual void Move()
-    {
-        if (rb == null)
-        {
-            rb = GetComponent<Rigidbody2D>();
-            
-        }
-        if(sr == null)
+        if (sr == null)
         {
             sr = GetComponent<SpriteRenderer>();
         }
-        rb.velocity = pos.normalized * speed;
+        InvokeRepeating("SpawnSeed", 1f, 2f);
     }
+    private void Update()
+    {
+        if (hp <= 0f)
+        {
+            BossDestroy();
+        }
+    }
+    void SpawnSeed()
+    {
+        EnemyPoolManager.i.CreateSeed();
+    }
+    
+    private void OnEnable()
+    {
+        hp = MaxHp;
 
-    public virtual void OnTriggerEnter2D(Collider2D other)
+    }
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Bullet"))
         {
@@ -55,7 +54,7 @@ public class Enemy : MonoBehaviour
                 hp -= bullet.dmg;
                 if (hp <= 0f)
                 {
-                    EnemyDestroy();
+                    BossDestroy();
                 }
             }
         }
@@ -65,7 +64,7 @@ public class Enemy : MonoBehaviour
             hp -= fireball.dmg;
             if (hp <= 0f)
             {
-                EnemyDestroy();
+                BossDestroy();
             }
             else
             {
@@ -83,7 +82,7 @@ public class Enemy : MonoBehaviour
             hp -= iceball.dmg;
             if (hp <= 0f)
             {
-                EnemyDestroy();
+                BossDestroy();
             }
             else
             {
@@ -101,7 +100,7 @@ public class Enemy : MonoBehaviour
             hp -= shield.dmg;
             if (hp <= 0f)
             {
-                EnemyDestroy();
+                BossDestroy();
             }
         }
         else if (other.CompareTag("Sword"))
@@ -110,7 +109,7 @@ public class Enemy : MonoBehaviour
             hp -= sword.dmg;
             if (hp <= 0f)
             {
-                EnemyDestroy();
+                BossDestroy();
             }
         }
         else if (other.CompareTag("THUNDER"))
@@ -119,7 +118,7 @@ public class Enemy : MonoBehaviour
             hp -= t.dmg;
             if (hp <= 0f)
             {
-                EnemyDestroy();
+                BossDestroy();
             }
             else
             {
@@ -133,15 +132,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    virtual public void EnemyDestroy() //적 삭제
+    void BossDestroy() //적 삭제
     {
-        hp = 100f; //나중에 다시 사용할 때 Hp 100
-        EnemyPoolManager.i.ReturnEnemy(gameObject);
-        if(fireCor != null)
+        hp = 500f; //나중에 다시 사용할 때 Hp 500
+        Destroy(gameObject);
+        if (fireCor != null)
         {
             StopCoroutine(fireCor);
         }
-        if(iceCor != null)
+        if (iceCor != null)
         {
             StopCoroutine(iceCor);
         }
@@ -180,12 +179,10 @@ public class Enemy : MonoBehaviour
         rb.velocity = pos.normalized * speed;
     }
 
-    public virtual IEnumerator Hitchange()
+    IEnumerator Hitchange()
     {
         sr.color = Color.red;
         yield return new WaitForSeconds(0.5f);
         sr.color = Color.white;
     }
 }
-
-

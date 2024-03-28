@@ -12,6 +12,7 @@ TagManager:
   - THUNDER
   - Shield
   - Sword
+  - Peanut
   layers:
   - Default
   - TransparentFX

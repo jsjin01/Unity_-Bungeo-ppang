@@ -2,12 +2,20 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] bool boss;
     Vector2 spawnPos;     //스폰 포인트 지정
     Quaternion rotation = Quaternion.Euler(0, 0, 0);  //스폰할때 생성되는 각도지정
     int numberOfEnemies = 5;//한번에 스폰될 양
     void Start()
     {
-        InvokeRepeating("SpawnEnemies", 2, 2);
+        if (boss)
+        {
+            SpawnBoss();
+        }
+        else
+        {
+            InvokeRepeating("SpawnEnemies", 2, 2);
+        }
     }
     void SpawnEnemies()
     {
@@ -17,6 +25,11 @@ public class EnemySpawner : MonoBehaviour
             spawnPos = new Vector2(randomX, 5.7f);
             EnemyPoolManager.i.UseEnemy(spawnPos, rotation);
         }
+    }
+
+    void SpawnBoss()
+    {
+        EnemyPoolManager.i.CreatBoss();
     }
 }
 
