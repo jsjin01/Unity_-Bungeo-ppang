@@ -24,7 +24,7 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
         dmg = PlayerManager.i.atk;
     }
 
-    private void OnEnable()
+    private void OnEnable()//다시 가져왔을 때 초기화
     {
         monsterPass = maxMonsterPass;
         if (isShield)
@@ -37,7 +37,7 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
             Invoke("MonsterPass", 0.2f);
         }
     }
-    public void Move()
+    public void Move() //움직임
     {
         if (rb == null)
         {
@@ -111,13 +111,10 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
         transform.localScale = new Vector3(size, size, 1);
     }
 
-    void MonsterPass()
+    void MonsterPass()//관통 제어
     {
         cd.enabled = true;
     }
 
-   //public void Collider()   //충돌 활성화
-   // {
-   //     gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
-   // }
+
 }

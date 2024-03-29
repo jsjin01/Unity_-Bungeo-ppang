@@ -8,18 +8,14 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float MaxHp = 100f;//적의 최대 체력
     protected Vector2 pos = new Vector2(0, -1);
     protected Rigidbody2D rb;
-    protected SpriteRenderer sr;
+    [SerializeField]protected SpriteRenderer sr;
+    [SerializeField]Animator anit; //애니메이터 컨트롤
+    [SerializeField]Collider2D cd;
 
     protected IEnumerator fireCor; //마법 적용 코루틴 함수
     protected IEnumerator iceCor;
     protected IEnumerator thunderCor;
-    public virtual void Update()
-    {
-        if (transform.position.y <= -6f || hp <= 0f)
-        {
-            EnemyDestroy();
-        }
-    }
+
     public virtual void OnEnable()
     {
         hp = MaxHp;
@@ -45,13 +41,15 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             Bungeo_ppong_BulletComponent bullet = other.gameObject.GetComponent<Bungeo_ppong_BulletComponent>();
+            
             StartCoroutine(Hitchange());
-            if (bullet.isShield)
+            if (bullet.isShield) //쉴드 상태에서 나온 붕어빵은 데미지 없이 관통
             {
                 bullet.isShield = false;
             }
             else
             {
+                anit.SetTrigger("isHit");
                 hp -= bullet.dmg;
                 if (hp <= 0f)
                 {
@@ -91,7 +89,7 @@ public class Enemy : MonoBehaviour
                 {
                     StopCoroutine(iceCor);
                 }
-                iceCor = Ice(iceball.iceSpeedDown);
+                iceCor = Ice(iceball.iceTime);
                 StartCoroutine(iceCor);
             }
         }
@@ -99,6 +97,7 @@ public class Enemy : MonoBehaviour
         {
             Shield shield = other.gameObject.GetComponent<Shield>();
             hp -= shield.dmg;
+            anit.SetTrigger("isHit");
             if (hp <= 0f)
             {
                 EnemyDestroy();
@@ -131,12 +130,16 @@ public class Enemy : MonoBehaviour
                 StartCoroutine(thunderCor);
             }
         }
+        else if (other.CompareTag("Player"))
+        {
+            EnemyDestroy();
+        }
     }
 
     virtual public void EnemyDestroy() //적 삭제
     {
         hp = 100f; //나중에 다시 사용할 때 Hp 100
-        EnemyPoolManager.i.ReturnEnemy(gameObject);
+        StartCoroutine(Dead());
         if(fireCor != null)
         {
             StopCoroutine(fireCor);
@@ -153,38 +156,58 @@ public class Enemy : MonoBehaviour
 
     IEnumerator Fire(float dmg)
     {
+        anit.SetBool("isFire", true);
         for (int i = 0; i < 6; i++)
         {
             yield return new WaitForSeconds(0.5f);
             hp -= dmg;//불꽃 도트 데미지
         }
+        anit.SetBool("isFire", false);
     }
 
-    IEnumerator Ice(float speedDown)
+    IEnumerator Ice(float t)
     {
+        anit.SetBool("isIce", true);
         float nowSpeed = speed;// 현재 속도 저장
-        speed *= speedDown;//감속
+        speed = 0;   //정지
         rb.velocity = pos.normalized * speed;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(t);
         speed = nowSpeed; //다시 되돌아옴
         rb.velocity = pos.normalized * speed;
+        anit.SetBool("isIce", false);
     }
 
     IEnumerator Stun(float time) //경직
     {
+        anit.SetTrigger("isThunder");
         float nowSpeed = speed;// 현재 속도 저장
-        speed = 0;//감속
+        speed = 0;//정지
         rb.velocity = pos.normalized * speed;
         yield return new WaitForSeconds(time);
         speed = nowSpeed; //다시 되돌아옴
         rb.velocity = pos.normalized * speed;
     }
 
+
     public virtual IEnumerator Hitchange()
     {
         sr.color = Color.red;
         yield return new WaitForSeconds(0.5f);
         sr.color = Color.white;
+    }
+
+    IEnumerator Dead()//0.3초 있다가 없어지도록 설계
+    {
+        anit.SetTrigger("isDead");
+        float nowSpeed = speed;
+        speed = 0;                  //정지
+        rb.velocity = pos.normalized * speed;
+        cd.enabled = false;
+        yield return new WaitForSeconds(0.3f);
+        speed = nowSpeed;
+        cd.enabled = true;
+        sr.color= Color.white;
+        EnemyPoolManager.i.ReturnEnemy(gameObject);
     }
 }
 

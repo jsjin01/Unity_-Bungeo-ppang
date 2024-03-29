@@ -4,11 +4,11 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager i;
     Rigidbody2D rb;
+    [SerializeField] public int Hp = 3;             //목숨
     [SerializeField] public float atk = 10;        //공격력
     [SerializeField] public float atk_spd = 10f;  //공격 속도
-    [SerializeField] public float cri { get; private set; } = 5;         //치명타
-    [SerializeField] public float speed { get; private set; } = 10f;     //이동속도
-    [SerializeField] public float mhp { get; private set; } = 100f;       //최대 체력
+    [SerializeField] public float cri = 5;         //치명타
+    [SerializeField] public float speed  = 10f;     //이동속도
 
     private void Awake()
     {
@@ -20,13 +20,19 @@ public class PlayerManager : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
+        UIManager.i.SetHp(Hp);
     }
 
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            Hp -= 1;
+            Debug.Log("Hit");
+        }
 
+    }
 }

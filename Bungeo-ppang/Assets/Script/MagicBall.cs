@@ -12,7 +12,7 @@ public class MagicBall : MonoBehaviour
     [SerializeField] public float dmg;        //공격력
     [SerializeField] MAGICBALLTYPE type;      //불 타입인지 얼음 타입인지 정함
     public float firedmg = 5;                        //화염데미지
-    public float iceSpeedDown = 0.5f;               //얼음 감속 
+    public float iceTime = 5f;               //얼음 지속 시간
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

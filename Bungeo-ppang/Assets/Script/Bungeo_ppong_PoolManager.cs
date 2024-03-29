@@ -48,8 +48,5 @@ public class Bungeo_ppong_PoolManager : MonoBehaviour
         //사용 후 다시 pool안으로 가져옴
     }
 
-    void Bungeo_ppongOn(Bungeo_ppong_BulletComponent bbp)
-    {
-        
-    }
+
 }

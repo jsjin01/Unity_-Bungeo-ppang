@@ -13,11 +13,6 @@ public class Seed : Enemy
         Invoke("EnemyDestroy", 2f);
     }
     // Update is called once per frame
-    public override void Update()
-    {
-        base.Update();
-
-    }
     public override void OnEnable()
     {
         hp = MaxHp;

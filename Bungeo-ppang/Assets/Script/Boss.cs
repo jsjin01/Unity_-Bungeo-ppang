@@ -90,7 +90,7 @@ public class Boss : MonoBehaviour
                 {
                     StopCoroutine(iceCor);
                 }
-                iceCor = Ice(iceball.iceSpeedDown);
+                iceCor = Ice(iceball.iceTime);
                 StartCoroutine(iceCor);
             }
         }
@@ -159,12 +159,12 @@ public class Boss : MonoBehaviour
         }
     }
 
-    IEnumerator Ice(float speedDown)
+    IEnumerator Ice(float t)
     {
         float nowSpeed = speed;// 현재 속도 저장
-        speed *= speedDown;//감속
+        speed = 0;          //속도 정지
         rb.velocity = pos.normalized * speed;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(t);
         speed = nowSpeed; //다시 되돌아옴
         rb.velocity = pos.normalized * speed;
     }
