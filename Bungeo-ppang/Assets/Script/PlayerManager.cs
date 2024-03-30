@@ -33,6 +33,5 @@ public class PlayerManager : MonoBehaviour
             Hp -= 1;
             Debug.Log("Hit");
         }
-
     }
 }

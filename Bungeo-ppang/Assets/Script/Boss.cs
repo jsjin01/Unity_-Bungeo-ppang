@@ -29,6 +29,7 @@ public class Boss : MonoBehaviour
             BossDestroy();
         }
     }
+
     void SpawnSeed()
     {
         EnemyPoolManager.i.CreateSeed();

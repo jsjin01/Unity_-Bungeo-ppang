@@ -25,7 +25,10 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Update()
     {
-        if (!isStage)
+        if (boss) { 
+            isStage = true;
+        }
+        else if (!isStage)
         {
             isStage = true;
             StartCoroutine(StageSpawn(stageEnemies));

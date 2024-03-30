@@ -55,7 +55,7 @@ public class EnemyPoolManager : MonoBehaviour
     }
     public void CreatBoss()
     {
-        Instantiate(Boss_Prefeds, new Vector3(0, 4, 0), Quaternion.identity);   //焊胶 积己
+        Instantiate(Boss_Prefeds, new Vector3(0, 3.5f, 0), Quaternion.identity);   //焊胶 积己
     }
     public void CreateSeed()
     {
@@ -66,5 +66,9 @@ public class EnemyPoolManager : MonoBehaviour
     {
         int i=Random.Range(0, 3);
         Instantiate(Enemies_Prefeds[i], Pos, Quaternion.identity);
+    }
+    public GameObject returnEnemies(int i)
+    {
+        return Enemies_Prefeds[(int)i];
     }
 }

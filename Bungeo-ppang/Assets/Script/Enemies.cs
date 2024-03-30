@@ -42,15 +42,13 @@ public class Enemies : StandardEnemy
             StopCoroutine(thunderCor);
         }
     }
-    private void OnDestroy()
+    private void OnDisable()
     {
         if (gameObject.CompareTag("Peanut"))
         {
-            Instantiate(peanutslice_Prefebs, transform.position + new Vector3(0.3f,0f,0f), Quaternion.identity);
+            Instantiate(peanutslice_Prefebs, transform.position + new Vector3(0.3f, 0f, 0f), Quaternion.identity);
             Instantiate(peanutslice_Prefebs, transform.position - new Vector3(0.3f, 0f, 0f), Quaternion.identity);
-            Invoke("EnemyDestroy",5f);
         }
-        
     }
     public override IEnumerator Hitchange()
     {

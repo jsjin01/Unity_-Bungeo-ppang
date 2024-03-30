@@ -174,4 +174,6 @@ MonoBehaviour:
   speed: 1
   hp: 20
   MaxHp: 20
+  sr: {fileID: 0}
+  cd: {fileID: 0}
   peanutslice_Prefebs: {fileID: 8136900174102059330, guid: 53ae4c0ce670a6748b5ac40b0aed8332, type: 3}
