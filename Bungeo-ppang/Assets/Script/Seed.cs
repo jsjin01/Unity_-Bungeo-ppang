@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
 
-public class Seed : Enemy
+public class Seed : StandardEnemy
 {
     private Color originalcolor;
     private void Start()

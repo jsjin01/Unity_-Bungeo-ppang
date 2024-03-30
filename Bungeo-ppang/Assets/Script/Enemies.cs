@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemies : Enemy
+public class Enemies : StandardEnemy
 {
     [SerializeField] GameObject peanutslice_Prefebs;
     private Color originalcolor;

@@ -2,50 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : MonoBehaviour
+public class StandardEnemy: MonoBehaviour
 {
-    [SerializeField] float speed = 2f; // 적의 이동 속도
-    [SerializeField] float hp = 500f;//적의 체력
-    [SerializeField] float MaxHp = 500f;//적의 최대 체력
-    Vector2 pos = new Vector2(0, -1);
-    Rigidbody2D rb;
-    SpriteRenderer sr;
+    [SerializeField] protected float speed = 2f; // 적의 이동 속도
+    [SerializeField] protected float hp = 100f;//적의 체력
+    [SerializeField] protected float MaxHp = 100f;//적의 최대 체력
+    protected Vector2 pos = new Vector2(0, -1);
+    protected Rigidbody2D rb;
+    [SerializeField] protected SpriteRenderer sr;
+    [SerializeField] Collider2D cd;
 
-    IEnumerator fireCor; //마법 적용 코루틴 함수
-    IEnumerator iceCor;
-    IEnumerator thunderCor;
-    private void Start()
+    protected IEnumerator fireCor; //마법 적용 코루틴 함수
+    protected IEnumerator iceCor;
+    protected IEnumerator thunderCor;
+
+    public virtual void OnEnable()
     {
+        hp = MaxHp;
+        speed = 2f;
+    }
+
+    public virtual void Move()
+    {
+        if (rb == null)
+        {
+            rb = GetComponent<Rigidbody2D>();
+
+        }
         if (sr == null)
         {
             sr = GetComponent<SpriteRenderer>();
         }
-        InvokeRepeating("SpawnSeed", 1f, 2f);
+        rb.velocity = pos.normalized * speed;
     }
-    private void Update()
-    {
-        if (hp <= 0f)
-        {
-            BossDestroy();
-        }
-    }
-    void SpawnSeed()
-    {
-        EnemyPoolManager.i.CreateSeed();
-    }
-    
-    private void OnEnable()
-    {
-        hp = MaxHp;
 
-    }
-    private void OnTriggerEnter2D(Collider2D other)
+    public virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Bullet"))
         {
             Bungeo_ppong_BulletComponent bullet = other.gameObject.GetComponent<Bungeo_ppong_BulletComponent>();
+
             StartCoroutine(Hitchange());
-            if (bullet.isShield)
+            if (bullet.isShield) //쉴드 상태에서 나온 붕어빵은 데미지 없이 관통
             {
                 bullet.isShield = false;
             }
@@ -54,7 +52,7 @@ public class Boss : MonoBehaviour
                 hp -= bullet.dmg;
                 if (hp <= 0f)
                 {
-                    BossDestroy();
+                    EnemyDestroy();
                 }
             }
         }
@@ -64,7 +62,7 @@ public class Boss : MonoBehaviour
             hp -= fireball.dmg;
             if (hp <= 0f)
             {
-                BossDestroy();
+                EnemyDestroy();
             }
             else
             {
@@ -82,7 +80,7 @@ public class Boss : MonoBehaviour
             hp -= iceball.dmg;
             if (hp <= 0f)
             {
-                BossDestroy();
+                EnemyDestroy();
             }
             else
             {
@@ -100,7 +98,7 @@ public class Boss : MonoBehaviour
             hp -= shield.dmg;
             if (hp <= 0f)
             {
-                BossDestroy();
+                EnemyDestroy();
             }
         }
         else if (other.CompareTag("Sword"))
@@ -109,7 +107,7 @@ public class Boss : MonoBehaviour
             hp -= sword.dmg;
             if (hp <= 0f)
             {
-                BossDestroy();
+                EnemyDestroy();
             }
         }
         else if (other.CompareTag("THUNDER"))
@@ -118,7 +116,7 @@ public class Boss : MonoBehaviour
             hp -= t.dmg;
             if (hp <= 0f)
             {
-                BossDestroy();
+                EnemyDestroy();
             }
             else
             {
@@ -130,12 +128,16 @@ public class Boss : MonoBehaviour
                 StartCoroutine(thunderCor);
             }
         }
+        else if (other.CompareTag("Player"))
+        {
+            EnemyDestroy();
+        }
     }
 
-    void BossDestroy() //적 삭제
+    virtual public void EnemyDestroy() //적 삭제
     {
-        hp = 500f; //나중에 다시 사용할 때 Hp 500
-        Destroy(gameObject);
+        hp = 100f; //나중에 다시 사용할 때 Hp 100
+        StartCoroutine(Dead());
         if (fireCor != null)
         {
             StopCoroutine(fireCor);
@@ -159,30 +161,44 @@ public class Boss : MonoBehaviour
         }
     }
 
-    IEnumerator Ice(float t) //이동속도 0으로 만드는 매커니즘 교체
+    IEnumerator Ice(float t)
     {
         float nowSpeed = speed;// 현재 속도 저장
-        //speed = 0;          //속도 정지
-        //rb.velocity = pos.normalized * speed;
+        speed = 0;   //정지
+        rb.velocity = pos.normalized * speed;
         yield return new WaitForSeconds(t);
-        //speed = nowSpeed; //다시 되돌아옴
-        //rb.velocity = pos.normalized * speed;
+        speed = nowSpeed; //다시 되돌아옴
+        rb.velocity = pos.normalized * speed;
     }
 
-    IEnumerator Stun(float time) //경직 => 매커니즘 교체?
+    IEnumerator Stun(float time) //경직
     {
         float nowSpeed = speed;// 현재 속도 저장
-        //speed = 0;//감속
-        //rb.velocity = pos.normalized * speed;
+        speed = 0;//정지
+        rb.velocity = pos.normalized * speed;
         yield return new WaitForSeconds(time);
-        //speed = nowSpeed; //다시 되돌아옴
-        //rb.velocity = pos.normalized * speed;
+        speed = nowSpeed; //다시 되돌아옴
+        rb.velocity = pos.normalized * speed;
     }
 
-    IEnumerator Hitchange()
+
+    public virtual IEnumerator Hitchange()
     {
         sr.color = Color.red;
         yield return new WaitForSeconds(0.5f);
         sr.color = Color.white;
+    }
+
+    IEnumerator Dead()//0.3초 있다가 없어지도록 설계
+    {
+        float nowSpeed = speed;
+        speed = 0;                  //정지
+        rb.velocity = pos.normalized * speed;
+        cd.enabled = false;
+        yield return new WaitForSeconds(0.3f);
+        speed = nowSpeed;
+        cd.enabled = true;
+        sr.color = Color.white;
+        EnemyPoolManager.i.ReturnEnemy(gameObject);
     }
 }
