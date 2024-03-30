@@ -30,9 +30,9 @@ public class PlayerMoveControl : MonoBehaviour
         speed = PlayerManager.i.speed;
         atkspd = PlayerManager.i.atk_spd;
         rotation = Quaternion.Euler(0, 0, 0); //회전하지 않은 상태
-        StartCoroutine(Fireball());
-        StartCoroutine(Thunder());
-        StartCoroutine(Iceball());
+        //StartCoroutine(Fireball());
+        //StartCoroutine(Thunder());
+        //StartCoroutine(Iceball());
     }
 
     // Update is called once per frame
