@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4742657337238846473}
   - component: {fileID: -6529406857890823042}
   - component: {fileID: 6373375967794442586}
-  - component: {fileID: 4908303451853845177}
+  - component: {fileID: -2000243215499457030}
   m_Layer: 0
   m_Name: smallpeanut
   m_TagString: Enemy
@@ -149,7 +149,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &4908303451853845177
+--- !u!114 &-2000243215499457030
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,12 +158,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8136900174102059330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64b0c9dda43222344b7a640dc13d9388, type: 3}
+  m_Script: {fileID: 11500000, guid: f8cfca69bcd8da14a96807ba8de858ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  hp: 10
-  MaxHp: 10
-  sr: {fileID: 0}
-  cd: {fileID: 0}
-  peanutslice_Prefebs: {fileID: 0}
+  hp: 100
+  MaxHp: 100
+  sr: {fileID: 4742657337238846473}
+  cd: {fileID: 6373375967794442586}
+  peanutslice_Prefebs: {fileID: 8136900174102059330}

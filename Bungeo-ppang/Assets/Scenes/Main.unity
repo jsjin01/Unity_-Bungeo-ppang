@@ -1957,7 +1957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737190cd65bcdfd4caea1ba0db6e4ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy_Prefeds: {fileID: 5753310713596020997, guid: 1626700477a30d44d943c26930a4885c, type: 3}
+  Enemy_Prefeds: {fileID: 5753310713596020997, guid: c4edbe75c01eeb44aac9ae8c81be0ad5, type: 3}
   Boss_Prefeds: {fileID: 5753310713596020997, guid: 3f005636e41fc3849923b695ace9652c, type: 3}
   Seed_Prefeds: {fileID: 6705313839622664035, guid: a6b69bdb6688cae4c8b21e1879ddf5b3, type: 3}
   Enemies_Prefeds:
@@ -9001,7 +9001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 3
-  atk: 100
+  atk: 10
   atk_spd: 0.5
   cri: 5
   speed: 10
@@ -10263,7 +10263,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2c84e0e05c6add44d9c0266314497ef7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ef98b1a520622e648839f76a0f8fada6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
