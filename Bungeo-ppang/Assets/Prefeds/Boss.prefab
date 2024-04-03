@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5172665814335772822}
   - component: {fileID: 6520592284124382238}
   - component: {fileID: -8579540647984443080}
+  - component: {fileID: 3597488121995852638}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -161,7 +162,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 502f4e84448d2754ca2945fe8142e5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seed: {fileID: 6705313839622664035, guid: a6b69bdb6688cae4c8b21e1879ddf5b3, type: 3}
   speed: 2
   hp: 500
   MaxHp: 500
+--- !u!95 &3597488121995852638
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5753310713596020997}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 30a2a0412a1d2804a9add23efe3e2606, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
