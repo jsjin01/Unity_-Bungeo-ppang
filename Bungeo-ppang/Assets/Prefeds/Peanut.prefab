@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 6416292795169011671}
   - component: {fileID: -81388160052938453}
   - component: {fileID: -3408555943788004438}
-  - component: {fileID: -7337948367574848469}
   - component: {fileID: 8928034506904067848}
+  - component: {fileID: -224681648182065451}
   m_Layer: 0
   m_Name: Peanut
-  m_TagString: Peanut
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,25 +160,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.2, y: 5}
   m_EdgeRadius: 0
---- !u!114 &-7337948367574848469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6607137493993982585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64b0c9dda43222344b7a640dc13d9388, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  hp: 20
-  MaxHp: 20
-  sr: {fileID: 6416292795169011671}
-  anit: {fileID: 8928034506904067848}
-  cd: {fileID: -3408555943788004438}
-  peanutslice_Prefebs: {fileID: 8136900174102059330, guid: 53ae4c0ce670a6748b5ac40b0aed8332, type: 3}
 --- !u!95 &8928034506904067848
 Animator:
   serializedVersion: 5
@@ -200,3 +181,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-224681648182065451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6607137493993982585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97e2e5bb6f16db743a2711d93effba5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  hp: 20
+  MaxHp: 20
+  sr: {fileID: 6416292795169011671}
+  anit: {fileID: 8928034506904067848}
+  cd: {fileID: -3408555943788004438}
+  peanutslice1_Prefebs: {fileID: 8136900174102059330, guid: 53ae4c0ce670a6748b5ac40b0aed8332, type: 3}
+  peanutslice2_Prefebs: {fileID: 8136900174102059330, guid: 62d77701dc3dc284db44cd5c03fe1421, type: 3}

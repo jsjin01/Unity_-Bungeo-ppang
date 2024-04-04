@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
-public class Seed : StandardEnemy
+public class Sunflower : Enemy
 {
     private Color originalcolor;
     private void Start()
     {
-        Move();
+        Invoke("Move", 1f);
         originalcolor = sr.color;
-        Invoke("spawnEnemies", 2f);
+        Invoke("EnemyDestroy", 10f);
     }
     // Update is called once per frame
     public override void OnEnable()
@@ -28,15 +27,12 @@ public class Seed : StandardEnemy
         {
             sr = GetComponent<SpriteRenderer>();
         }
+
+        rb.velocity = pos.normalized * speed;
     }
     public override void OnTriggerEnter2D(Collider2D other)
     {
         base.OnTriggerEnter2D(other);
-    }
-    void spawnEnemies()
-    {
-        EnemyPoolManager.i.CreateEnemies(transform.position);
-        Destroy(gameObject);
     }
     public override void EnemyDestroy() //Àû »èÁ¦
     {

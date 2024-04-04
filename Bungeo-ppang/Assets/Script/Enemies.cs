@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemies : Enemy
 {
-    [SerializeField] GameObject peanutslice_Prefebs;
     private Color originalcolor;
     private void Start()
     {
@@ -40,14 +39,6 @@ public class Enemies : Enemy
         if (thunderCor != null)
         {
             StopCoroutine(thunderCor);
-        }
-    }
-    private void OnDisable()
-    {
-        if (gameObject.CompareTag("Peanut"))
-        {
-            Instantiate(peanutslice_Prefebs, transform.position + new Vector3(0.3f, 0f, 0f), Quaternion.identity);
-            Instantiate(peanutslice_Prefebs, transform.position - new Vector3(0.3f, 0f, 0f), Quaternion.identity);
         }
     }
     public override IEnumerator Hitchange()

@@ -9,7 +9,6 @@ public class EnemyPoolManager : MonoBehaviour
     [SerializeField] GameObject Seed_Prefeds;
     [SerializeField] GameObject[] Enemies_Prefeds;
     [SerializeField] int initEnemyCount = 50; //초기 생성량
-    float[] x = new float[] { -1.5f, 0f, 1.5f };
 
     private void Awake()
     {
@@ -59,8 +58,15 @@ public class EnemyPoolManager : MonoBehaviour
     }
     public void CreateSeed()
     {
-        int i = Random.Range(0, 3);
-        Instantiate(Seed_Prefeds, new Vector3(x[i], 3, 0), Quaternion.identity);
+        float x1 = Random.Range(-2.3f, 2.3f);
+        float y1 = Random.Range(0.5f, 2.1f);
+        Instantiate(Seed_Prefeds, new Vector3(x1, y1, 0), Quaternion.identity);
+        float x2 = Random.Range(-2.3f, 2.3f);
+        float y2 = Random.Range(0.5f, 2.1f);
+        Instantiate(Seed_Prefeds, new Vector3(x2, y2, 0), Quaternion.identity);
+        float x3 = Random.Range(-2.3f, 2.3f);
+        float y3 = Random.Range(0.5f, 2.1f);
+        Instantiate(Seed_Prefeds, new Vector3(x3, y3, 0), Quaternion.identity);
     }
     public void CreateEnemies(Vector3 Pos)
     {

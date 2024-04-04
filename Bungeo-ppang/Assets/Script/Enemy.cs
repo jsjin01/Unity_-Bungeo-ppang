@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     protected Vector2 pos = new Vector2(0, -1);
     protected Rigidbody2D rb;
     [SerializeField]protected SpriteRenderer sr;
-    [SerializeField]Animator anit; //애니메이터 컨트롤
+    [SerializeField]public Animator anit; //애니메이터 컨트롤
     [SerializeField]Collider2D cd;
 
     protected IEnumerator fireCor; //마법 적용 코루틴 함수
@@ -154,7 +154,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    IEnumerator Fire(float dmg)
+    public IEnumerator Fire(float dmg)
     {
         anit.SetBool("isFire", true);
         for (int i = 0; i < 6; i++)
@@ -165,7 +165,7 @@ public class Enemy : MonoBehaviour
         anit.SetBool("isFire", false);
     }
 
-    IEnumerator Ice(float t)
+    public IEnumerator Ice(float t)
     {
         anit.SetBool("isIce", true);
         float nowSpeed = speed;// 현재 속도 저장
@@ -177,7 +177,7 @@ public class Enemy : MonoBehaviour
         anit.SetBool("isIce", false);
     }
 
-    IEnumerator Stun(float time) //경직
+    public IEnumerator Stun(float time) //경직
     {
         anit.SetTrigger("isThunder");
         float nowSpeed = speed;// 현재 속도 저장

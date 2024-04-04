@@ -49,7 +49,7 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy")||collision.CompareTag("Peanut"))
+        if (collision.CompareTag("Enemy"))
         {
             if (monsterPass == 0)//관통 횟수가 0일때는 파괴
             {

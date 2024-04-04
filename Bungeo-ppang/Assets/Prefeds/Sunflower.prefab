@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 185760258371569746}
   - component: {fileID: 2884812827623230368}
   - component: {fileID: -4975844635338558840}
-  - component: {fileID: -6675368692380310788}
   - component: {fileID: 730780692806128721}
+  - component: {fileID: -8144433460614055050}
   m_Layer: 0
   m_Name: Sunflower
   m_TagString: Enemy
@@ -160,25 +160,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10.57, y: 13.77}
   m_EdgeRadius: 0
---- !u!114 &-6675368692380310788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 110605858803114072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64b0c9dda43222344b7a640dc13d9388, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  hp: 20
-  MaxHp: 20
-  sr: {fileID: 185760258371569746}
-  anit: {fileID: 730780692806128721}
-  cd: {fileID: -4975844635338558840}
-  peanutslice_Prefebs: {fileID: 6705313839622664035, guid: a6b69bdb6688cae4c8b21e1879ddf5b3, type: 3}
 --- !u!95 &730780692806128721
 Animator:
   serializedVersion: 5
@@ -200,3 +181,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-8144433460614055050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110605858803114072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c88682b6cd505641b87f1d47eeb2001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  hp: 20
+  MaxHp: 20
+  sr: {fileID: 185760258371569746}
+  anit: {fileID: 730780692806128721}
+  cd: {fileID: -4975844635338558840}

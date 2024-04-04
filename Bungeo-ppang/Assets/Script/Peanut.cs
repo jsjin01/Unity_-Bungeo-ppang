@@ -2,60 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : MonoBehaviour
+public class Peanut : Enemy
 {
-    [SerializeField] float speed = 2f; // 적의 이동 속도
-    [SerializeField] float hp = 500f;//적의 체력
-    [SerializeField] float MaxHp = 500f;//적의 최대 체력
-    Vector2 pos = new Vector2(0, -1);
-    Rigidbody2D rb;
-    SpriteRenderer sr;
-
-    IEnumerator fireCor; //마법 적용 코루틴 함수
-    IEnumerator iceCor;
-    IEnumerator thunderCor;
+    [SerializeField] GameObject peanutslice1_Prefebs;
+    [SerializeField] GameObject peanutslice2_Prefebs;
+    private Color originalcolor;
     private void Start()
     {
-        if (sr == null)
-        {
-            sr = GetComponent<SpriteRenderer>();
-        }
-        InvokeRepeating("SpawnSeed", 1f, 4f);
-    }
-    private void Update()
-    {
-        if (hp <= 0f)
-        {
-            BossDestroy();
-        }
-    }
+        Move();
+        originalcolor = sr.color;
 
-    void SpawnSeed()
-    {
-        EnemyPoolManager.i.CreateSeed();
     }
-    
-    private void OnEnable()
+    // Update is called once per frame
+    public override void OnEnable()
     {
         hp = MaxHp;
-
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    public override void Move()
+    {
+        base.Move();
+    }
+    public override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Bullet"))
         {
             Bungeo_ppong_BulletComponent bullet = other.gameObject.GetComponent<Bungeo_ppong_BulletComponent>();
+
             StartCoroutine(Hitchange());
-            if (bullet.isShield)
+            if (bullet.isShield) //쉴드 상태에서 나온 붕어빵은 데미지 없이 관통
             {
                 bullet.isShield = false;
             }
             else
             {
+                anit.SetTrigger("isHit");
                 hp -= bullet.dmg;
                 if (hp <= 0f)
                 {
-                    BossDestroy();
+                    Instantiate(peanutslice1_Prefebs, transform.position + new Vector3(0.3f, 0f, 0f), Quaternion.identity);
+                    Instantiate(peanutslice2_Prefebs, transform.position - new Vector3(0.3f, 0f, 0f), Quaternion.identity);
+                    EnemyDestroy();
                 }
             }
         }
@@ -65,7 +51,9 @@ public class Boss : MonoBehaviour
             hp -= fireball.dmg;
             if (hp <= 0f)
             {
-                BossDestroy();
+                Instantiate(peanutslice1_Prefebs, transform.position + new Vector3(0.3f, 0f, 0f), Quaternion.identity);
+                Instantiate(peanutslice2_Prefebs, transform.position - new Vector3(0.3f, 0f, 0f), Quaternion.identity);
+                EnemyDestroy();
             }
             else
             {
@@ -80,12 +68,12 @@ public class Boss : MonoBehaviour
         else if (other.CompareTag("ICE"))
         {
             MagicBall iceball = other.gameObject.GetComponent<MagicBall>();
-            CancelInvoke("SpawnSeed");      //패턴 중지
-            Invoke("SpawnAgain", iceball.iceTime);      //빙결시간 후 패턴 다시 시작
             hp -= iceball.dmg;
             if (hp <= 0f)
             {
-                BossDestroy();
+                Instantiate(peanutslice1_Prefebs, transform.position + new Vector3(0.3f, 0f, 0f), Quaternion.identity);
+                Instantiate(peanutslice2_Prefebs, transform.position - new Vector3(0.3f, 0f, 0f), Quaternion.identity);
+                EnemyDestroy();
             }
             else
             {
@@ -101,9 +89,12 @@ public class Boss : MonoBehaviour
         {
             Shield shield = other.gameObject.GetComponent<Shield>();
             hp -= shield.dmg;
+            anit.SetTrigger("isHit");
             if (hp <= 0f)
             {
-                BossDestroy();
+                Instantiate(peanutslice1_Prefebs, transform.position + new Vector3(0.3f, 0f, 0f), Quaternion.identity);
+                Instantiate(peanutslice2_Prefebs, transform.position - new Vector3(0.3f, 0f, 0f), Quaternion.identity);
+                EnemyDestroy();
             }
         }
         else if (other.CompareTag("Sword"))
@@ -112,7 +103,9 @@ public class Boss : MonoBehaviour
             hp -= sword.dmg;
             if (hp <= 0f)
             {
-                BossDestroy();
+                Instantiate(peanutslice1_Prefebs, transform.position + new Vector3(0.3f, 0f, 0f), Quaternion.identity);
+                Instantiate(peanutslice2_Prefebs, transform.position - new Vector3(0.3f, 0f, 0f), Quaternion.identity);
+                EnemyDestroy();
             }
         }
         else if (other.CompareTag("THUNDER"))
@@ -121,7 +114,9 @@ public class Boss : MonoBehaviour
             hp -= t.dmg;
             if (hp <= 0f)
             {
-                BossDestroy();
+                Instantiate(peanutslice1_Prefebs, transform.position + new Vector3(0.3f, 0f, 0f), Quaternion.identity);
+                Instantiate(peanutslice2_Prefebs, transform.position - new Vector3(0.3f, 0f, 0f), Quaternion.identity);
+                EnemyDestroy();
             }
             else
             {
@@ -133,14 +128,14 @@ public class Boss : MonoBehaviour
                 StartCoroutine(thunderCor);
             }
         }
+        else if (other.CompareTag("Player"))
+        {
+            EnemyDestroy();
+        }
     }
-    void SpawnAgain()     //빙결 맞으면 공격 중지
+    public override void EnemyDestroy()
     {
-        InvokeRepeating("SpawnSeed", 1f, 4f);
-    }
-    void BossDestroy() //적 삭제
-    {
-        hp = 500f; //나중에 다시 사용할 때 Hp 500
+        hp = 100f; //나중에 다시 사용할 때 Hp 100
         Destroy(gameObject);
         if (fireCor != null)
         {
@@ -155,40 +150,11 @@ public class Boss : MonoBehaviour
             StopCoroutine(thunderCor);
         }
     }
-
-    IEnumerator Fire(float dmg)
-    {
-        for (int i = 0; i < 6; i++)
-        {
-            yield return new WaitForSeconds(0.5f);
-            hp -= dmg;//불꽃 도트 데미지
-        }
-    }
-
-    IEnumerator Ice(float t) //이동속도 0으로 만드는 매커니즘 교체
-    {
-        float nowSpeed = speed;// 현재 속도 저장
-        //speed = 0;          //속도 정지
-        //rb.velocity = pos.normalized * speed;
-        yield return new WaitForSeconds(t);
-        //speed = nowSpeed; //다시 되돌아옴
-        //rb.velocity = pos.normalized * speed;
-    }
-
-    IEnumerator Stun(float time) //경직 => 매커니즘 교체?
-    {
-        float nowSpeed = speed;// 현재 속도 저장
-        //speed = 0;//감속
-        //rb.velocity = pos.normalized * speed;
-        yield return new WaitForSeconds(time);
-        //speed = nowSpeed; //다시 되돌아옴
-        //rb.velocity = pos.normalized * speed;
-    }
-
-    IEnumerator Hitchange()
+    
+    public override IEnumerator Hitchange()
     {
         sr.color = Color.red;
         yield return new WaitForSeconds(0.5f);
-        sr.color = Color.white;
+        sr.color = originalcolor;
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6373375967794442586}
   - component: {fileID: -2000243215499457030}
   m_Layer: 0
-  m_Name: smallpeanut
+  m_Name: smallpeanut2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.19, y: 0.12, z: 0}
-  m_LocalScale: {x: 0.29, y: 0.3668, z: 1}
+  m_LocalScale: {x: 0.120553, y: 0.1524788, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.30588236, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: bae5a553dd91081408df831e0e2e3d72, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -162,8 +162,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  hp: 100
-  MaxHp: 100
+  hp: 10
+  MaxHp: 10
   sr: {fileID: 4742657337238846473}
   cd: {fileID: 6373375967794442586}
   peanutslice_Prefebs: {fileID: 8136900174102059330}
