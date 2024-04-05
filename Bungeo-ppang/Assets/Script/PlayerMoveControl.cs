@@ -36,6 +36,7 @@ public class PlayerMoveControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         shoot = PlayerManager.i.shoot;
 
         if (warriorOn)
