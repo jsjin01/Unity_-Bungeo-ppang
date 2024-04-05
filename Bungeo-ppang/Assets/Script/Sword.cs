@@ -3,17 +3,19 @@ using UnityEngine;
 public class Sword : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] Collider2D cd;
     [SerializeField] public int passcnt = 0;         //관통횟수
     [SerializeField] public int numberOfSwords = 1;  //검격의 수
     [SerializeField] float SwordSpeed = 30f;  //검격 속도
     public float dmg;       //검격 데미지
-    float size = 1;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        dmg = PlayerManager.i.atk;
+        dmg = PlayerManager.i.sword_dmg;
+        numberOfSwords = PlayerManager.i.swords;
+        passcnt = PlayerManager.i.sword_pass;
     }
     void FixedUpdate()
     {
@@ -41,6 +43,12 @@ public class Sword : MonoBehaviour
             }
             else
             {
+                if (cd == null)
+                {
+                    cd = GetComponent<CapsuleCollider2D>();
+                }
+                cd.enabled = false;
+                Invoke("MonsterPass", 0.2f);
                 passcnt--;
             }
         }
@@ -49,18 +57,9 @@ public class Sword : MonoBehaviour
     {
         Destroy(gameObject);
     }
+    void MonsterPass()//관통 제어
+    {
+        cd.enabled = true;
+    }
 
-    void add_passcnt()      //검격 관통횟수 추가
-    {
-        passcnt++;
-    }
-    void addSword()     //검격 개수 증가
-    {
-        numberOfSwords++;
-    }
-    void SizeUp()       //검격 사이즈 증가
-    {
-        size *= 1.5f;
-        transform.localScale = new Vector3(size, size, 1);
-    }
 }

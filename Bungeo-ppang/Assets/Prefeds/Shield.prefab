@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  cd: {fileID: -4609091954014888920}
   passcnt: 0
   shieldSpeed: 10
   dmg: 10

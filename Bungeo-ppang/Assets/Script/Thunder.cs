@@ -8,7 +8,7 @@ public class Thunder : MonoBehaviour
 
     void Start()
     {
-        dmg = PlayerManager.i.atk;
+        dmg = PlayerManager.i.thunder_dmg;
         Invoke("ThunderDestory", 0.5f);
     }
     void ThunderDestory()

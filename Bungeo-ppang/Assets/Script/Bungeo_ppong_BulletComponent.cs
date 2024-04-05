@@ -6,17 +6,19 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
     [SerializeField] CapsuleCollider2D cd;
-    float BulletSpeed;   //총알 속도
-    public float dmg;          //공격력
-    public int monsterPass = 0;       //관통 횟수
-    int maxMonsterPass = 0;          //최대 관통횟수
-    [SerializeField] GameObject swordPrefebs;        //검기
-    float size = 0.08f;                             //사이즈
+    float BulletSpeed;                          //총알 속도
+    public float dmg;                           //공격력
+    public int monsterPass = 0;                 //관통 횟수
+    int maxMonsterPass = 0;                     //최대 관통횟수
+    [SerializeField] GameObject swordPrefebs;   //검기
+    float size = 0.08f;                         //사이즈
     float index;
-    bool isSword = false;                       //검기 온오프
-    [SerializeField] public bool isShield = false;               //쉴드 상태일때
 
-    IEnumerator passCor; //관통 코루틴
+    int swords = 1;                             //검기 갯수
+    [SerializeField] bool isSword = false;      //검기 온오프
+    public bool isShield = false;               //쉴드 상태일때
+
+    IEnumerator passCor;                        //관통 코루틴
     void Start()
     {
         cd = GetComponent<CapsuleCollider2D>();
@@ -31,6 +33,10 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
         maxMonsterPass = PlayerManager.i.pass;
         size = PlayerManager.i.size;
         transform.localScale = new Vector3(size, size, 1);
+
+        isSword =  PlayerManager.i.isSword;
+        swords = PlayerManager.i.swords;    
+
         //초기화
         monsterPass = maxMonsterPass;
         if (isShield)
@@ -79,7 +85,10 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
     {
         if (isSword)//검기 소환
         {
-            SwordCreat();
+            for (int i = 0; i < swords; i++)
+            {
+                SwordCreat();
+            }
         }
         Bungeo_ppong_PoolManager.i.ReturnBungeo_ppong(gameObject);
     }

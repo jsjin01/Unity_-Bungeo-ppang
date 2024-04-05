@@ -3,15 +3,17 @@ using UnityEngine;
 public class Shield : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] Collider2D cd;
     [SerializeField] public int passcnt = 0;       //관통횟수
     [SerializeField] public float shieldSpeed = 30f;
-    public float dmg;       //방패 데미지
-    float size = 1;
+    public float dmg;                             //방패 데미지
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        dmg = PlayerManager.i.atk;
+        dmg = PlayerManager.i.dep_atk;
+        passcnt = PlayerManager.i.dep_pass;
         Move();
     }
 
@@ -38,6 +40,12 @@ public class Shield : MonoBehaviour
             }
             else
             {
+                if (cd == null)
+                {
+                    cd = GetComponent<CapsuleCollider2D>();
+                }
+                cd.enabled = false;
+                Invoke("MonsterPass", 0.2f);
                 passcnt--;
             }
         }
@@ -48,13 +56,8 @@ public class Shield : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void add_passcnt()      //방패 관통횟수 추가
+    void MonsterPass()//관통 제어
     {
-        passcnt++;
-    }
-    void SizeUp()       //방패 사이즈 증가
-    {
-        size *= 1.5f;
-        transform.localScale = new Vector3(size, size, 1);
+        cd.enabled = true;
     }
 }

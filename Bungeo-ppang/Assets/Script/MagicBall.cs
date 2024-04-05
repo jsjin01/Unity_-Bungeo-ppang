@@ -9,14 +9,21 @@ public class MagicBall : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float ballSpeed = 30f;   //구체가 날라가는 속도
-    [SerializeField] public float dmg;        //공격력
+    [SerializeField] public float dmg =0;        //공격력
     [SerializeField] MAGICBALLTYPE type;      //불 타입인지 얼음 타입인지 정함
     public float firedmg = 5;                        //화염데미지
     public float iceTime = 5f;               //얼음 지속 시간
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        dmg = PlayerManager.i.atk;
+        if(type == MAGICBALLTYPE.FIRE)
+        {
+            dmg = PlayerManager.i.fire_dmg;
+        }
+        else if(type == MAGICBALLTYPE.ICE)
+        {
+            dmg = PlayerManager.i.ice_dmg;
+        }
         Move();
     }
 

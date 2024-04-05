@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerMoveControl : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
-    [SerializeField] public bool warriorOn = false;    //전사붕
+    public bool warriorOn = false;    //전사붕 => 쉴드 활성화
     public float index;     //검격 각도
     float atkspd;     //공격속도
     float speed;      //플레이어 이동속도
@@ -18,6 +18,9 @@ public class PlayerMoveControl : MonoBehaviour
     Quaternion rotation;    //회전값
 
     bool isShot = true;     //발사 가능 변수
+    bool fireball = false;                      //파이어볼 여부
+    bool iceball = false;                       //아이스볼 여부
+    bool thunder = false;                       //번개 여부
 
     [SerializeField] GameObject[] magicPrefebs;
     [SerializeField] GameObject shieldPrefebs;
@@ -36,9 +39,16 @@ public class PlayerMoveControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        warriorOn = PlayerManager.i.isShield;
         shoot = PlayerManager.i.shoot;
 
+        firebalRate = PlayerManager.i.fire_col;
+        iceballRate = PlayerManager.i.ice_col;
+        thunderRate = PlayerManager.i.thunder_col;
+
+        fireball = PlayerManager.i.fire;
+        iceball = PlayerManager.i.ice;
+        thunder = PlayerManager.i.thunder;
         if (warriorOn)
         {
             if (isShot)
@@ -96,7 +106,7 @@ public class PlayerMoveControl : MonoBehaviour
     {
         while (true)
         {
-            Instantiate(magicPrefebs[0], transform.position - new Vector3(1, 0, 0), rotation);
+            if(fireball)Instantiate(magicPrefebs[0], transform.position - new Vector3(1, 0, 0), rotation);
             yield return new WaitForSeconds(firebalRate);
         }
     }
@@ -105,7 +115,7 @@ public class PlayerMoveControl : MonoBehaviour
     {
         while (true)
         {
-            Instantiate(magicPrefebs[1], transform.position - new Vector3(-1, 0, 0), rotation);
+            if(iceball) Instantiate(magicPrefebs[1], transform.position - new Vector3(-1, 0, 0), rotation);
             yield return new WaitForSeconds(iceballRate);
         }
     }
@@ -113,7 +123,7 @@ public class PlayerMoveControl : MonoBehaviour
     {
         while (true)
         {
-            ThunderCreat();
+            if(thunder)ThunderCreat();
             yield return new WaitForSeconds(thunderRate);
         }
     }

@@ -81,6 +81,8 @@ public class EnemySpawner : MonoBehaviour
         }
         Debug.Log("스테이지 끝");
         yield return new WaitForSeconds(10f);
+        CardManager.i.CardDraw();
+        Time.timeScale = 0f;
         //다음스테이지에 맞게 조정
         stage += 1;
         stageEnemies = stageEnemies + stagePlus;
