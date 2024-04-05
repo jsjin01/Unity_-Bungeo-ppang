@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemies : Enemy
@@ -9,7 +8,7 @@ public class Enemies : Enemy
     {
         Move();
         originalcolor = sr.color;
-        
+
     }
     // Update is called once per frame
     public override void OnEnable()

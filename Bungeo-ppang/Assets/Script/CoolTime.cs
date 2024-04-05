@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class CoolTime : MonoBehaviour
 {
@@ -12,11 +11,11 @@ public class CoolTime : MonoBehaviour
     public Image[] hideSkillImages;
     private bool[] isHideSkills = { false, false };
     private float[] skillTimes = { 5, 5 };
-    private float[] getSkillTimes = {0, 0 };
+    private float[] getSkillTimes = { 0, 0 };
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < textPros.Length; i++)
+        for (int i = 0; i < textPros.Length; i++)
         {
             hideSkillTimeTexts[i] = textPros[i].GetComponent<TextMeshProUGUI>();
             hideSkillButtons[i].SetActive(false);
@@ -50,7 +49,8 @@ public class CoolTime : MonoBehaviour
     {
         yield return null;
 
-        if (getSkillTimes[skillNum] > 0) {
+        if (getSkillTimes[skillNum] > 0)
+        {
 
             getSkillTimes[skillNum] -= Time.deltaTime;
 

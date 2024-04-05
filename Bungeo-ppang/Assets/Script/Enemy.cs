@@ -8,9 +8,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float MaxHp = 100f;//적의 최대 체력
     protected Vector2 pos = new Vector2(0, -1);
     protected Rigidbody2D rb;
-    [SerializeField]protected SpriteRenderer sr;
-    [SerializeField]public Animator anit; //애니메이터 컨트롤
-    [SerializeField]Collider2D cd;
+    [SerializeField] protected SpriteRenderer sr;
+    [SerializeField] public Animator anit; //애니메이터 컨트롤
+    [SerializeField] Collider2D cd;
 
     protected IEnumerator fireCor; //마법 적용 코루틴 함수
     protected IEnumerator iceCor;
@@ -27,9 +27,9 @@ public class Enemy : MonoBehaviour
         if (rb == null)
         {
             rb = GetComponent<Rigidbody2D>();
-            
+
         }
-        if(sr == null)
+        if (sr == null)
         {
             sr = GetComponent<SpriteRenderer>();
         }
@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             Bungeo_ppong_BulletComponent bullet = other.gameObject.GetComponent<Bungeo_ppong_BulletComponent>();
-            
+
             StartCoroutine(Hitchange());
             if (bullet.isShield) //쉴드 상태에서 나온 붕어빵은 데미지 없이 관통
             {
@@ -140,11 +140,11 @@ public class Enemy : MonoBehaviour
     {
         hp = 100f; //나중에 다시 사용할 때 Hp 100
         StartCoroutine(Dead());
-        if(fireCor != null)
+        if (fireCor != null)
         {
             StopCoroutine(fireCor);
         }
-        if(iceCor != null)
+        if (iceCor != null)
         {
             StopCoroutine(iceCor);
         }
@@ -206,7 +206,7 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         speed = nowSpeed;
         cd.enabled = true;
-        sr.color= Color.white;
+        sr.color = Color.white;
         EnemyPoolManager.i.ReturnEnemy(gameObject);
     }
 }

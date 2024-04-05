@@ -28,7 +28,7 @@ public class EnemyPoolManager : MonoBehaviour
             Instantiate(Enemy_Prefeds, transform);   //利 积己
         }
     }
-    
+
 
     public void UseEnemy(Vector2 p, Quaternion rot)   //利 荤侩窍绰 何盒
     {
@@ -70,7 +70,7 @@ public class EnemyPoolManager : MonoBehaviour
     }
     public void CreateEnemies(Vector3 Pos)
     {
-        int i=Random.Range(0, 3);
+        int i = Random.Range(0, 3);
         Instantiate(Enemies_Prefeds[i], Pos, Quaternion.identity);
     }
     public GameObject returnEnemies(int i)

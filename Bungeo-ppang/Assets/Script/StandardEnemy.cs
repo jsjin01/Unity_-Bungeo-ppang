@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class StandardEnemy: MonoBehaviour
+public class StandardEnemy : MonoBehaviour
 {
     [SerializeField] protected float speed = 2f; // 적의 이동 속도
     [SerializeField] protected float hp = 100f;//적의 체력

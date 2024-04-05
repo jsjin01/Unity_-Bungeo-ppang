@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,19 +24,19 @@ public class UIManager : MonoBehaviour
 
     public void SetHp(int hp)
     {
-        if(hp == 3)
+        if (hp == 3)
         {
             hp1.color = Color.red;
-            hp2.color = Color.red; 
+            hp2.color = Color.red;
             hp3.color = Color.red;
         }
-        else if(hp == 2)
+        else if (hp == 2)
         {
             hp1.color = Color.red;
             hp2.color = Color.red;
             hp3.color = Color.black;
         }
-        else if(hp == 1)
+        else if (hp == 1)
         {
             hp1.color = Color.red;
             hp2.color = Color.black;

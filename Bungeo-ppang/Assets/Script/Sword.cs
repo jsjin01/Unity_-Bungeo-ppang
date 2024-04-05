@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Sword : MonoBehaviour
@@ -10,7 +8,7 @@ public class Sword : MonoBehaviour
     [SerializeField] float SwordSpeed = 30f;  //검격 속도
     public float dmg;       //검격 데미지
     float size = 1;
-    
+
     // Start is called before the first frame update
     void Start()
     {

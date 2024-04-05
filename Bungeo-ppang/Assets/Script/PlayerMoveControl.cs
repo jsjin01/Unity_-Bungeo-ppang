@@ -1,16 +1,14 @@
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 public class PlayerMoveControl : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
-    [SerializeField] bool autoAttack;
     [SerializeField] public bool warriorOn = false;    //전사붕
     public float index;     //검격 각도
     float atkspd;     //공격속도
-    float speed;      //이동속도
+    float speed;      //플레이어 이동속도
+    int shoot = 1;     //발사 횟수
 
     float firebalRate = 3f;
     float iceballRate = 3f;
@@ -21,9 +19,9 @@ public class PlayerMoveControl : MonoBehaviour
 
     bool isShot = true;     //발사 가능 변수
 
-    [SerializeField]GameObject[] magicPrefebs;
+    [SerializeField] GameObject[] magicPrefebs;
     [SerializeField] GameObject shieldPrefebs;
-    
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -38,33 +36,23 @@ public class PlayerMoveControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (autoAttack == false)
+        shoot = PlayerManager.i.shoot;
+
+        if (warriorOn)
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (isShot)
             {
-                if (isShot)
-                {
-                    Attack();
-                }
+                shieldMove();
             }
+
         }
         else
         {
-            if (warriorOn)
+            if (isShot)
             {
-                if (isShot)
-                {
-                    shieldMove();
-                }
+                Attack();
+            }
 
-            }
-            else 
-            { 
-                if(isShot)
-                {
-                    Attack();
-                }
-            }
         }
     }
 
@@ -83,8 +71,8 @@ public class PlayerMoveControl : MonoBehaviour
 
     void Attack()
     {
+        StartCoroutine(Attackroutine());
         StartCoroutine(ShootCol());
-        Bungeo_ppong_PoolManager.i.UseBuneo_ppong(transform.position, rotation);
     }
 
     IEnumerator ShootCol()
@@ -98,8 +86,8 @@ public class PlayerMoveControl : MonoBehaviour
     {
         float x1 = Random.Range(-2.7f, 2.7f);
         float x2 = Random.Range(-2.7f, 2.7f);
-        float thunderangle = -Mathf.Atan2(x2- x1,12f)*Mathf.Rad2Deg;
-        Quaternion rot = Quaternion.Euler(0f,0f,thunderangle);
+        float thunderangle = -Mathf.Atan2(x2 - x1, 12f) * Mathf.Rad2Deg;
+        Quaternion rot = Quaternion.Euler(0f, 0f, thunderangle);
         Instantiate(magicPrefebs[2], new Vector3(x1, -4, 0), rot);
     }
 
@@ -139,7 +127,7 @@ public class PlayerMoveControl : MonoBehaviour
         {
             iceballRate -= 1f;
         }
-        else if (a ==2)
+        else if (a == 2)
         {
             thunderRate -= 1f;
         }
@@ -148,5 +136,15 @@ public class PlayerMoveControl : MonoBehaviour
     {
         StartCoroutine(ShootCol());
         Instantiate(shieldPrefebs, transform.position, Quaternion.identity);
+    }
+
+    IEnumerator Attackroutine()
+    {
+        for (int i = 0; i < shoot; i++)
+        {
+            Bungeo_ppong_PoolManager.i.UseBuneo_ppong(transform.position, rotation);
+            yield return new WaitForSeconds(0.1f);
+        }
+
     }
 }

@@ -25,7 +25,8 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Update()
     {
-        if (boss) { 
+        if (boss)
+        {
             isStage = true;
         }
         else if (!isStage)
@@ -34,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
             StartCoroutine(StageSpawn(stageEnemies));
 
         }
-        
+
     }
 
 
@@ -57,7 +58,7 @@ public class EnemySpawner : MonoBehaviour
             while (true)
             {
                 spawnnum = Mathf.RoundToInt(Random.Range(1f, 2f)); //1,2 중 하나 소환 
-                num -=  spawnnum;
+                num -= spawnnum;
                 if (num >= 0)
                 {
                     break;
@@ -72,8 +73,8 @@ public class EnemySpawner : MonoBehaviour
 
             SpawnEnemies(spawnnum);
             yield return new WaitForSeconds(2f);
-            
-            if(num <= 0)
+
+            if (num <= 0)
             {
                 break;
             }

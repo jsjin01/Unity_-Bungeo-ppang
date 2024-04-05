@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Peanut : Enemy
@@ -150,7 +149,7 @@ public class Peanut : Enemy
             StopCoroutine(thunderCor);
         }
     }
-    
+
     public override IEnumerator Hitchange()
     {
         sr.color = Color.red;

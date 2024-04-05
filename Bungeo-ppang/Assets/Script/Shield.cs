@@ -1,20 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
-    [SerializeField] public int passcnt=0;       //관통횟수
+    [SerializeField] public int passcnt = 0;       //관통횟수
     [SerializeField] public float shieldSpeed = 30f;
     public float dmg;       //방패 데미지
     float size = 1;
 
     void Start()
     {
-        rb =GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         dmg = PlayerManager.i.atk;
         Move();
     }
@@ -33,7 +29,7 @@ public class Shield : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            if(passcnt==0)
+            if (passcnt == 0)
             {
                 CancelInvoke("ShieldDestory");
                 Bungeo_ppong_PoolManager.i.UseBuneo_ppong(transform.position, Quaternion.identity, true);
