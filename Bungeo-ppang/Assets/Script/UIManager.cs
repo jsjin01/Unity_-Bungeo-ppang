@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public static UIManager i;
@@ -8,7 +8,8 @@ public class UIManager : MonoBehaviour
     RawImage hp2;
     RawImage hp3;
     Text stageT;
-
+    [SerializeField] Slider back_vol;
+    [SerializeField] Slider effect_vol;
 
     private void Awake()
     {
@@ -20,8 +21,25 @@ public class UIManager : MonoBehaviour
         hp2 = GameObject.Find("Hp 2").GetComponent<RawImage>();
         hp3 = GameObject.Find("Hp 3").GetComponent<RawImage>();
         stageT = GameObject.Find("StageText").GetComponent<Text>();
+        back_vol.value = PlayerPrefs.GetFloat("Volume_Back", 0f);
+        effect_vol.value = PlayerPrefs.GetFloat("Volume_Effect", 0f);
     }
-
+    public void SettingOn()
+    {
+        Time.timeScale = 0f;
+    }
+    public void SettingOff()
+    {
+        Time.timeScale = 1f;
+    }
+    public void setVolume_background(float volume)
+    {
+        Debug.Log("배경음악: " + volume);
+    }
+    public void setVolume_effect(float volume)
+    {
+        Debug.Log("효과음: " + volume);
+    }
     public void SetHp(int hp)
     {
         if (hp == 3)
