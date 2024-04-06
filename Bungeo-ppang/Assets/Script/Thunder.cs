@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Thunder : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D rb;
     [SerializeField] public float dmg;        //공격력
     [SerializeField] public float stunTime = 0.5f;   //경직 시간
+    [SerializeField] Animation anim;
 
     void Start()
     {

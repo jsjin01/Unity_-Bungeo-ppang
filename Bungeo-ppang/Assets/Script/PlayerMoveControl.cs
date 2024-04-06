@@ -84,10 +84,11 @@ public class PlayerMoveControl : MonoBehaviour
     void ThunderCreat()
     {
         float x1 = Random.Range(-2.7f, 2.7f);
-        float x2 = Random.Range(-2.7f, 2.7f);
-        float thunderangle = -Mathf.Atan2(x2 - x1, 12f) * Mathf.Rad2Deg;
-        Quaternion rot = Quaternion.Euler(0f, 0f, thunderangle);
-        Instantiate(magicPrefebs[2], new Vector3(x1, -4, 0), rot);
+        //float x1 = Random.Range(-2.7f, 2.7f);
+        //float x2 = Random.Range(-2.7f, 2.7f);
+        //float thunderangle = -Mathf.Atan2(x2 - x1, 12f) * Mathf.Rad2Deg;
+        //Quaternion rot = Quaternion.Euler(0f, 0f, thunderangle);
+        Instantiate(magicPrefebs[2], new Vector3(x1, -1.69f, 0), rotation);
     }
 
     IEnumerator Fireball()
