@@ -4,7 +4,7 @@ public class EnemyPoolManager : MonoBehaviour
 {
     public static EnemyPoolManager i;
 
-    [SerializeField] GameObject Enemy_Prefeds; //橇府普
+    [SerializeField] GameObject[] Enemy_Prefeds; //橇府普
     [SerializeField] GameObject Boss_Prefeds; //利 橇府普
     [SerializeField] GameObject Seed_Prefeds;
     [SerializeField] GameObject[] Enemies_Prefeds;
@@ -18,14 +18,14 @@ public class EnemyPoolManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CreatEnemy(initEnemyCount);
+        CreatEnemy1(initEnemyCount);
     }
 
-    public void CreatEnemy(int cnt = 5)              //利 积己 何盒
+    public void CreatEnemy1(int cnt = 5)              //利 积己 何盒
     {
         for (int i = 0; i < cnt; i++)
         {
-            Instantiate(Enemy_Prefeds, transform);   //利 积己
+            Instantiate(Enemy_Prefeds[0], transform);   //利 积己
         }
     }
 
@@ -34,7 +34,7 @@ public class EnemyPoolManager : MonoBehaviour
     {
         if (transform.childCount == 0)
         {
-            CreatEnemy(); //利捞 绝促搁 积己
+            CreatEnemy1(); //利捞 绝促搁 积己
         }
 
         Enemy e = transform.GetChild(0).GetComponent<Enemy>(); //pool 0锅掳 坷宏璃飘俊 立辟

@@ -49,21 +49,9 @@ public class PlayerMoveControl : MonoBehaviour
         fireball = PlayerManager.i.fire;
         iceball = PlayerManager.i.ice;
         thunder = PlayerManager.i.thunder;
-        if (warriorOn)
+        if (isShot)
         {
-            if (isShot)
-            {
-                shieldMove();
-            }
-
-        }
-        else
-        {
-            if (isShot)
-            {
-                Attack();
-            }
-
+            Attack();
         }
     }
 
@@ -153,7 +141,15 @@ public class PlayerMoveControl : MonoBehaviour
     {
         for (int i = 0; i < shoot; i++)
         {
-            Bungeo_ppong_PoolManager.i.UseBuneo_ppong(transform.position, rotation);
+            if (warriorOn)
+            {
+                Instantiate(shieldPrefebs, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Bungeo_ppong_PoolManager.i.UseBuneo_ppong(transform.position, rotation);
+
+            }
             yield return new WaitForSeconds(0.1f);
         }
 

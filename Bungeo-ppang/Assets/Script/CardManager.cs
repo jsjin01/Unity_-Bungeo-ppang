@@ -155,13 +155,18 @@ public class CardManager : MonoBehaviour
             standardSet.Remove(13);         //법사붕 선택지 삭제
             standardSet.AddRange(M1set);    //법사붕 관련 선택지 증가
             //evt14();
+            
             cards[num1].SetActive(false);
             cards[num2].SetActive(false);
             cards[num3].SetActive(false);
 
-            cards[14].SetActive(true);
-            cards[17].SetActive(true);
-            cards[20].SetActive(true);
+            num1 = 14;
+            num2 =17;
+            num3 = 20;
+
+            cards[num1].SetActive(true);
+            cards[num2].SetActive(true);
+            cards[num3].SetActive(true);
 
         }
         else if (num == 15)
