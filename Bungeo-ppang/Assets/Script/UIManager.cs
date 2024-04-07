@@ -10,6 +10,9 @@ public class UIManager : MonoBehaviour
     Text stageT;
     [SerializeField] Slider back_vol;
     [SerializeField] Slider effect_vol;
+    [SerializeField] public Slider GaugeBar;
+    [SerializeField] public GameObject Warrior_Skill;
+    [SerializeField] public GameObject Wizard_Skill;
 
     private void Awake()
     {
@@ -23,6 +26,19 @@ public class UIManager : MonoBehaviour
         stageT = GameObject.Find("StageText").GetComponent<Text>();
         back_vol.value = PlayerPrefs.GetFloat("Volume_Back", 0f);
         effect_vol.value = PlayerPrefs.GetFloat("Volume_Effect", 0f);
+
+        
+    }
+    private void Update()
+    {
+        if (GaugeBar.value >= 1f)       //게이지바가 다 차면
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                GaugeBar.value = 0f;        //게이지바 초기화
+            }
+        }
+        
     }
     public void SettingOn()
     {

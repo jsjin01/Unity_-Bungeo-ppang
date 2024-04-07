@@ -110,6 +110,7 @@ public class CardManager : MonoBehaviour
             standardSet.AddRange(W1Set);    //전사붕 스킬 개방
             evt7();
             selectedCard();
+            UIManager.i.Warrior_Skill.SetActive(true);      //피버 개방
         }
         else if (num == 8)
         {
@@ -155,7 +156,7 @@ public class CardManager : MonoBehaviour
             standardSet.Remove(13);         //법사붕 선택지 삭제
             standardSet.AddRange(M1set);    //법사붕 관련 선택지 증가
             //evt14();
-            
+            UIManager.i.Wizard_Skill.SetActive(true);       //피버 개방
             cards[num1].SetActive(false);
             cards[num2].SetActive(false);
             cards[num3].SetActive(false);

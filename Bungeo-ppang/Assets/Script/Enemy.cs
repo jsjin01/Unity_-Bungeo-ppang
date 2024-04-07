@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] protected float speed = 2f; // 적의 이동 속도
-    [SerializeField] protected float hp = 100f;//적의 체력
+    [SerializeField] public float speed = 2f; // 적의 이동 속도
+    [SerializeField] public float hp = 100f;//적의 체력
     [SerializeField] protected float MaxHp = 100f;//적의 최대 체력
     protected Vector2 pos = new Vector2(0, -1);
-    protected Rigidbody2D rb;
+    public Rigidbody2D rb;
     [SerializeField] protected SpriteRenderer sr;
     [SerializeField] public Animator anit; //애니메이터 컨트롤
     [SerializeField] Collider2D cd;
@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour
         hp = MaxHp;
         speed = 2f;
     }
-
     public virtual void Move()
     {
         if (rb == null)
@@ -33,7 +32,9 @@ public class Enemy : MonoBehaviour
         {
             sr = GetComponent<SpriteRenderer>();
         }
+        
         rb.velocity = pos.normalized * speed;
+        
     }
 
     public virtual void OnTriggerEnter2D(Collider2D other)
@@ -138,6 +139,7 @@ public class Enemy : MonoBehaviour
 
     virtual public void EnemyDestroy() //적 삭제
     {
+        UIManager.i.GaugeBar.value += 0.1f;
         hp = 100f; //나중에 다시 사용할 때 Hp 100
         StartCoroutine(Dead());
         if (fireCor != null)

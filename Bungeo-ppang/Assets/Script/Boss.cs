@@ -117,6 +117,8 @@ public class Boss : MonoBehaviour
         else if (other.CompareTag("THUNDER"))
         {
             Thunder t = other.gameObject.GetComponentInParent<Thunder>();
+            CancelInvoke("SpawnSeed");      //패턴 중지
+            Invoke("SpawnAgain", t.stunTime);      //스턴시간 후 패턴 다시 시작
             hp -= t.dmg;
             if (hp <= 0f)
             {
@@ -133,12 +135,13 @@ public class Boss : MonoBehaviour
             }
         }
     }
-    void SpawnAgain()     //빙결 맞으면 공격 중지
+    void SpawnAgain()     //빙결, 번개 맞으면 공격 중지
     {
         InvokeRepeating("SpawnSeed", 1f, 4f);
     }
     void BossDestroy() //적 삭제
     {
+        UIManager.i.GaugeBar.value += 0.1f;
         hp = 500f; //나중에 다시 사용할 때 Hp 500
         Destroy(gameObject);
         if (fireCor != null)

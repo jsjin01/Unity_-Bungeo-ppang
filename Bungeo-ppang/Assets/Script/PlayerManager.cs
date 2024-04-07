@@ -196,6 +196,7 @@ public class PlayerManager : MonoBehaviour
         {
             Hp -= 1;
             Debug.Log("Hit");
+            UIManager.i.GaugeBar.value += 0.1f;
         }
     }
 }

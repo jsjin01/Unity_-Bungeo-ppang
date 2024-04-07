@@ -1,9 +1,11 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyPoolManager : MonoBehaviour
 {
     public static EnemyPoolManager i;
-
+    [SerializeField] public float speed = 2f; // 적의 이동 속도
     [SerializeField] GameObject[] Enemy_Prefeds; //프리팹
     [SerializeField] GameObject Boss_Prefeds; //적 프리팹
     [SerializeField] GameObject Seed_Prefeds;
@@ -20,7 +22,6 @@ public class EnemyPoolManager : MonoBehaviour
     {
         CreatEnemy1(initEnemyCount);
     }
-
     public void CreatEnemy1(int cnt = 5)              //적 생성 부분
     {
         for (int i = 0; i < cnt; i++)
@@ -28,8 +29,6 @@ public class EnemyPoolManager : MonoBehaviour
             Instantiate(Enemy_Prefeds[0], transform);   //적 생성
         }
     }
-
-
     public void UseEnemy(Vector2 p, Quaternion rot)   //적 사용하는 부분
     {
         if (transform.childCount == 0)
@@ -44,6 +43,7 @@ public class EnemyPoolManager : MonoBehaviour
         e.gameObject.SetActive(true);     //옵젝 활성화
         e.transform.parent = null;        //부모 설정 해제
         e.Move();                         //움직임 구현
+        
     }
 
     public void ReturnEnemy(GameObject e)
@@ -58,15 +58,9 @@ public class EnemyPoolManager : MonoBehaviour
     }
     public void CreateSeed()
     {
-        float x1 = Random.Range(-2.3f, 2.3f);
-        float y1 = Random.Range(0.5f, 2.1f);
-        Instantiate(Seed_Prefeds, new Vector3(x1, y1, 0), Quaternion.identity);
-        float x2 = Random.Range(-2.3f, 2.3f);
-        float y2 = Random.Range(0.5f, 2.1f);
-        Instantiate(Seed_Prefeds, new Vector3(x2, y2, 0), Quaternion.identity);
-        float x3 = Random.Range(-2.3f, 2.3f);
-        float y3 = Random.Range(0.5f, 2.1f);
-        Instantiate(Seed_Prefeds, new Vector3(x3, y3, 0), Quaternion.identity);
+        Instantiate(Seed_Prefeds, new Vector3(0, 3.5f, 0), Quaternion.identity);
+        Instantiate(Seed_Prefeds, new Vector3(0, 3.5f, 0), Quaternion.identity);
+        Instantiate(Seed_Prefeds, new Vector3(0, 3.5f, 0), Quaternion.identity);
     }
     public void CreateEnemies(Vector3 Pos)
     {
