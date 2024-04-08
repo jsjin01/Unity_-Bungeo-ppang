@@ -3,7 +3,8 @@ using UnityEngine;
 enum MAGICBALLTYPE
 {
     FIRE,
-    ICE
+    ICE,
+    MAGIC
 }
 public class MagicBall : MonoBehaviour
 {
@@ -23,6 +24,10 @@ public class MagicBall : MonoBehaviour
         else if(type == MAGICBALLTYPE.ICE)
         {
             dmg = PlayerManager.i.ice_dmg;
+        }
+        else if(type == MAGICBALLTYPE.MAGIC)
+        {
+            dmg = 10;
         }
         Move();
     }

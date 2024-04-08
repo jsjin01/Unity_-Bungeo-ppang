@@ -17,10 +17,11 @@ public class PlayerMoveControl : MonoBehaviour
     Vector3 movement;       //move에서 사용할 변수 => 이동할 위치의 변수
     Quaternion rotation;    //회전값
 
-    bool isShot = true;     //발사 가능 변수
+    bool isShot = true;                         //발사 가능 변수
     bool fireball = false;                      //파이어볼 여부
     bool iceball = false;                       //아이스볼 여부
     bool thunder = false;                       //번개 여부
+    bool Magic = false;                         //매직볼 여부
 
     [SerializeField] GameObject[] magicPrefebs;
     [SerializeField] GameObject shieldPrefebs;
@@ -34,6 +35,7 @@ public class PlayerMoveControl : MonoBehaviour
         speed = PlayerManager.i.speed;
         atkspd = PlayerManager.i.atk_spd;
         rotation = Quaternion.Euler(0, 0, 0); //회전하지 않은 상태
+        StartCoroutine(MagicBall());
         StartCoroutine(Fireball());
         StartCoroutine(Thunder());
         StartCoroutine(Iceball());
@@ -52,6 +54,7 @@ public class PlayerMoveControl : MonoBehaviour
         fireball = PlayerManager.i.fire;
         iceball = PlayerManager.i.ice;
         thunder = PlayerManager.i.thunder;
+        Magic = PlayerManager.i.magic;
         if (isShot)
         {
             Attack();
@@ -108,11 +111,28 @@ public class PlayerMoveControl : MonoBehaviour
         Instantiate(magicPrefebs[2], new Vector3(x1, -1.69f, 0), rotation);
     }
 
+    IEnumerator MagicBall()
+    {
+        while (true)
+        {
+            if (Magic) 
+            { 
+                float x1 = Random.Range(-2.7f, 2.7f);
+                Instantiate(magicPrefebs[3], new Vector3(x1,-4.2f,0), rotation); 
+            }
+            yield return new WaitForSeconds(5f);
+        }
+    }
+
     IEnumerator Fireball()
     {
         while (true)
         {
-            if(fireball)Instantiate(magicPrefebs[0], transform.position - new Vector3(1, 0, 0), rotation);
+            if (fireball)
+            {
+                float x1 = Random.Range(-2.7f, 2.7f);
+                Instantiate(magicPrefebs[0], new Vector3(x1, -4.2f, 0), rotation);
+            }
             yield return new WaitForSeconds(firebalRate);
         }
     }
@@ -121,7 +141,11 @@ public class PlayerMoveControl : MonoBehaviour
     {
         while (true)
         {
-            if(iceball) Instantiate(magicPrefebs[1], transform.position - new Vector3(-1, 0, 0), rotation);
+            if (iceball)
+            {
+                float x1 = Random.Range(-2.7f, 2.7f);
+                Instantiate(magicPrefebs[1], new Vector3(x1, -4.2f, 0), rotation);
+            }
             yield return new WaitForSeconds(iceballRate);
         }
     }

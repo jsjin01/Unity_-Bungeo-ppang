@@ -155,7 +155,8 @@ public class CardManager : MonoBehaviour
             Debug.Log("법사붕");
             standardSet.Remove(13);         //법사붕 선택지 삭제
             standardSet.AddRange(M1set);    //법사붕 관련 선택지 증가
-            //evt14();
+            evt14();
+
             UIManager.i.Wizard_Skill.SetActive(true);       //피버 개방
             cards[num1].SetActive(false);
             cards[num2].SetActive(false);

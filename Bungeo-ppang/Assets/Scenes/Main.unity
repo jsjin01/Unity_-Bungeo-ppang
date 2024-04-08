@@ -647,14 +647,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 98e5242d450c5bd47a83a2f096ee543f, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -4434,7 +4434,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4839439bbfb39804f9c917b390789f03, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6338,14 +6338,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 98e5242d450c5bd47a83a2f096ee543f, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -7398,6 +7398,7 @@ MonoBehaviour:
   - {fileID: 633283411240183375, guid: dcd937ede5445ab4caaa76f648e69c04, type: 3}
   - {fileID: 8572150685768489180, guid: b1db60851fb3cb2449e25ffa27767ade, type: 3}
   - {fileID: 4163866305997074085, guid: 42a42d2d4b8762e4589a7b85609d869a, type: 3}
+  - {fileID: 8572150685768489180, guid: d0f985fc2da31a14d947d72fdad8a1db, type: 3}
   shieldPrefebs: {fileID: 2275484385714578623, guid: ea625178225b6274689e0fffcc1cd698, type: 3}
 --- !u!61 &1167435723
 BoxCollider2D:
@@ -7582,6 +7583,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f74cc1ff536624292c0b412250382e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpUI:
+  - {fileID: 2800000, guid: 98e5242d450c5bd47a83a2f096ee543f, type: 3}
+  - {fileID: 2800000, guid: fb594c58a5c2a0b46a5e5a35a05418c1, type: 3}
   back_vol: {fileID: 1901904766}
   effect_vol: {fileID: 684256700}
   GaugeBar: {fileID: 1076418502}
@@ -7866,14 +7870,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 98e5242d450c5bd47a83a2f096ee543f, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -8205,7 +8209,7 @@ GameObject:
   - component: {fileID: 1306518839}
   - component: {fileID: 1306518838}
   m_Layer: 5
-  m_Name: shield dmg.
+  m_Name: shield dmg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

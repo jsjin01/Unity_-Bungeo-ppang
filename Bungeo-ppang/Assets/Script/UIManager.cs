@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
     RawImage hp1;
     RawImage hp2;
     RawImage hp3;
+    [SerializeField] Texture[] hpUI;
     Text stageT;
     [SerializeField] Slider back_vol;
     [SerializeField] Slider effect_vol;
@@ -60,27 +61,39 @@ public class UIManager : MonoBehaviour
     {
         if (hp == 3)
         {
-            hp1.color = Color.red;
-            hp2.color = Color.red;
-            hp3.color = Color.red;
+            hp1.color = Color.white;
+            hp1.texture = hpUI[0];
+            hp2.color = Color.white;
+            hp2.texture = hpUI[0];
+            hp3.color = Color.white;
+            hp3.texture = hpUI[0];
         }
         else if (hp == 2)
         {
-            hp1.color = Color.red;
-            hp2.color = Color.red;
-            hp3.color = Color.black;
+            hp1.color = Color.white;
+            hp1.texture = hpUI[0];
+            hp2.color = Color.white;
+            hp2.texture = hpUI[0];
+            hp3.color = Color.gray;
+            hp3.texture = hpUI[1];
         }
         else if (hp == 1)
         {
-            hp1.color = Color.red;
-            hp2.color = Color.black;
-            hp3.color = Color.black;
+            hp1.color = Color.white;
+            hp1.texture = hpUI[0];
+            hp2.color = Color.gray;
+            hp2.texture = hpUI[1];
+            hp3.color = Color.gray;
+            hp3.texture = hpUI[1];
         }
         else
         {
-            hp1.color = Color.black;
-            hp2.color = Color.black;
-            hp3.color = Color.black;
+            hp1.color = Color.gray;
+            hp1.texture = hpUI[1];
+            hp2.color = Color.gray;
+            hp2.texture = hpUI[1];
+            hp3.color = Color.gray;
+            hp3.texture = hpUI[1];
         }
     } //체력 UI이 설정
 

@@ -6,6 +6,9 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
 {
     [SerializeField] Rigidbody2D rb;
     [SerializeField] CapsuleCollider2D cd;
+    [SerializeField] Sprite[] bungs;
+    [SerializeField] SpriteRenderer sr;
+
     float BulletSpeed;                          //총알 속도
     public float dmg;                           //공격력
     public int monsterPass = 0;                 //관통 횟수
@@ -17,6 +20,9 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
     int swords = 1;                             //검기 갯수
     [SerializeField] bool isSword = false;      //검기 온오프
     public bool isShield = false;               //쉴드 상태일때
+
+    public bool magic;                          //법사붕
+    public bool warrior;                        //전사붕
 
     IEnumerator passCor;                        //관통 코루틴
     void Start()
@@ -35,7 +41,19 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
         transform.localScale = new Vector3(size, size, 1);
 
         isSword =  PlayerManager.i.isSword;
-        swords = PlayerManager.i.swords;    
+        swords = PlayerManager.i.swords;  
+        
+        magic = PlayerManager.i.magic;
+        warrior = PlayerManager.i.isShield;
+
+        if (magic)
+        {
+            sr.sprite = bungs[2];
+        }
+        else if (warrior)
+        {
+            sr.sprite= bungs[1];
+        }
 
         //초기화
         monsterPass = maxMonsterPass;
