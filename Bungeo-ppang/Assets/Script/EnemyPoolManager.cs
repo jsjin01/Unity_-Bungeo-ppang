@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -43,15 +44,16 @@ public class EnemyPoolManager : MonoBehaviour
         e.gameObject.SetActive(true);     //옵젝 활성화
         e.transform.parent = null;        //부모 설정 해제
         e.Move();                         //움직임 구현
-        
+        AliveEnemyPoolManager.i.AddEnemy(e.GameObject());
     }
-
+    
     public void ReturnEnemy(GameObject e)
     {
         e.gameObject.SetActive(false);
         e.transform.SetParent(transform);
         //사용 후 다시 pool안으로 가져옴
     }
+
     public void CreatBoss()
     {
         Instantiate(Boss_Prefeds, new Vector3(0, 3.5f, 0), Quaternion.identity);   //보스 생성

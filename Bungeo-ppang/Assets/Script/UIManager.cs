@@ -33,12 +33,12 @@ public class UIManager : MonoBehaviour
     {
         if (GaugeBar.value >= 1f)       //게이지바가 다 차면
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space))
             {
                 GaugeBar.value = 0f;        //게이지바 초기화
+                AliveEnemyPoolManager.i.WarriorSkill();
             }
         }
-        
     }
     public void SettingOn()
     {

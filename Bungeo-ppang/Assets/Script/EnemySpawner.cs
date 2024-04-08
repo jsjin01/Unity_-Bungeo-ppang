@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -48,6 +49,7 @@ public class EnemySpawner : MonoBehaviour
             EnemyPoolManager.i.UseEnemy(spawnPos, rotation);
         }
     }
+    
 
     IEnumerator StageSpawn(int num)
     {

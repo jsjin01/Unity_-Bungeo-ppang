@@ -36,7 +36,20 @@ public class Enemy : MonoBehaviour
         rb.velocity = pos.normalized * speed;
         
     }
+    public void StopMove()
+    {
+        if (rb == null)
+        {
+            rb = GetComponent<Rigidbody2D>();
 
+        }
+        if (sr == null)
+        {
+            sr = GetComponent<SpriteRenderer>();
+        }
+
+        rb.velocity = Vector2.zero;
+    }
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Bullet"))

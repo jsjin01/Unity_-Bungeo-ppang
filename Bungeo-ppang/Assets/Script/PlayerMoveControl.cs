@@ -25,6 +25,9 @@ public class PlayerMoveControl : MonoBehaviour
     [SerializeField] GameObject[] magicPrefebs;
     [SerializeField] GameObject shieldPrefebs;
 
+    float x1;
+    float x2;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -53,6 +56,7 @@ public class PlayerMoveControl : MonoBehaviour
         {
             Attack();
         }
+        WizardSkill();
     }
 
     private void FixedUpdate()
@@ -73,7 +77,20 @@ public class PlayerMoveControl : MonoBehaviour
         StartCoroutine(Attackroutine());
         StartCoroutine(ShootCol());
     }
-
+    public void WizardSkill()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                x1 = Random.Range(-2.3f, 2.3f);
+                x2 = Random.Range(-2.3f, 2.3f);
+                ThunderCreat();
+                Instantiate(magicPrefebs[0], new Vector3(x1, -4.2f, 0), rotation);
+                Instantiate(magicPrefebs[1], new Vector3(x2, -4.2f, 0), rotation);
+            }
+        }
+    }
     IEnumerator ShootCol()
     {
         isShot = false;
