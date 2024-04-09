@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameMenu : MonoBehaviour
 {
-    private void Awake()
+    [SerializeField] Slider back_vol;
+    [SerializeField] Slider effect_vol;
+    private void Start()
     {
-        PlayerPrefs.DeleteAll();
+        back_vol.value = PlayerPrefs.GetFloat("Volume_Back");
+        effect_vol.value = PlayerPrefs.GetFloat("Volume_Effect");
     }
     public void GameStart()
     {
         SceneManager.LoadScene("Main");
+        Time.timeScale = 1f;
     }
 
     public void setVolume_background(float volume)

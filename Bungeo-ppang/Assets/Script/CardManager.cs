@@ -113,6 +113,8 @@ public class CardManager : MonoBehaviour
             selectedCard();
             UIManager.i.Warrior_Skill.SetActive(true);      //피버 개방
             UIManager.i.Wizard_Skill.SetActive(false);
+            UIManager.i.Gauge.SetActive(true);
+            UIManager.i.GaugeBar.value = 0f;
         }
         else if (num == 8)
         {
@@ -162,6 +164,8 @@ public class CardManager : MonoBehaviour
 
             UIManager.i.Wizard_Skill.SetActive(true);       //피버 개방
             UIManager.i.Warrior_Skill.SetActive(false);
+            UIManager.i.Gauge.SetActive(true);
+            UIManager.i.GaugeBar.value = 0f;
             cards[num1].SetActive(false);
             cards[num2].SetActive(false);
             cards[num3].SetActive(false);

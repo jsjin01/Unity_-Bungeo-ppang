@@ -52,6 +52,7 @@ public class StandardEnemy : MonoBehaviour
                 if (hp <= 0f)
                 {
                     EnemyDestroy();
+                    UIManager.i.GaugeBar.value += 0.1f;
                 }
             }
         }
@@ -62,6 +63,7 @@ public class StandardEnemy : MonoBehaviour
             if (hp <= 0f)
             {
                 EnemyDestroy();
+                UIManager.i.GaugeBar.value += 0.1f;
             }
             else
             {
@@ -80,6 +82,7 @@ public class StandardEnemy : MonoBehaviour
             if (hp <= 0f)
             {
                 EnemyDestroy();
+                UIManager.i.GaugeBar.value += 0.1f;
             }
             else
             {
@@ -98,6 +101,7 @@ public class StandardEnemy : MonoBehaviour
             if (hp <= 0f)
             {
                 EnemyDestroy();
+                UIManager.i.GaugeBar.value += 0.1f;
             }
         }
         else if (other.CompareTag("Sword"))
@@ -107,6 +111,7 @@ public class StandardEnemy : MonoBehaviour
             if (hp <= 0f)
             {
                 EnemyDestroy();
+                UIManager.i.GaugeBar.value += 0.1f;
             }
         }
         else if (other.CompareTag("THUNDER"))
@@ -116,6 +121,7 @@ public class StandardEnemy : MonoBehaviour
             if (hp <= 0f)
             {
                 EnemyDestroy();
+                UIManager.i.GaugeBar.value += 0.1f;
             }
             else
             {
@@ -129,13 +135,13 @@ public class StandardEnemy : MonoBehaviour
         }
         else if (other.CompareTag("Player"))
         {
+            //UIManager.i.GaugeBar.value += 0.1f;
             EnemyDestroy();
         }
     }
 
     virtual public void EnemyDestroy() //적 삭제
     {
-        UIManager.i.GaugeBar.value += 0.1f;
         hp = 100f; //나중에 다시 사용할 때 Hp 100
         StartCoroutine(Dead());
         if (fireCor != null)
@@ -151,7 +157,6 @@ public class StandardEnemy : MonoBehaviour
             StopCoroutine(thunderCor);
         }
     }
-
     IEnumerator Fire(float dmg)
     {
         for (int i = 0; i < 6; i++)
@@ -189,7 +194,7 @@ public class StandardEnemy : MonoBehaviour
         sr.color = Color.white;
     }
 
-    IEnumerator Dead()//0.3초 있다가 없어지도록 설계
+    virtual public IEnumerator Dead()//0.3초 있다가 없어지도록 설계
     {
         float nowSpeed = speed;
         speed = 0;                  //정지

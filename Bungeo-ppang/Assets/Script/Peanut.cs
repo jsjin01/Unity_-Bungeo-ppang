@@ -41,6 +41,7 @@ public class Peanut : Enemy
                     Instantiate(peanutslice1_Prefebs, transform.position + new Vector3(0.3f, 0f, 0f), Quaternion.identity);
                     Instantiate(peanutslice2_Prefebs, transform.position - new Vector3(0.3f, 0f, 0f), Quaternion.identity);
                     EnemyDestroy();
+                    UIManager.i.GaugeBar.value += 0.1f;
                 }
             }
         }
@@ -53,6 +54,7 @@ public class Peanut : Enemy
                 Instantiate(peanutslice1_Prefebs, transform.position + new Vector3(0.3f, 0f, 0f), Quaternion.identity);
                 Instantiate(peanutslice2_Prefebs, transform.position - new Vector3(0.3f, 0f, 0f), Quaternion.identity);
                 EnemyDestroy();
+                UIManager.i.GaugeBar.value += 0.1f;
             }
             else
             {
@@ -73,6 +75,7 @@ public class Peanut : Enemy
                 Instantiate(peanutslice1_Prefebs, transform.position + new Vector3(0.3f, 0f, 0f), Quaternion.identity);
                 Instantiate(peanutslice2_Prefebs, transform.position - new Vector3(0.3f, 0f, 0f), Quaternion.identity);
                 EnemyDestroy();
+                UIManager.i.GaugeBar.value += 0.1f;
             }
             else
             {
@@ -94,6 +97,7 @@ public class Peanut : Enemy
                 Instantiate(peanutslice1_Prefebs, transform.position + new Vector3(0.3f, 0f, 0f), Quaternion.identity);
                 Instantiate(peanutslice2_Prefebs, transform.position - new Vector3(0.3f, 0f, 0f), Quaternion.identity);
                 EnemyDestroy();
+                UIManager.i.GaugeBar.value += 0.1f;
             }
         }
         else if (other.CompareTag("Sword"))
@@ -105,6 +109,7 @@ public class Peanut : Enemy
                 Instantiate(peanutslice1_Prefebs, transform.position + new Vector3(0.3f, 0f, 0f), Quaternion.identity);
                 Instantiate(peanutslice2_Prefebs, transform.position - new Vector3(0.3f, 0f, 0f), Quaternion.identity);
                 EnemyDestroy();
+                UIManager.i.GaugeBar.value += 0.1f;
             }
         }
         else if (other.CompareTag("THUNDER"))
@@ -116,6 +121,7 @@ public class Peanut : Enemy
                 Instantiate(peanutslice1_Prefebs, transform.position + new Vector3(0.3f, 0f, 0f), Quaternion.identity);
                 Instantiate(peanutslice2_Prefebs, transform.position - new Vector3(0.3f, 0f, 0f), Quaternion.identity);
                 EnemyDestroy();
+                UIManager.i.GaugeBar.value += 0.1f;
             }
             else
             {
@@ -130,27 +136,13 @@ public class Peanut : Enemy
         else if (other.CompareTag("Player"))
         {
             EnemyDestroy();
+            //UIManager.i.GaugeBar.value += 0.1f;
         }
     }
     public override void EnemyDestroy()
     {
-        UIManager.i.GaugeBar.value += 0.1f;
-        hp = 100f; //나중에 다시 사용할 때 Hp 100
-        Destroy(gameObject);
-        if (fireCor != null)
-        {
-            StopCoroutine(fireCor);
-        }
-        if (iceCor != null)
-        {
-            StopCoroutine(iceCor);
-        }
-        if (thunderCor != null)
-        {
-            StopCoroutine(thunderCor);
-        }
+        base.EnemyDestroy();
     }
-
     public override IEnumerator Hitchange()
     {
         sr.color = Color.red;

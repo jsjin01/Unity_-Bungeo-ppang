@@ -163,6 +163,7 @@ public class Enemy : MonoBehaviour
         else if (other.CompareTag("Player"))
         {
             EnemyDestroy();
+            UIManager.i.GaugeBar.value -= 0.1f;
         }
     }
 
@@ -227,7 +228,7 @@ public class Enemy : MonoBehaviour
         sr.color = Color.white;
     }
 
-    IEnumerator Dead()//0.3초 있다가 없어지도록 설계
+    public virtual IEnumerator Dead()//0.3초 있다가 없어지도록 설계
     {
         anit.SetTrigger("isDead");
         float nowSpeed = speed;

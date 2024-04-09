@@ -12,11 +12,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] Slider back_vol;
     [SerializeField] Slider effect_vol;
     [SerializeField] public Slider GaugeBar;
+    [SerializeField] public GameObject Gauge;
     [SerializeField] public GameObject Warrior_Skill;
     [SerializeField] public GameObject Wizard_Skill;
-
-    public bool warrior_card=false;
-    public bool wizard_card=false;
     private void Awake()
     {
         i = this;
@@ -29,8 +27,6 @@ public class UIManager : MonoBehaviour
         stageT = GameObject.Find("StageText").GetComponent<Text>();
         back_vol.value = PlayerPrefs.GetFloat("Volume_Back", 0f);
         effect_vol.value = PlayerPrefs.GetFloat("Volume_Effect", 0f);
-
-        
     }
     private void Update()
     {
@@ -66,10 +62,18 @@ public class UIManager : MonoBehaviour
     public void setVolume_background(float volume)
     {
         Debug.Log("배경음악: " + volume);
+        PlayerPrefs.SetFloat("Volume_Back", volume);
+        PlayerPrefs.Save();
     }
     public void setVolume_effect(float volume)
     {
         Debug.Log("효과음: " + volume);
+        PlayerPrefs.SetFloat("Volume_Effect", volume);
+        PlayerPrefs.Save();
+    }
+    public void Out()
+    {
+        SceneManager.LoadScene("GameMenu");
     }
     public void SetHp(int hp)
     {
