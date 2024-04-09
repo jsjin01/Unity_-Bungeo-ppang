@@ -1,20 +1,38 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    [SerializeField] float speed = 2f; // 적의 이동 속도
-    [SerializeField] float hp = 500f;//적의 체력
+    public static Boss i;
+    [SerializeField] float speed = 2f;  // 적의 이동 속도
+    [SerializeField] float hp = 500f;   //적의 체력
     [SerializeField] float MaxHp = 500f;//적의 최대 체력
+
+    [SerializeField]GameObject GameClear; //보스 처치 시 클리어
+
+
     Vector2 pos = new Vector2(0, -1);
     Rigidbody2D rb;
     SpriteRenderer sr;
+    [SerializeField]Animator anit;
 
     IEnumerator fireCor; //마법 적용 코루틴 함수
     IEnumerator iceCor;
     IEnumerator thunderCor;
+    //스폰 코루틴
+    IEnumerator spawnCor;
+
+    //ui가져오기 위한 action
+    public Action clearUI;
+    private void Awake()
+    {
+        i = this;
+    }
+
     private void Start()
     {
+
         if (sr == null)
         {
             sr = GetComponent<SpriteRenderer>();
@@ -31,13 +49,13 @@ public class Boss : MonoBehaviour
 
     void SpawnSeed()
     {
-        EnemyPoolManager.i.CreateSeed();
+        spawnCor = skill();
+        StartCoroutine(spawnCor);
     }
 
     private void OnEnable()
     {
         hp = MaxHp;
-
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -143,6 +161,8 @@ public class Boss : MonoBehaviour
     {
         UIManager.i.GaugeBar.value += 0.1f;
         hp = 500f; //나중에 다시 사용할 때 Hp 500
+        clearUI();//ui이 띄우기
+        Time.timeScale = 0f;
         Destroy(gameObject);
         if (fireCor != null)
         {
@@ -192,5 +212,12 @@ public class Boss : MonoBehaviour
         sr.color = Color.red;
         yield return new WaitForSeconds(0.5f);
         sr.color = Color.white;
+    }
+
+    IEnumerator skill()
+    {
+        anit.SetTrigger("isSkill");
+        yield return new WaitForSeconds(1.15f);
+        EnemyPoolManager.i.CreateSeed();
     }
 }

@@ -169,15 +169,6 @@ public class CardManager : MonoBehaviour
             cards[num1].SetActive(false);
             cards[num2].SetActive(false);
             cards[num3].SetActive(false);
-
-            num1 = 14;
-            num2 =17;
-            num3 = 20;
-
-            cards[num1].SetActive(true);
-            cards[num2].SetActive(true);
-            cards[num3].SetActive(true);
-
         }
         else if (num == 15)
         {

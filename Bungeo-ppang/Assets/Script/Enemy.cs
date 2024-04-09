@@ -22,6 +22,8 @@ public class Enemy : MonoBehaviour
     protected IEnumerator iceCor;
     protected IEnumerator thunderCor;
 
+    protected IEnumerator deadCor; //죽는 코루틴 변수
+
     public virtual void OnEnable()
     {
         hp = MaxHp;
@@ -171,7 +173,12 @@ public class Enemy : MonoBehaviour
     {
         UIManager.i.GaugeBar.value += 0.1f;
         hp = 100f; //나중에 다시 사용할 때 Hp 100
-        StartCoroutine(Dead());
+        if(deadCor != null)
+        {
+            return;
+        }
+        deadCor = Dead();
+        StartCoroutine(deadCor);
         if (fireCor != null)
         {
             StopCoroutine(fireCor);

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -7,7 +8,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] public int Hp = 3;              //목숨
     [SerializeField] public float atk = 10;          //공격력
     [SerializeField] public float atk_spd = 10f;     //공격 속도
-    [SerializeField] public float cri = 5;           //치명타
     [SerializeField] public float speed = 10f;       //플레이어 이동속도
     
     //붕어빵 관련
@@ -45,6 +45,13 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] public float thunder_dmg = 10;    //번개 데미지
     [SerializeField] public float thunder_col = 5f;    //번개 쿨타임
 
+
+    public Action gameEnd;  //게임 끝 => over or Boss 처치
+    public Action boss;     //보스 처리
+    bool Gend = false;      //게임 끝 판단 변수
+    [SerializeField]GameObject gameover;
+    [SerializeField]GameObject gameClear;
+
     private void Awake()
     {
         i = this;
@@ -54,7 +61,10 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-      
+        Boss.i.clearUI += () =>
+        {
+            gameClear.SetActive(true);
+        };
         CardManager.i.evt1 += () =>
         {
             atk_spd *= 0.9f;
@@ -187,6 +197,18 @@ public class PlayerManager : MonoBehaviour
     private void Update()
     {
         UIManager.i.SetHp(Hp);
+        if(Hp <= 0)
+        {
+            if (Gend)
+            {
+                return;
+            }
+            Time.timeScale = 0f;
+            gameEnd(); //게임 끝
+            gameover.SetActive(true);
+            Gend = true;
+        }
+
     }
 
 

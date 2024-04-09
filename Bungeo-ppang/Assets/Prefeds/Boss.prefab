@@ -165,6 +165,9 @@ MonoBehaviour:
   speed: 2
   hp: 500
   MaxHp: 500
+  GameClear: {fileID: 0}
+  cd: {fileID: 0}
+  anit: {fileID: 3597488121995852638}
 --- !u!95 &3597488121995852638
 Animator:
   serializedVersion: 5

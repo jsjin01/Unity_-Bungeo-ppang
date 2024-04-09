@@ -23,27 +23,54 @@ public class PlayerMoveControl : MonoBehaviour
     bool thunder = false;                       //번개 여부
     bool Magic = false;                         //매직볼 여부
 
+    bool gameEnd = false;                      //게임 오버 여부
+
     [SerializeField] GameObject[] magicPrefebs;
     [SerializeField] GameObject shieldPrefebs;
 
     float x1;
     float x2;
 
+    //마법 코루틴 변수 선언
+    IEnumerator magicCor;
+    IEnumerator fireCor;
+    IEnumerator iceCor;
+    IEnumerator thunderCor;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         speed = PlayerManager.i.speed;
         atkspd = PlayerManager.i.atk_spd;
         rotation = Quaternion.Euler(0, 0, 0); //회전하지 않은 상태
-        StartCoroutine(MagicBall());
-        StartCoroutine(Fireball());
-        StartCoroutine(Thunder());
-        StartCoroutine(Iceball());
+        PlayerManager.i.gameEnd += () =>
+        {
+            gameEnd = true;
+            //코루틴 정지
+            StopCoroutine(magicCor);
+            StopCoroutine(fireCor);
+            StopCoroutine(iceCor);
+            StopCoroutine (thunderCor);
+        };
+
+        magicCor = MagicBall();
+        fireCor = Fireball();
+        iceCor = Iceball();
+        thunderCor = Thunder();
+        StartCoroutine(magicCor);
+        StartCoroutine(fireCor);
+        StartCoroutine(iceCor);
+        StartCoroutine(thunderCor);
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (gameEnd)
+        {
+            return;
+        }
         warriorOn = PlayerManager.i.isShield;
         shoot = PlayerManager.i.shoot;
 
@@ -63,6 +90,10 @@ public class PlayerMoveControl : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (gameEnd)
+        {
+            return;
+        }
         Move(Input.GetAxisRaw("Horizontal"));
     }
 

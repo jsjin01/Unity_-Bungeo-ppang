@@ -193,9 +193,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c88682b6cd505641b87f1d47eeb2001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   speed: 4
   hp: 20
   MaxHp: 20
+  rb: {fileID: 2884812827623230368}
   sr: {fileID: 185760258371569746}
   anit: {fileID: 730780692806128721}
   cd: {fileID: -4975844635338558840}

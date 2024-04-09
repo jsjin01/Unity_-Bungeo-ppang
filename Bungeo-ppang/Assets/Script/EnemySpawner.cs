@@ -7,10 +7,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] bool boss;
     Vector2 spawnPos;                                 //스폰 포인트 지정
     Quaternion rotation = Quaternion.Euler(0, 0, 0);  //스폰할때 생성되는 각도지정
-    int stageEnemies = 5;                             //스테이지마다 나오는 몬스터량 / 초기값:5
-    int stagePlus = 3;                                //스테이지 갈 수록 늘어나는 양 3/4/5/6/7
     int spawnnum = 0;                                 //한번에 스폰되는 양
-    int stage = 1;                                    //현재 스테이지
+    int stage = 10;                                    //현재 스테이지
 
     List<int> unit_1 = new List<int> {5, 8, 15, 12, 15, 18, 0, 0, 0, 0 };
     List<int> unit_2 = new List<int> { 0, 0, 0, 8, 15, 22, 40, 45, 50, 0 };
@@ -22,8 +20,20 @@ public class EnemySpawner : MonoBehaviour
      */
 
     public bool isFever = false;
+    bool gameEnd = false;
+    IEnumerator stageCor; //스테이지 코루틴
     void Start()
     {
+        PlayerManager.i.gameEnd += () =>
+        {
+            gameEnd = true;
+            //코루틴 정지
+            if(stageCor != null)
+            {
+                StopCoroutine(stageCor);
+            }
+
+        };
         if (boss) //보스 여부
         {
             SpawnBoss();
@@ -31,6 +41,11 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Update()
     {
+        if (gameEnd)
+        {
+            return;
+        }
+        //스테이지 관리
         if (boss)
         {
             isStage = true;
@@ -40,7 +55,8 @@ public class EnemySpawner : MonoBehaviour
             isStage = true;
             if(stage != 10)
             {
-                StartCoroutine(StageSpawn1());
+                stageCor = StageSpawn();
+                StartCoroutine(stageCor);
             }
             else if (stage == 10)
             {
@@ -69,56 +85,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
     }
-    
-
-    IEnumerator StageSpawn(int num) //스테이지
-    {
-        UIManager.i.SetStage(stage);
-        Debug.Log(stage + "스테이지 시작");
-        while (true)
-        {
-            while (true)
-            {
-                spawnnum = Mathf.RoundToInt(Random.Range(1f, 2f)); //1,2 중 하나 소환 
-                num -= spawnnum;
-                if (num >= 0)
-                {
-                    break;
-                }
-                else
-                {
-                    num += spawnnum;
-                    continue;
-                }
-            }
-
-            if (isFever)
-            {
-                yield return new WaitForSeconds(4f);    //피버스킬이 시전 중이면 스폰 중지
-            }
-
-            SpawnEnemies(spawnnum, 1);  //소환
-            
-            yield return new WaitForSeconds(2f);
-
-            if (num <= 0)
-            {
-                break;
-            }
-        }
-        Debug.Log("스테이지 끝");
-        yield return new WaitForSeconds(3f);
-        CardManager.i.CardDraw();
-        Time.timeScale = 0f;
-        //다음스테이지에 맞게 조정
-        stage += 1;
-        stageEnemies = stageEnemies + stagePlus;
-        stagePlus += 1;
-        isStage = false;
-    }
-
-
-    IEnumerator StageSpawn1() //스테이지
+    IEnumerator StageSpawn() //스테이지
     {
         UIManager.i.SetStage(stage);
         Debug.Log(stage + "스테이지 시작");

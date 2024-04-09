@@ -71,9 +71,21 @@ public class UIManager : MonoBehaviour
         PlayerPrefs.SetFloat("Volume_Effect", volume);
         PlayerPrefs.Save();
     }
-    public void Out()
+    public void Out() //시작화면으로 나가기
     {
         SceneManager.LoadScene("GameMenu");
+        Time.timeScale = 1f;
+    }
+
+    public void Restart() //재시작
+    {
+        SceneManager.LoadScene("Main");
+        Time.timeScale = 1f;
+
+    }
+    public void Quit() //게임 나가기
+    {
+        Application.Quit();
     }
     public void SetHp(int hp)
     {
