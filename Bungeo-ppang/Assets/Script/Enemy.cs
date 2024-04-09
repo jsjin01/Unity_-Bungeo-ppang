@@ -1,8 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
+public enum ENEMY{
+    E1,
+    E2
+}
+
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] ENEMY type;
     [SerializeField] public float speed = 2f; // 적의 이동 속도
     [SerializeField] public float hp = 100f;//적의 체력
     [SerializeField] protected float MaxHp = 100f;//적의 최대 체력
@@ -105,6 +111,16 @@ public class Enemy : MonoBehaviour
                 }
                 iceCor = Ice(iceball.iceTime);
                 StartCoroutine(iceCor);
+            }
+        }
+        else if (other.CompareTag("Magic"))
+        {
+            MagicBall magicBall= other.gameObject.GetComponent<MagicBall>();
+            hp -= magicBall.dmg;
+            anit.SetTrigger("isHit");
+            if (hp <= 0f)
+            {
+                EnemyDestroy();
             }
         }
         else if (other.CompareTag("Shield"))
@@ -222,7 +238,15 @@ public class Enemy : MonoBehaviour
         speed = nowSpeed;
         cd.enabled = true;
         sr.color = Color.white;
-        EnemyPoolManager.i.ReturnEnemy(gameObject);
+        if(type == ENEMY.E1)
+        {
+            EnemyPoolManager.i.ReturnEnemy1(gameObject);
+        }
+        else if(type == ENEMY.E2)
+        {
+            EnemyPoolManager.i.ReturnEnemy2(gameObject);
+        }
+
     }
 }
 

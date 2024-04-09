@@ -199,6 +199,6 @@ public class StandardEnemy : MonoBehaviour
         speed = nowSpeed;
         cd.enabled = true;
         sr.color = Color.white;
-        EnemyPoolManager.i.ReturnEnemy(gameObject);
+        EnemyPoolManager.i.ReturnEnemy1(gameObject);
     }
 }

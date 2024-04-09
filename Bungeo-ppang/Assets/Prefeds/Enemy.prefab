@@ -130,6 +130,7 @@ MonoBehaviour:
   speed: 2
   hp: 50
   MaxHp: 100
+  rb: {fileID: 0}
   sr: {fileID: 0}
   anit: {fileID: 4632004080861401055}
   cd: {fileID: 6520592284124382238}

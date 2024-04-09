@@ -16,7 +16,7 @@ public class Seed : StandardEnemy
         target = new Vector3(x1, y1, 0);
         Move();
         originalcolor = sr.color;
-        Invoke("spawnEnemies", 4f);
+        Invoke("spawnEnemies", 1f);     //발화 시간
     }
     public override void OnEnable()
     {

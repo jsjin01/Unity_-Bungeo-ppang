@@ -117,7 +117,7 @@ public class Boss : MonoBehaviour
         else if (other.CompareTag("THUNDER"))
         {
             Thunder t = other.gameObject.GetComponentInParent<Thunder>();
-            CancelInvoke("SpawnSeed");      //패턴 중지
+            CancelInvoke("SpawnSeed");              //패턴 중지
             Invoke("SpawnAgain", t.stunTime);      //스턴시간 후 패턴 다시 시작
             hp -= t.dmg;
             if (hp <= 0f)

@@ -22,22 +22,31 @@ public class EnemyPoolManager : MonoBehaviour
     void Start()
     {
         CreatEnemy1(initEnemyCount);
+        CreatEnemy2(initEnemyCount);
     }
     public void CreatEnemy1(int cnt = 5)              //적 생성 부분
     {
         for (int i = 0; i < cnt; i++)
         {
-            Instantiate(Enemy_Prefeds[0], transform);   //적 생성
+            Instantiate(Enemy_Prefeds[0], transform.GetChild(0));   //적 생성
         }
     }
-    public void UseEnemy(Vector2 p, Quaternion rot)   //적 사용하는 부분
+
+    public void CreatEnemy2(int cnt = 5)              //적 생성 부분
+    {
+        for (int i = 0; i < cnt; i++)
+        {
+            Instantiate(Enemy_Prefeds[1], transform.GetChild(1));   //적 생성
+        }
+    }
+    public void UseEnemy1(Vector2 p, Quaternion rot)   //적 사용하는 부분
     {
         if (transform.childCount == 0)
         {
             CreatEnemy1(); //적이 없다면 생성
         }
 
-        Enemy e = transform.GetChild(0).GetComponent<Enemy>(); //pool 0번째 오브젝트에 접근
+        Enemy e = transform.GetChild(0).GetChild(0).GetComponent<Enemy>(); //pool 0번째 오브젝트에 접근
 
         e.transform.position = p;         //적 위치 설정
         e.transform.rotation = rot;       //적 각도 설정
@@ -46,11 +55,35 @@ public class EnemyPoolManager : MonoBehaviour
         e.Move();                         //움직임 구현
         AliveEnemyPoolManager.i.AddEnemy(e.GameObject());
     }
-    
-    public void ReturnEnemy(GameObject e)
+
+    public void UseEnemy2(Vector2 p, Quaternion rot)   //적 사용하는 부분
+    {
+        if (transform.childCount == 0)
+        {
+            CreatEnemy2(); //적이 없다면 생성
+        }
+
+        Enemy e = transform.GetChild(1).GetChild(0).GetComponent<Enemy>(); //pool 0번째 오브젝트에 접근
+
+        e.transform.position = p;         //적 위치 설정
+        e.transform.rotation = rot;       //적 각도 설정
+        e.gameObject.SetActive(true);     //옵젝 활성화
+        e.transform.parent = null;        //부모 설정 해제
+        e.Move();                         //움직임 구현
+        AliveEnemyPoolManager.i.AddEnemy(e.GameObject());
+    }
+
+    public void ReturnEnemy1(GameObject e)
     {
         e.gameObject.SetActive(false);
-        e.transform.SetParent(transform);
+        e.transform.SetParent(transform.GetChild(0));
+        //사용 후 다시 pool안으로 가져옴
+    }
+
+    public void ReturnEnemy2(GameObject e)
+    {
+        e.gameObject.SetActive(false);
+        e.transform.SetParent(transform.GetChild(1));
         //사용 후 다시 pool안으로 가져옴
     }
 

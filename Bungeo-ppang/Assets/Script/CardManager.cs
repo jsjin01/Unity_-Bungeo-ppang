@@ -107,6 +107,7 @@ public class CardManager : MonoBehaviour
         {
             Debug.Log("전사붕");
             standardSet.Remove(6);          //전사붕 선택창 삭제
+            standardSet.Remove(13);         //법사붕 선택창 삭제
             standardSet.AddRange(W1Set);    //전사붕 스킬 개방
             evt7();
             selectedCard();
@@ -155,6 +156,7 @@ public class CardManager : MonoBehaviour
         {
             Debug.Log("법사붕");
             standardSet.Remove(13);         //법사붕 선택지 삭제
+            standardSet.Remove(6);          //전사붕 선택창 삭제
             standardSet.AddRange(M1set);    //법사붕 관련 선택지 증가
             evt14();
 
