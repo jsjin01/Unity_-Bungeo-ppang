@@ -111,6 +111,7 @@ public class CardManager : MonoBehaviour
             evt7();
             selectedCard();
             UIManager.i.Warrior_Skill.SetActive(true);      //피버 개방
+            UIManager.i.Wizard_Skill.SetActive(false);
         }
         else if (num == 8)
         {
@@ -158,6 +159,7 @@ public class CardManager : MonoBehaviour
             evt14();
 
             UIManager.i.Wizard_Skill.SetActive(true);       //피버 개방
+            UIManager.i.Warrior_Skill.SetActive(false);
             cards[num1].SetActive(false);
             cards[num2].SetActive(false);
             cards[num3].SetActive(false);

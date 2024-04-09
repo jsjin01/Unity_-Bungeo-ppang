@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] public GameObject Warrior_Skill;
     [SerializeField] public GameObject Wizard_Skill;
 
+    public bool warrior_card=false;
+    public bool wizard_card=false;
     private void Awake()
     {
         i = this;
@@ -32,12 +34,24 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
-        if (GaugeBar.value >= 1f)       //게이지바가 다 차면
+        if (GaugeBar.value >= 1f)    //게이지바가 다 차면
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                GaugeBar.value = 0f;        //게이지바 초기화
-                AliveEnemyPoolManager.i.WarriorSkill();
+                if (Warrior_Skill.activeSelf)
+                {
+                    GaugeBar.value = 0f;    //게이지바 초기화
+                    AliveEnemyPoolManager.i.WarriorSkill();  //전장외침
+                }
+                else if(Wizard_Skill.activeSelf)
+                {
+                    GaugeBar.value = 0f;     //게이지바 초기화
+                    PlayerMoveControl pmc = GameObject.FindObjectOfType<PlayerMoveControl>();
+                    if (pmc != null)
+                    {
+                        StartCoroutine(pmc.WizardSkill());   //주문난사
+                    }
+                }
             }
         }
     }

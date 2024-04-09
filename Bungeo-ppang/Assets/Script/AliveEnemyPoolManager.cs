@@ -13,16 +13,6 @@ public class AliveEnemyPoolManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetKey(KeyCode.Space))
-        {
-            for(int i=0;i<transform.childCount;i++)
-            {
-                Enemy e = transform.GetChild(i).GetComponent<Enemy>();
-                e.StopMove();
-            }
-            Invoke("StopEnemy",1f);
-            Debug.Log("ss");
-        }*/
     }
     public void AddEnemy(GameObject e)
     {
@@ -30,6 +20,11 @@ public class AliveEnemyPoolManager : MonoBehaviour
     }
     void StopEnemy()
     {
+        EnemySpawner es = GameObject.FindObjectOfType<EnemySpawner>();
+        if (es != null)
+        {
+            es.isFever = false;
+        }
         for (int i = 0; i < transform.childCount; i++)
         {
             Enemy e = transform.GetChild(i).GetComponent<Enemy>();
@@ -38,11 +33,16 @@ public class AliveEnemyPoolManager : MonoBehaviour
     }
     public void WarriorSkill()
     {
+        EnemySpawner es = GameObject.FindObjectOfType<EnemySpawner>();
+        if (es != null)
+        {
+            es.isFever = true;      //몬스터 스폰 중지
+        }
         for (int i = 0; i < transform.childCount; i++)
         {
             Enemy e = transform.GetChild(i).GetComponent<Enemy>();
-            e.StopMove();
+            e.StopMove();       //움직임 멈추기
         }
-        Invoke("StopEnemy", 1f);
+        Invoke("StopEnemy", 4f);
     }
 }

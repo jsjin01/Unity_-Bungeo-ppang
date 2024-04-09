@@ -59,7 +59,6 @@ public class PlayerMoveControl : MonoBehaviour
         {
             Attack();
         }
-        WizardSkill();
     }
 
     private void FixedUpdate()
@@ -80,18 +79,16 @@ public class PlayerMoveControl : MonoBehaviour
         StartCoroutine(Attackroutine());
         StartCoroutine(ShootCol());
     }
-    public void WizardSkill()
+    public IEnumerator WizardSkill()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        for(int i = 0; i < 4; i++)
         {
-            for (int i = 0; i < 5; i++)
-            {
-                x1 = Random.Range(-2.3f, 2.3f);
-                x2 = Random.Range(-2.3f, 2.3f);
-                ThunderCreat();
-                Instantiate(magicPrefebs[0], new Vector3(x1, -4.2f, 0), rotation);
-                Instantiate(magicPrefebs[1], new Vector3(x2, -4.2f, 0), rotation);
-            }
+            x1 = Random.Range(-2.3f, 2.3f);
+            x2 = Random.Range(-2.3f, 2.3f);
+            ThunderCreat();
+            Instantiate(magicPrefebs[0], new Vector3(x1, -4.2f, 0), rotation);
+            Instantiate(magicPrefebs[1], new Vector3(x2, -4.2f, 0), rotation);
+            yield return new WaitForSeconds(0.1f);
         }
     }
     IEnumerator ShootCol()

@@ -17,6 +17,7 @@ public class EnemySpawner : MonoBehaviour
      * 한번에 1~2마리씩 스폰(2초 단위)
      * 정해진 수를 다 채우면 10초 대기 후 다음 스테이지 시작
      */
+    public bool isFever = false;
     void Start()
     {
         if (boss) //보스 여부
@@ -72,8 +73,12 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
 
-
+            if (isFever)
+            {
+                yield return new WaitForSeconds(4f);    //피버스킬이 시전 중이면 스폰 중지
+            }
             SpawnEnemies(spawnnum);
+            
             yield return new WaitForSeconds(2f);
 
             if (num <= 0)
