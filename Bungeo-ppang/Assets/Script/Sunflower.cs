@@ -37,10 +37,4 @@ public class Sunflower : Enemy
     {
         base.EnemyDestroy();
     }
-    //public override IEnumerator Hitchange()
-    //{
-    //    sr.color = Color.red;
-    //    yield return new WaitForSeconds(0.5f);
-    //    sr.color = originalcolor;
-    //}
 }

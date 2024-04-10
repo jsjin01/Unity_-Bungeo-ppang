@@ -54,21 +54,7 @@ public class Seed : StandardEnemy
     }
     public override void EnemyDestroy() //적 삭제
     {
-        UIManager.i.GaugeBar.value += 0.1f;
-        hp = 20f; //나중에 다시 사용할 때 Hp 100
-        Destroy(gameObject);
-        if (fireCor != null)
-        {
-            StopCoroutine(fireCor);
-        }
-        if (iceCor != null)
-        {
-            StopCoroutine(iceCor);
-        }
-        if (thunderCor != null)
-        {
-            StopCoroutine(thunderCor);
-        }
+        base.EnemyDestroy();
     }
     public override IEnumerator Hitchange()
     {

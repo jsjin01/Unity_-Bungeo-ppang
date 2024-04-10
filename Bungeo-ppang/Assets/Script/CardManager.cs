@@ -166,9 +166,7 @@ public class CardManager : MonoBehaviour
             UIManager.i.Warrior_Skill.SetActive(false);
             UIManager.i.Gauge.SetActive(true);
             UIManager.i.GaugeBar.value = 0f;
-            cards[num1].SetActive(false);
-            cards[num2].SetActive(false);
-            cards[num3].SetActive(false);
+            selectedCard();
         }
         else if (num == 15)
         {

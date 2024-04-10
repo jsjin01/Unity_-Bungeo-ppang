@@ -11414,7 +11414,7 @@ MonoBehaviour:
   pass: 0
   size: 0.08
   isShield: 0
-  dep_atk: 10
+  dep_atk: 50
   dep_pass: 0
   isSword: 0
   sword_dmg: 10

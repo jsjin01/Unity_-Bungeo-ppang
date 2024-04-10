@@ -52,7 +52,6 @@ public class StandardEnemy : MonoBehaviour
                 if (hp <= 0f)
                 {
                     EnemyDestroy();
-                    UIManager.i.GaugeBar.value += 0.1f;
                 }
             }
         }
@@ -63,7 +62,6 @@ public class StandardEnemy : MonoBehaviour
             if (hp <= 0f)
             {
                 EnemyDestroy();
-                UIManager.i.GaugeBar.value += 0.1f;
             }
             else
             {
@@ -82,7 +80,6 @@ public class StandardEnemy : MonoBehaviour
             if (hp <= 0f)
             {
                 EnemyDestroy();
-                UIManager.i.GaugeBar.value += 0.1f;
             }
             else
             {
@@ -101,7 +98,6 @@ public class StandardEnemy : MonoBehaviour
             if (hp <= 0f)
             {
                 EnemyDestroy();
-                UIManager.i.GaugeBar.value += 0.1f;
             }
         }
         else if (other.CompareTag("Sword"))
@@ -111,7 +107,6 @@ public class StandardEnemy : MonoBehaviour
             if (hp <= 0f)
             {
                 EnemyDestroy();
-                UIManager.i.GaugeBar.value += 0.1f;
             }
         }
         else if (other.CompareTag("THUNDER"))
@@ -121,7 +116,6 @@ public class StandardEnemy : MonoBehaviour
             if (hp <= 0f)
             {
                 EnemyDestroy();
-                UIManager.i.GaugeBar.value += 0.1f;
             }
             else
             {
@@ -135,13 +129,14 @@ public class StandardEnemy : MonoBehaviour
         }
         else if (other.CompareTag("Player"))
         {
-            //UIManager.i.GaugeBar.value += 0.1f;
             EnemyDestroy();
+            UIManager.i.GaugeBar.value -= 0.1f;
         }
     }
 
     virtual public void EnemyDestroy() //적 삭제
     {
+        UIManager.i.GaugeBar.value += 0.1f;
         hp = 100f; //나중에 다시 사용할 때 Hp 100
         StartCoroutine(Dead());
         if (fireCor != null)

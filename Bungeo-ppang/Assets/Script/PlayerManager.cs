@@ -61,10 +61,10 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Boss.i.clearUI += () =>
+        /*Boss.i.clearUI += () =>
         {
             gameClear.SetActive(true);
-        };
+        };*/
         CardManager.i.evt1 += () =>
         {
             atk_spd *= 0.9f;

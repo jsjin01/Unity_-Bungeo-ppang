@@ -8,15 +8,29 @@ public class GameMenu : MonoBehaviour
 {
     [SerializeField] Slider back_vol;
     [SerializeField] Slider effect_vol;
+    [SerializeField] GameObject[] Scenes;
+
+    bool isStart = false;
     private void Start()
     {
         back_vol.value = PlayerPrefs.GetFloat("Volume_Back");
         effect_vol.value = PlayerPrefs.GetFloat("Volume_Effect");
     }
+    private void Update()
+    {
+        if(Input.anyKey)
+        {
+            if (isStart)
+            {
+                SceneManager.LoadScene("Main");
+                Time.timeScale = 1f;
+            }
+        }
+    }
     public void GameStart()
     {
-        SceneManager.LoadScene("Main");
-        Time.timeScale = 1f;
+        StartCoroutine("SceneOn");
+        isStart = true;
     }
 
     public void setVolume_background(float volume)
@@ -30,5 +44,13 @@ public class GameMenu : MonoBehaviour
         Debug.Log("È¿°úÀ½: " + volume);
         PlayerPrefs.SetFloat("Volume_Effect", volume);
         PlayerPrefs.Save();
+    }
+    IEnumerator SceneOn()
+    {
+        for(int i = 0;i < Scenes.Length; i++)
+        {
+            Scenes[i].SetActive(true);
+            yield return new WaitForSeconds(5f);
+        }
     }
 }
