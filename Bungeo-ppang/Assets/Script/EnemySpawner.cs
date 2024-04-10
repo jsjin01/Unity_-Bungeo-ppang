@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public static EnemySpawner i;
+
     [SerializeField] bool boss;
     Vector2 spawnPos;                                 //스폰 포인트 지정
     Quaternion rotation = Quaternion.Euler(0, 0, 0);  //스폰할때 생성되는 각도지정
     int spawnnum = 0;                                 //한번에 스폰되는 양
-    int stage = 1;                                    //현재 스테이지
+    public int stage = 1;                                    //현재 스테이지
 
     List<int> unit_1 = new List<int> {5, 8, 15, 12, 15, 18, 0, 0, 0, 0 };
     List<int> unit_2 = new List<int> { 0, 0, 0, 8, 15, 22, 40, 45, 50, 0 };
@@ -23,6 +25,10 @@ public class EnemySpawner : MonoBehaviour
     public bool isFever = false;
     bool gameEnd = false;
     IEnumerator stageCor; //스테이지 코루틴
+    private void Awake()
+    {
+        i = this;
+    }
     void Start()
     {
         PlayerManager.i.gameEnd += () =>
@@ -46,6 +52,10 @@ public class EnemySpawner : MonoBehaviour
         if (boss)
         {
             isStage = true;
+            if(bossMonster != null)
+            {
+                bossMonster.SetActive(true);
+            }
         }
         else if (!isStage)
         {

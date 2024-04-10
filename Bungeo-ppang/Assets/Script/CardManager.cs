@@ -234,11 +234,23 @@ public class CardManager : MonoBehaviour
     public void CardDraw() //카드 뽑기 알고리즘
     {
         System.Random random = new System.Random();
+        if(EnemySpawner.i.stage == 2 && standardSet[6] == 6)
+        {
+            num1 = standardSet[6];
+            num2 = standardSet[7];
+            num3 = standardSet[random.Next(5)];
+
+            cards[num1].SetActive(true);
+            cards[num2].SetActive(true);
+            cards[num3].SetActive(true);
+            return;
+        }
         while (true)
         {
             num1 = standardSet[random.Next(standardSet.Count)];
             num2 = standardSet[random.Next(standardSet.Count)];
             num3 = standardSet[random.Next(standardSet.Count)];
+
             if (num1 != num2 && num2 != num3 && num1 != num3)
             {
                 break;

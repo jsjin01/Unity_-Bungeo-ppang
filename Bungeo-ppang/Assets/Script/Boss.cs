@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     public static Boss i;
+
     [SerializeField] float speed = 2f;  // 적의 이동 속도
     [SerializeField] float hp = 500f;   //적의 체력
     [SerializeField] float MaxHp = 500f;//적의 최대 체력
@@ -23,8 +24,6 @@ public class Boss : MonoBehaviour
     //스폰 코루틴
     IEnumerator spawnCor;
 
-    //ui가져오기 위한 action
-    public Action clearUI;
     private void Awake()
     {
         i = this;
@@ -161,7 +160,7 @@ public class Boss : MonoBehaviour
     {
         UIManager.i.GaugeBar.value += 0.1f;
         hp = 500f; //나중에 다시 사용할 때 Hp 500
-        clearUI();//ui이 띄우기
+        GameClear.SetActive(true);//ui이 띄우기
         Time.timeScale = 0f;
         Destroy(gameObject);
         if (fireCor != null)
