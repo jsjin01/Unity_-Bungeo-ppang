@@ -191,7 +191,7 @@ public class EnemySpawner : MonoBehaviour
                 if (spawnnum >= 1)
                 {
                     SpawnEnemies(spawnnum, 1);  //社発
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(2f);
                     Debug.Log(e1num);
                 }
             }
@@ -216,7 +216,7 @@ public class EnemySpawner : MonoBehaviour
                 if (spawnnum >= 1)
                 {
                     SpawnEnemies(spawnnum, 2);  //社発
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(2f);
                 }
             }
             if (e1num == 0 && e2num == 0)
