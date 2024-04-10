@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   ballSpeed: 10
-  dmg: 0
+  dmg: 10
   type: 2
   firedmg: 5
   iceTime: 5

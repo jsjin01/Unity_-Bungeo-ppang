@@ -11341,25 +11341,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 3
-  atk: 500
-  atk_spd: 0.5
+  atk: 10
+  atk_spd: 0.8
   speed: 10
   bulletSpeed: 15
   shoot: 1
   pass: 0
   size: 0.08
   isShield: 0
-  dep_atk: 50
+  dep_atk: 10
   dep_pass: 0
   isSword: 0
   sword_dmg: 10
   swords: 1
   sword_pass: 1
-  magic: 1
+  magic: 0
   fire: 0
   ice: 0
   thunder: 0
-  fire_dmg: 10
+  fire_dmg: 12
   fire_col: 5
   ice_dmg: 10
   ice_col: 5

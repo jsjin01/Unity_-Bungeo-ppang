@@ -92,6 +92,72 @@ public class EnemySpawner : MonoBehaviour
             }
         }
     }
+    //IEnumerator StageSpawn() //스테이지
+    //{
+    //    UIManager.i.SetStage(stage);
+    //    Debug.Log(stage + "스테이지 시작");
+    //    int e1total = unit_1[stage - 1]; // 스테이지에서 소환될 총 e1 몬스터의 양
+    //    int e2total = unit_2[stage - 1]; // 스테이지에서 소환될 총 e2 몬스터의 양
+    //    Debug.Log("총 e1 몬스터: " + e1total);
+    //    Debug.Log("총 e2 몬스터: " + e2total);
+
+    //    if (stage == 10)
+    //    {
+    //        SpawnBoss();
+    //        yield return null;
+    //    }
+
+    //    while (e1total > 0 || e2total > 0)
+    //    {
+    //        int spawnCount = 0;
+    //        int spawnType = 1; // 초기 스폰 타입은 1로 설정합니다.
+
+    //        // 랜덤하게 e1num과 e2num 중 하나를 선택하여 적을 스폰합니다.
+    //        if (Random.Range(0, 2) == 0 && e1total > 0)
+    //        {
+    //            // e1 몬스터 스폰
+    //            spawnCount = Mathf.Min(e1total, Random.Range(1, 3)); // 최대 2마리까지만 스폰합니다.
+    //            spawnType = 1;
+    //        }
+    //        else if (e2total > 0)
+    //        {
+    //            // e2 몬스터 스폰
+    //            spawnCount = Mathf.Min(e2total, Random.Range(1, 3)); // 최대 2마리까지만 스폰합니다.
+    //            spawnType = 2;
+    //        }
+
+    //        // 남아있는 몬스터의 수가 스폰되는 몬스터의 수보다 적을 경우에도 정상적으로 처리됩니다.
+    //        if (spawnCount > 0)
+    //        {
+    //            // 스폰
+    //            SpawnEnemies(spawnCount, spawnType);
+
+    //            // 해당하는 적의 수 차감
+    //            if (spawnType == 1)
+    //                e1total -= spawnCount;
+    //            else
+    //                e2total -= spawnCount;
+
+    //            yield return new WaitForSeconds(2f);
+    //        }
+    //        else
+    //        {
+    //            // 남아있는 몬스터의 수가 스폰되는 몬스터의 수보다 적은 경우
+    //            // 반복을 중단합니다.
+    //            break;
+    //        }
+    //    }
+
+    //    Debug.Log("스테이지 끝");
+    //    yield return new WaitForSeconds(3f);
+    //    CardManager.i.CardDraw();
+    //    Time.timeScale = 0f;
+    //    //다음스테이지에 맞게 조정
+    //    stage += 1;
+    //    isStage = false;
+    //}
+
+
     IEnumerator StageSpawn() //스테이지
     {
         UIManager.i.SetStage(stage);
@@ -99,14 +165,14 @@ public class EnemySpawner : MonoBehaviour
         int e1num = unit_1[stage - 1];
         int e2num = unit_2[stage - 1];
         Debug.Log(e1num);
-        if(stage == 10)
+        if (stage == 10)
         {
             SpawnBoss();
-            yield return new WaitForSeconds(0) ;
+            yield return new WaitForSeconds(0);
         }
         while (true)
         {
-            if(e1num != 0) //몬스터 수가 0이 아닐때만
+            if (e1num != 0) //몬스터 수가 0이 아닐때만
             {
                 while (true)
                 {
@@ -125,12 +191,12 @@ public class EnemySpawner : MonoBehaviour
                 if (spawnnum >= 1)
                 {
                     SpawnEnemies(spawnnum, 1);  //소환
-                    yield return new WaitForSeconds(2f);
+                    yield return new WaitForSeconds(1f);
                     Debug.Log(e1num);
                 }
             }
 
-            if(e2num != 0)//몬스터 수가 0이 아닐때만
+            if (e2num != 0)//몬스터 수가 0이 아닐때만
             {
                 while (true)
                 {
@@ -150,7 +216,7 @@ public class EnemySpawner : MonoBehaviour
                 if (spawnnum >= 1)
                 {
                     SpawnEnemies(spawnnum, 2);  //소환
-                    yield return new WaitForSeconds(2f);
+                    yield return new WaitForSeconds(1f);
                 }
             }
             if (e1num == 0 && e2num == 0)

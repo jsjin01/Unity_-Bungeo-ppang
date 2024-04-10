@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  hp: 20
-  MaxHp: 20
+  hp: 50
+  MaxHp: 50
   sr: {fileID: 0}
   cd: {fileID: 0}

@@ -36,7 +36,7 @@ public class Boss : MonoBehaviour
         {
             sr = GetComponent<SpriteRenderer>();
         }
-        InvokeRepeating("SpawnSeed", 1f, 4f);
+        InvokeRepeating("SpawnSeed", 1f, 6f);
     }
     private void Update()
     {
@@ -89,7 +89,7 @@ public class Boss : MonoBehaviour
                 {
                     StopCoroutine(fireCor);
                 }
-                fireCor = Fire(fireball.firedmg);
+                fireCor = Fire(3);
                 StartCoroutine(fireCor);
             }
         }
@@ -179,7 +179,7 @@ public class Boss : MonoBehaviour
 
     IEnumerator Fire(float dmg)
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 3; i++)
         {
             yield return new WaitForSeconds(0.5f);
             hp -= dmg;//불꽃 도트 데미지

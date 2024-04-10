@@ -69,7 +69,7 @@ public class StandardEnemy : MonoBehaviour
                 {
                     StopCoroutine(fireCor);
                 }
-                fireCor = Fire(fireball.firedmg);
+                fireCor = Fire(3);
                 StartCoroutine(fireCor);
             }
         }
@@ -154,7 +154,7 @@ public class StandardEnemy : MonoBehaviour
     }
     IEnumerator Fire(float dmg)
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 3; i++)
         {
             yield return new WaitForSeconds(0.5f);
             hp -= dmg;//불꽃 도트 데미지

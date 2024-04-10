@@ -93,7 +93,7 @@ public class Enemy : MonoBehaviour
                 {
                     StopCoroutine(fireCor);
                 }
-                fireCor = Fire(fireball.firedmg);
+                fireCor = Fire(3);
                 StartCoroutine(fireCor);
             }
         }
@@ -196,7 +196,7 @@ public class Enemy : MonoBehaviour
     public IEnumerator Fire(float dmg)
     {
         anit.SetBool("isFire", true);
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 3; i++)
         {
             yield return new WaitForSeconds(0.5f);
             hp -= dmg;//불꽃 도트 데미지

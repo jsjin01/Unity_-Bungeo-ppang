@@ -172,13 +172,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b0c9dda43222344b7a640dc13d9388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.05
-  hp: 200
-  MaxHp: 200
+  type: 0
+  speed: 0.8
+  hp: 100
+  MaxHp: 100
+  rb: {fileID: 0}
   sr: {fileID: 2506870783747696727}
   anit: {fileID: -266515604370513506}
   cd: {fileID: 2292497120879614792}
-  peanutslice_Prefebs: {fileID: 8136900174102059330, guid: 53ae4c0ce670a6748b5ac40b0aed8332, type: 3}
 --- !u!95 &-266515604370513506
 Animator:
   serializedVersion: 5
