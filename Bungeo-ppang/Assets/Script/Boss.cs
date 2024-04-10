@@ -46,7 +46,7 @@ public class Boss : MonoBehaviour
         }
     }
 
-    void SpawnSeed()
+    public void SpawnSeed()
     {
         spawnCor = skill();
         StartCoroutine(spawnCor);
@@ -152,7 +152,7 @@ public class Boss : MonoBehaviour
             }
         }
     }
-    void SpawnAgain()     //빙결, 번개 맞으면 공격 중지
+    public void SpawnAgain()     //빙결, 번개 맞으면 공격 중지
     {
         InvokeRepeating("SpawnSeed", 1f, 4f);
     }
@@ -179,25 +179,30 @@ public class Boss : MonoBehaviour
 
     IEnumerator Fire(float dmg)
     {
+        anit.SetBool("isFire", true);
         for (int i = 0; i < 6; i++)
         {
             yield return new WaitForSeconds(0.5f);
             hp -= dmg;//불꽃 도트 데미지
         }
+        anit.SetBool("isFire", false);
     }
 
     IEnumerator Ice(float t) //이동속도 0으로 만드는 매커니즘 교체
     {
+        anit.SetBool("isIce", true);
         float nowSpeed = speed;// 현재 속도 저장
         //speed = 0;          //속도 정지
         //rb.velocity = pos.normalized * speed;
         yield return new WaitForSeconds(t);
         //speed = nowSpeed; //다시 되돌아옴
         //rb.velocity = pos.normalized * speed;
+        anit.SetBool("isIce", false);
     }
 
     IEnumerator Stun(float time) //경직 => 매커니즘 교체?
     {
+        anit.SetBool("isThunder", true);
         float nowSpeed = speed;// 현재 속도 저장
         //speed = 0;//감속
         //rb.velocity = pos.normalized * speed;

@@ -9020,7 +9020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: 0
-  stage: 1
+  stage: 10
   bossMonster: {fileID: 5753310714181667655}
   isFever: 0
 --- !u!4 &1330909592
@@ -11341,7 +11341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 3
-  atk: 500
+  atk: 50
   atk_spd: 0.5
   speed: 10
   bulletSpeed: 15
@@ -11356,9 +11356,9 @@ MonoBehaviour:
   swords: 1
   sword_pass: 1
   magic: 1
-  fire: 0
-  ice: 0
-  thunder: 0
+  fire: 1
+  ice: 1
+  thunder: 1
   fire_dmg: 10
   fire_col: 5
   ice_dmg: 10

@@ -38,6 +38,8 @@ public class UIManager : MonoBehaviour
                 {
                     GaugeBar.value = 0f;    //게이지바 초기화
                     AliveEnemyPoolManager.i.WarriorSkill();  //전장외침
+                    Boss.i.CancelInvoke("SpawnSeed");       //보스 패턴 중지
+                    Boss.i.Invoke("SpawnAgain", 4f);        //보스 다시 스폰
                 }
                 else if(Wizard_Skill.activeSelf)
                 {
