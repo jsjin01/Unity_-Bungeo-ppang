@@ -2987,6 +2987,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378909205}
   m_CullTransparentMesh: 1
+--- !u!1 &427717494 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5753310713596020997, guid: 3f005636e41fc3849923b695ace9652c, type: 3}
+  m_PrefabInstance: {fileID: 795361858}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &452942045
 GameObject:
   m_ObjectHideFlags: 0
@@ -5378,6 +5383,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &795361858
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1750548574206798406, guid: 3f005636e41fc3849923b695ace9652c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750548574206798406, guid: 3f005636e41fc3849923b695ace9652c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750548574206798406, guid: 3f005636e41fc3849923b695ace9652c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750548574206798406, guid: 3f005636e41fc3849923b695ace9652c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750548574206798406, guid: 3f005636e41fc3849923b695ace9652c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750548574206798406, guid: 3f005636e41fc3849923b695ace9652c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750548574206798406, guid: 3f005636e41fc3849923b695ace9652c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750548574206798406, guid: 3f005636e41fc3849923b695ace9652c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750548574206798406, guid: 3f005636e41fc3849923b695ace9652c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750548574206798406, guid: 3f005636e41fc3849923b695ace9652c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753310713596020997, guid: 3f005636e41fc3849923b695ace9652c, type: 3}
+      propertyPath: m_Name
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753310713596020997, guid: 3f005636e41fc3849923b695ace9652c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3f005636e41fc3849923b695ace9652c, type: 3}
 --- !u!1 &796489475
 GameObject:
   m_ObjectHideFlags: 0
@@ -7324,7 +7390,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1116262424}
-  - component: {fileID: 1116262425}
   m_Layer: 5
   m_Name: GameClearUI
   m_TagString: Untagged
@@ -7355,18 +7420,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1116262425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116262423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aa7334c3e7267b4ba9a29962f0b6a69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1130394285
 GameObject:
   m_ObjectHideFlags: 0
@@ -9032,7 +9085,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36f779829fe72843854530385e5512f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: 1
+  boss: 0
+  bossMonster: {fileID: 427717494}
   isFever: 0
 --- !u!4 &1330909592
 Transform:
@@ -14905,3 +14959,4 @@ SceneRoots:
   - {fileID: 796489479}
   - {fileID: 793875728}
   - {fileID: 1171164487}
+  - {fileID: 795361858}

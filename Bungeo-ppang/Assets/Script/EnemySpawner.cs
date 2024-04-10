@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
     Vector2 spawnPos;                                 //스폰 포인트 지정
     Quaternion rotation = Quaternion.Euler(0, 0, 0);  //스폰할때 생성되는 각도지정
     int spawnnum = 0;                                 //한번에 스폰되는 양
-    int stage = 10;                                    //현재 스테이지
+    int stage = 1;                                    //현재 스테이지
 
     List<int> unit_1 = new List<int> {5, 8, 15, 12, 15, 18, 0, 0, 0, 0 };
     List<int> unit_2 = new List<int> { 0, 0, 0, 8, 15, 22, 40, 45, 50, 0 };
@@ -19,6 +19,7 @@ public class EnemySpawner : MonoBehaviour
      * 정해진 수를 다 채우면 10초 대기 후 다음 스테이지 시작
      */
 
+    [SerializeField] GameObject bossMonster;
     public bool isFever = false;
     bool gameEnd = false;
     IEnumerator stageCor; //스테이지 코루틴
@@ -34,10 +35,6 @@ public class EnemySpawner : MonoBehaviour
             }
 
         };
-        if (boss) //보스 여부
-        {
-            SpawnBoss();
-        }
     }
     private void Update()
     {
@@ -61,7 +58,7 @@ public class EnemySpawner : MonoBehaviour
             else if (stage == 10)
             {
                 UIManager.i.SetStage(stage);
-                SpawnBoss();
+                bossMonster.SetActive(true);
             }
                
         }
