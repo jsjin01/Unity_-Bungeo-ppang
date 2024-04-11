@@ -60,7 +60,7 @@ public class Peanut : Enemy
                 {
                     StopCoroutine(fireCor);
                 }
-                fireCor = Fire(fireball.firedmg);
+                fireCor = Fire(5);
                 StartCoroutine(fireCor);
             }
         }

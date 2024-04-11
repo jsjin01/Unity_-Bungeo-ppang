@@ -12,6 +12,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float speed = 1f; // 적의 이동 속도
     [SerializeField] public float hp = 100f;//적의 체력
     [SerializeField] protected float MaxHp = 100f;//적의 최대 체력
+
+    float e1mul = 1;
+    float e2mul = 1;
     protected Vector2 pos = new Vector2(0, -1);
     public Rigidbody2D rb;
     [SerializeField] protected SpriteRenderer sr;
@@ -26,8 +29,25 @@ public class Enemy : MonoBehaviour
 
     public virtual void OnEnable()
     {
-        hp = MaxHp;
+        if(type == ENEMY.E1)
+        {
+            e1mul = EnemySpawner.i.E1mul;
+            Debug.Log(e1mul);
+            MaxHp *= e1mul;
+            hp = MaxHp;
+            Debug.Log(hp);
+
+        }
+        else if(type == ENEMY.E2)
+        {
+            e2mul = EnemySpawner.i.E2mul;
+            Debug.Log(e1mul);
+            MaxHp *= e2mul;
+            hp = MaxHp;
+            Debug.Log(hp);
+        }
         speed = 2f;
+
     }
     public virtual void Move()
     {
@@ -93,7 +113,7 @@ public class Enemy : MonoBehaviour
                 {
                     StopCoroutine(fireCor);
                 }
-                fireCor = Fire(3);
+                fireCor = Fire(5);
                 StartCoroutine(fireCor);
             }
         }

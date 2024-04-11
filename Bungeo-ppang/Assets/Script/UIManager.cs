@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] public GameObject Wizard_Skill;
 
     [SerializeField] public GameObject GameStart;
+    int startbtn = 1;
     private void Awake()
     {
         i = this;
@@ -37,11 +38,16 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.anyKey)
+        if(startbtn == 1)
         {
-            Time.timeScale = 1f;
-            GameStart.SetActive(false);
+            if (Input.anyKey)
+            {
+                Time.timeScale = 1f;
+                GameStart.SetActive(false);
+                startbtn = 0;
+            }
         }
+
         if (GaugeBar_Warrior.value >= 1.2f || GaugeBar_Wizard.value >=1.8f)    //게이지바가 다 차면
         {
             if (Input.GetKeyDown(KeyCode.Space))

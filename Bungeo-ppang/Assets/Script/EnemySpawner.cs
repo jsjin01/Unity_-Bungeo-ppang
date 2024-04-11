@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -10,7 +11,12 @@ public class EnemySpawner : MonoBehaviour
     Vector2 spawnPos;                                 //스폰 포인트 지정
     Quaternion rotation = Quaternion.Euler(0, 0, 0);  //스폰할때 생성되는 각도지정
     int spawnnum = 0;                                 //한번에 스폰되는 양
-    public int stage = 1;                                    //현재 스테이지
+    public int stage = 1;                             //현재 스테이지
+    public float E1mul = 1;
+    public float E2mul = 1;
+
+    float spawnTime1 = 1.5f;
+    float spawnTime2 = 2f;
 
     List<int> unit_1 = new List<int> {5, 8, 15, 12, 15, 18, 0, 0, 0, 0 };
     List<int> unit_2 = new List<int> { 0, 0, 0, 8, 15, 22, 40, 45, 50, 0 };
@@ -191,7 +197,7 @@ public class EnemySpawner : MonoBehaviour
                 if (spawnnum >= 1)
                 {
                     SpawnEnemies(spawnnum, 1);  //소환
-                    yield return new WaitForSeconds(1.5f);
+                    yield return new WaitForSeconds(spawnTime1);
                     Debug.Log(e1num);
                 }
             }
@@ -216,7 +222,7 @@ public class EnemySpawner : MonoBehaviour
                 if (spawnnum >= 1)
                 {
                     SpawnEnemies(spawnnum, 2);  //소환
-                    yield return new WaitForSeconds(2f);
+                    yield return new WaitForSeconds(spawnTime2);
                 }
             }
             if (e1num == 0 && e2num == 0)
@@ -230,6 +236,13 @@ public class EnemySpawner : MonoBehaviour
         Time.timeScale = 0f;
         //다음스테이지에 맞게 조정
         stage += 1;
+        E1mul *= 1.1f;
+        if(stage > 4)
+        {
+            E2mul *= 1.1f;
+        }
+        spawnTime1 *= 0.97f;
+        spawnTime2 *= 0.97f;
         isStage = false;
     }
 

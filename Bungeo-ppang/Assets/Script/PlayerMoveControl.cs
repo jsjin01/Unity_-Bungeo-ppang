@@ -10,9 +10,9 @@ public class PlayerMoveControl : MonoBehaviour
     float speed;      //플레이어 이동속도
     int shoot = 1;     //발사 횟수
 
-    float firebalRate = 3f;
-    float iceballRate = 3f;
-    float thunderRate = 3f;
+    float firebalRate = 2f;
+    float iceballRate = 2f;
+    float thunderRate = 2f;
 
     Vector3 movement;       //move에서 사용할 변수 => 이동할 위치의 변수
     Quaternion rotation;    //회전값
@@ -148,7 +148,7 @@ public class PlayerMoveControl : MonoBehaviour
                 float x1 = Random.Range(-2.7f, 2.7f);
                 Instantiate(magicPrefebs[3], new Vector3(x1,-4.2f,0), rotation); 
             }
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(2f);
         }
     }
 

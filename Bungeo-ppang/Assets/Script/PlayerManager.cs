@@ -152,7 +152,7 @@ public class PlayerManager : MonoBehaviour
 
         CardManager.i.evt16 += () =>
         {
-            fire_dmg += 10;
+            fire_dmg += 20;
         };
 
         CardManager.i.evt17 += () =>
@@ -167,7 +167,7 @@ public class PlayerManager : MonoBehaviour
 
         CardManager.i.evt19 += () =>
         {
-            ice_dmg += 10;
+            ice_dmg += 20;
         };
 
         CardManager.i.evt20 += () =>
@@ -182,7 +182,7 @@ public class PlayerManager : MonoBehaviour
 
         CardManager.i.evt22 += () =>
         {
-            thunder_dmg += 5;
+            thunder_dmg += 20;
         };
 
         CardManager.i.evt23 += () =>

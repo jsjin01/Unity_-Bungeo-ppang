@@ -69,7 +69,7 @@ public class StandardEnemy : MonoBehaviour
                 {
                     StopCoroutine(fireCor);
                 }
-                fireCor = Fire(3);
+                fireCor = Fire(5);
                 StartCoroutine(fireCor);
             }
         }
