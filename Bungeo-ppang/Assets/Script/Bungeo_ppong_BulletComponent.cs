@@ -64,7 +64,7 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
                 cd = GetComponent<CapsuleCollider2D>();
             }
             cd.enabled = false;
-            Invoke("MonsterPass", 0.2f);
+            Invoke("MonsterPass", 0.1f);
         }
     }
     public void Move() //¿òÁ÷ÀÓ
@@ -93,7 +93,7 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
                     cd = GetComponent<CapsuleCollider2D>();
                 }
                 cd.enabled = false;
-                Invoke("MonsterPass", 0.2f);
+                Invoke("MonsterPass", 0.25f);
                 monsterPass--;
             }
         }
@@ -121,6 +121,4 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
     {
         cd.enabled = true;
     }
-
-
 }

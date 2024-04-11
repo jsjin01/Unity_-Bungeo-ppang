@@ -112,9 +112,9 @@ public class CardManager : MonoBehaviour
             evt7();
             selectedCard();
             UIManager.i.Warrior_Skill.SetActive(true);      //피버 개방
-            UIManager.i.Wizard_Skill.SetActive(false);
-            UIManager.i.Gauge.SetActive(true);
-            UIManager.i.GaugeBar.value = 0f;
+            UIManager.i.Gauge_Warrior.SetActive(true);
+            UIManager.i.GaugeBar_Warrior.value = 0f;
+            PlayerManager.i.pass += 1;
         }
         else if (num == 8)
         {
@@ -163,9 +163,8 @@ public class CardManager : MonoBehaviour
             evt14();
 
             UIManager.i.Wizard_Skill.SetActive(true);       //피버 개방
-            UIManager.i.Warrior_Skill.SetActive(false);
-            UIManager.i.Gauge.SetActive(true);
-            UIManager.i.GaugeBar.value = 0f;
+            UIManager.i.Gauge_Wizard.SetActive(true);
+            UIManager.i.GaugeBar_Wizard.value = 0f;
             selectedCard();
         }
         else if (num == 15)

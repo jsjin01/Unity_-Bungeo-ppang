@@ -7,8 +7,8 @@ public class Boss : MonoBehaviour
     public static Boss i;
 
     [SerializeField] float speed = 2f;  // 적의 이동 속도
-    [SerializeField] float hp = 500f;   //적의 체력
-    [SerializeField] float MaxHp = 500f;//적의 최대 체력
+    [SerializeField] float hp = 1000f;   //적의 체력
+    [SerializeField] float MaxHp = 1000f;//적의 최대 체력
 
     [SerializeField]GameObject GameClear; //보스 처치 시 클리어
 
@@ -36,7 +36,7 @@ public class Boss : MonoBehaviour
         {
             sr = GetComponent<SpriteRenderer>();
         }
-        InvokeRepeating("SpawnSeed", 1f, 6f);
+        InvokeRepeating("SpawnSeed", 1f, 10f);
     }
     private void Update()
     {
@@ -154,11 +154,10 @@ public class Boss : MonoBehaviour
     }
     void SpawnAgain()     //빙결, 번개 맞으면 공격 중지
     {
-        InvokeRepeating("SpawnSeed", 1f, 4f);
+        InvokeRepeating("SpawnSeed", 1f, 10f);
     }
     void BossDestroy() //적 삭제
     {
-        UIManager.i.GaugeBar.value += 0.1f;
         hp = 500f; //나중에 다시 사용할 때 Hp 500
         GameClear.SetActive(true);//ui이 띄우기
         Time.timeScale = 0f;

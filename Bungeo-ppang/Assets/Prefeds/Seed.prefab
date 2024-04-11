@@ -165,4 +165,4 @@ MonoBehaviour:
   hp: 50
   MaxHp: 50
   sr: {fileID: 0}
-  cd: {fileID: 0}
+  cd: {fileID: -1454582238339207269}

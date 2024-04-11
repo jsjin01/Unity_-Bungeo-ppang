@@ -16,17 +16,6 @@ public class GameMenu : MonoBehaviour
         back_vol.value = PlayerPrefs.GetFloat("Volume_Back");
         effect_vol.value = PlayerPrefs.GetFloat("Volume_Effect");
     }
-    private void Update()
-    {
-        if(Input.anyKey)
-        {
-            if (isStart)
-            {
-                SceneManager.LoadScene("Main");
-                Time.timeScale = 1f;
-            }
-        }
-    }
     public void GameStart()
     {
         StartCoroutine("SceneOn");
@@ -52,5 +41,18 @@ public class GameMenu : MonoBehaviour
             Scenes[i].SetActive(true);
             yield return new WaitForSeconds(5f);
         }
+    }
+    public void NextScene_Click(int num)
+    {
+        Scenes[num+1].SetActive(true);
+    }
+    public void PrevScene_Click(int num)
+    {
+        Scenes[num].SetActive(false);
+    }
+    public void MainView()
+    {
+        SceneManager.LoadScene("Main");
+        Time.timeScale = 1f;
     }
 }

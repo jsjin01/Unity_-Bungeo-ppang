@@ -1,3 +1,5 @@
+//using System;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class Shield : MonoBehaviour
@@ -7,6 +9,9 @@ public class Shield : MonoBehaviour
     [SerializeField] public int passcnt = 0;       //관통횟수
     [SerializeField] public float shieldSpeed = 30f;
     public float dmg;                             //방패 데미지
+
+    [SerializeField] GameObject swordPrefebs;   //검기
+    float index;
 
 
     void Start()
@@ -34,9 +39,15 @@ public class Shield : MonoBehaviour
             if (passcnt == 0)
             {
                 CancelInvoke("ShieldDestory");
-                Bungeo_ppong_PoolManager.i.UseBuneo_ppong(transform.position, Quaternion.identity, true);
+                Bungeo_ppong_PoolManager.i.UseBuneo_ppong(transform.position, Quaternion.identity, false);
                 Destroy(gameObject);
-
+                if (PlayerManager.i.isSword)
+                {
+                    for (int i = 0; i < PlayerManager.i.swords; i++)
+                    {
+                        SwordCreat();
+                    }
+                }
             }
             else
             {
@@ -49,6 +60,11 @@ public class Shield : MonoBehaviour
                 passcnt--;
             }
         }
+    }
+    public void SwordCreat()
+    {
+        index = Random.Range(0f, 360f);
+        Instantiate(swordPrefebs, transform.position, Quaternion.Euler(0, 0, index));
     }
 
     void ShieldDestory()

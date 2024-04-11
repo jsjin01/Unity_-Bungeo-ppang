@@ -81,7 +81,7 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < num; i++)
         {
             float randomX = Random.Range(-2.3f, 2.3f);      //x축으로 랜덤한 부분으로 스폰
-            spawnPos = new Vector2(randomX, 5.7f);
+            spawnPos = new Vector2(randomX, 5.5f);
             if(t == 1)
             {
                 EnemyPoolManager.i.UseEnemy1(spawnPos, rotation);
@@ -191,7 +191,7 @@ public class EnemySpawner : MonoBehaviour
                 if (spawnnum >= 1)
                 {
                     SpawnEnemies(spawnnum, 1);  //소환
-                    yield return new WaitForSeconds(2f);
+                    yield return new WaitForSeconds(1.5f);
                     Debug.Log(e1num);
                 }
             }

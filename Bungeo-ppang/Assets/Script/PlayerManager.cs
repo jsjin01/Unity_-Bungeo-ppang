@@ -18,12 +18,12 @@ public class PlayerManager : MonoBehaviour
 
     //쉴드
     [SerializeField] public bool isShield = false;      //쉴드 온 오프 && 전사붕 활성화
-    [SerializeField] public float dep_atk = 10;         //방패 공격력
+    [SerializeField] public float dep_atk = 20;         //방패 공격력
     [SerializeField] public int dep_pass = 0;           //방패 관통력
 
     //검기
     [SerializeField] public bool isSword = false;       //검기 온오프
-    [SerializeField] public int sword_dmg = 10;         //검기 데미지
+    [SerializeField] public int sword_dmg = 15;         //검기 데미지
     [SerializeField] public int swords = 1;             //검기 갯수
     [SerializeField] public int sword_pass = 0;         //검기 관통 갯수
 
@@ -215,7 +215,8 @@ public class PlayerManager : MonoBehaviour
         {
             Hp -= 1;
             Debug.Log("Hit");
-            UIManager.i.GaugeBar.value += 0.1f;
+            UIManager.i.GaugeBar_Warrior.value += 0.4f;
+            UIManager.i.GaugeBar_Wizard.value += 0.4f;
         }
     }
 }

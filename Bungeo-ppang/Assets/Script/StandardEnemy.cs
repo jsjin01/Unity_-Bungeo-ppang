@@ -130,13 +130,13 @@ public class StandardEnemy : MonoBehaviour
         else if (other.CompareTag("Player"))
         {
             EnemyDestroy();
-            UIManager.i.GaugeBar.value -= 0.1f;
         }
     }
 
     virtual public void EnemyDestroy() //적 삭제
     {
-        UIManager.i.GaugeBar.value += 0.1f;
+        UIManager.i.GaugeBar_Warrior.value += 0.1f;
+        UIManager.i.GaugeBar_Wizard.value += 0.1f;
         hp = 100f; //나중에 다시 사용할 때 Hp 100
         StartCoroutine(Dead());
         if (fireCor != null)

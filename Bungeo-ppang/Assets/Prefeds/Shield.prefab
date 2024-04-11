@@ -132,6 +132,7 @@ MonoBehaviour:
   passcnt: 0
   shieldSpeed: 10
   dmg: 10
+  swordPrefebs: {fileID: 7161014317186832076, guid: b7b38d2c4058d92479c3a1ce46bfa31e, type: 3}
 --- !u!61 &-4609091954014888920
 BoxCollider2D:
   m_ObjectHideFlags: 0

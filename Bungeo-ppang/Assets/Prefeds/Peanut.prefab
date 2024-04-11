@@ -195,8 +195,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   speed: 1
-  hp: 30
-  MaxHp: 30
+  hp: 45
+  MaxHp: 45
   rb: {fileID: 0}
   sr: {fileID: 6416292795169011671}
   anit: {fileID: 8928034506904067848}

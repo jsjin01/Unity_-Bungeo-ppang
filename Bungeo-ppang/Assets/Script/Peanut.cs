@@ -130,7 +130,6 @@ public class Peanut : Enemy
         else if (other.CompareTag("Player"))
         {
             EnemyDestroy();
-            UIManager.i.GaugeBar.value -= 0.1f;
         }
     }
     public override void EnemyDestroy()

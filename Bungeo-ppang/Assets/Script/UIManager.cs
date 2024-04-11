@@ -11,13 +11,20 @@ public class UIManager : MonoBehaviour
     Text stageT;
     [SerializeField] Slider back_vol;
     [SerializeField] Slider effect_vol;
-    [SerializeField] public Slider GaugeBar;
-    [SerializeField] public GameObject Gauge;
+
+    [SerializeField] public Slider GaugeBar_Warrior;        //전사붕 게이지바
+    [SerializeField] public GameObject Gauge_Warrior;
+    [SerializeField] public Slider GaugeBar_Wizard;     //법사붕 게이지바
+    [SerializeField] public GameObject Gauge_Wizard;
+
     [SerializeField] public GameObject Warrior_Skill;
     [SerializeField] public GameObject Wizard_Skill;
+
+    [SerializeField] public GameObject GameStart;
     private void Awake()
     {
         i = this;
+        Time.timeScale = 0f;
     }
     private void Start()
     {
@@ -30,18 +37,23 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
-        if (GaugeBar.value >= 1f)    //게이지바가 다 차면
+        if(Input.anyKey)
+        {
+            Time.timeScale = 1f;
+            GameStart.SetActive(false);
+        }
+        if (GaugeBar_Warrior.value >= 1.2f || GaugeBar_Wizard.value >=1.8f)    //게이지바가 다 차면
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (Warrior_Skill.activeSelf)
                 {
-                    GaugeBar.value = 0f;    //게이지바 초기화
+                    GaugeBar_Warrior.value = 0f;    //게이지바 초기화
                     AliveEnemyPoolManager.i.WarriorSkill();  //전장외침
                 }
                 else if(Wizard_Skill.activeSelf)
                 {
-                    GaugeBar.value = 0f;     //게이지바 초기화
+                    GaugeBar_Wizard.value = 0f;     //게이지바 초기화
                     PlayerMoveControl pmc = GameObject.FindObjectOfType<PlayerMoveControl>();
                     if (pmc != null)
                     {

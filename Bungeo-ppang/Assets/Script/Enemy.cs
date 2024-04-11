@@ -9,7 +9,7 @@ public enum ENEMY{
 public class Enemy : MonoBehaviour
 {
     [SerializeField] ENEMY type;
-    [SerializeField] public float speed = 2f; // 적의 이동 속도
+    [SerializeField] public float speed = 1f; // 적의 이동 속도
     [SerializeField] public float hp = 100f;//적의 체력
     [SerializeField] protected float MaxHp = 100f;//적의 최대 체력
     protected Vector2 pos = new Vector2(0, -1);
@@ -165,13 +165,13 @@ public class Enemy : MonoBehaviour
         else if (other.CompareTag("Player"))
         {
             EnemyDestroy();
-            UIManager.i.GaugeBar.value -= 0.1f;
         }
     }
 
     virtual public void EnemyDestroy() //적 삭제
     {
-        UIManager.i.GaugeBar.value += 0.1f;
+        UIManager.i.GaugeBar_Warrior.value += 0.1f;
+        UIManager.i.GaugeBar_Wizard.value += 0.1f;
         hp = MaxHp; //나중에 다시 사용할 때 Hp 100
         if(deadCor != null)
         {
