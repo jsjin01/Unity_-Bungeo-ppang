@@ -25,6 +25,7 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
     public bool warrior;                        //전사붕
 
     IEnumerator passCor;                        //관통 코루틴
+
     void Start()
     {
         cd = GetComponent<CapsuleCollider2D>();

@@ -10,9 +10,9 @@ public class PlayerMoveControl : MonoBehaviour
     float speed;      //플레이어 이동속도
     int shoot = 1;     //발사 횟수
 
-    float firebalRate = 2f;
-    float iceballRate = 2f;
-    float thunderRate = 2f;
+    float firebalRate = 1.5f;
+    float iceballRate = 1.5f;
+    float thunderRate = 1.5f;
 
     Vector3 movement;       //move에서 사용할 변수 => 이동할 위치의 변수
     Quaternion rotation;    //회전값
@@ -36,6 +36,7 @@ public class PlayerMoveControl : MonoBehaviour
     IEnumerator fireCor;
     IEnumerator iceCor;
     IEnumerator thunderCor;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

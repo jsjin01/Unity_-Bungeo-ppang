@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class EnemySpawner : MonoBehaviour
     public bool isFever = false;
     bool gameEnd = false;
     IEnumerator stageCor; //스테이지 코루틴
+
+    public GameObject BossHpslider;
     private void Awake()
     {
         i = this;
@@ -73,6 +76,7 @@ public class EnemySpawner : MonoBehaviour
             else if (stage == 10)
             {
                 UIManager.i.SetStage(stage);
+                BossHpslider.SetActive(true);
                 bossMonster.SetActive(true);
             }
                
@@ -235,7 +239,7 @@ public class EnemySpawner : MonoBehaviour
         Time.timeScale = 0f;
         //다음스테이지에 맞게 조정
         stage += 1;
-        E1mul *= 1.1f;
+        E1mul *= 1.2f;
         if(stage > 4)
         {
             E2mul *= 1.1f;

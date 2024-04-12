@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class Boss : MonoBehaviour
     //스폰 코루틴
     IEnumerator spawnCor;
 
+    Slider Hpslider;
+
     private void Awake()
     {
         i = this;
@@ -31,15 +34,19 @@ public class Boss : MonoBehaviour
 
     private void Start()
     {
+        Hpslider =GameObject.Find("BossSlider").GetComponent<Slider>();
+        Hpslider.maxValue = MaxHp;
 
         if (sr == null)
         {
             sr = GetComponent<SpriteRenderer>();
         }
-        InvokeRepeating("SpawnSeed", 1f, 10f);
+        InvokeRepeating("SpawnSeed", 1f, 6f);
     }
     private void Update()
     {
+        Debug.Log("Hp :" + hp);
+        Hpslider.value = hp;
         if (hp <= 0f)
         {
             BossDestroy();
@@ -173,7 +180,7 @@ public class Boss : MonoBehaviour
     }
     void BossDestroy() //적 삭제
     {
-        hp = 500f; //나중에 다시 사용할 때 Hp 500
+        hp = MaxHp; //나중에 다시 사용할 때 Hp 500
         SoundManger.i.PlaySound(11);
         anit.SetTrigger("isDead");
         Invoke("gameClear", 0.1f);

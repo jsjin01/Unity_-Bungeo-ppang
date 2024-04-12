@@ -163,8 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  hp: 700
-  MaxHp: 700
+  hp: 3000
+  MaxHp: 3000
   GameClear: {fileID: 0}
   anit: {fileID: 3597488121995852638}
 --- !u!95 &3597488121995852638

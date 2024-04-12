@@ -185,7 +185,7 @@ public class CardManager : MonoBehaviour
         {
             Debug.Log("파이어 볼");
             SoundManger.i.PlaySound(0);
-            standardSet.Remove(15);         //파이어볼 선택지 제거
+            standardSet.Remove(14);         //파이어볼 선택지 제거
             standardSet.AddRange(fireSet);  //파이어볼 관련 카드 추가
             evt15();
             selectedCard();

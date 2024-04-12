@@ -63,13 +63,13 @@ public class PlayerManager : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         CardManager.i.evt1 += () =>
         {
-            atk_spd *= 0.8f;
+            atk_spd *= 0.5f;
             Debug.Log("공격 속도 증가");
         };
 
         CardManager.i.evt2 += () =>
         {
-            bulletSpeed *= 1.3f;
+            bulletSpeed *= 1.5f;
             Debug.Log("speed up");
         };
 
@@ -94,7 +94,7 @@ public class PlayerManager : MonoBehaviour
 
         CardManager.i.evt6 += () =>
         {
-            size *= 1.5f;
+            size *= 2f;
             Debug.Log("size up");
         };
 
@@ -157,7 +157,7 @@ public class PlayerManager : MonoBehaviour
 
         CardManager.i.evt17 += () =>
         {
-            fire_col *= 0.8f;
+            fire_col *= 0.7f;
         };
 
         CardManager.i.evt18 += () =>
@@ -172,7 +172,7 @@ public class PlayerManager : MonoBehaviour
 
         CardManager.i.evt20 += () =>
         {
-            ice_col *= 0.8f;
+            ice_col *= 0.7f;
         };
 
         CardManager.i.evt21 += () =>
@@ -187,7 +187,7 @@ public class PlayerManager : MonoBehaviour
 
         CardManager.i.evt23 += () =>
         {
-            thunder_col *= 0.8f;
+            thunder_col *= 0.7f;
         };
 
     }

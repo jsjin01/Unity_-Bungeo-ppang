@@ -16,7 +16,7 @@ public class Seed : StandardEnemy
         target = new Vector3(x1, y1, 0);
         Move();
         originalcolor = sr.color;
-        Invoke("spawnEnemies", 2.5f);     //발화 시간
+        Invoke("spawnEnemies", 3.5f);     //발화 시간
     }
     public override void OnEnable()
     {
@@ -54,8 +54,12 @@ public class Seed : StandardEnemy
     }
     public override void EnemyDestroy() //적 삭제
     {
+        CancelInvoke("spawnEnemies");
         base.EnemyDestroy();
+
     }
+
+
     public override IEnumerator Hitchange()
     {
         sr.color = Color.red;
