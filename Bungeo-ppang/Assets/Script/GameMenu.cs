@@ -13,11 +13,12 @@ public class GameMenu : MonoBehaviour
     bool isStart = false;
     private void Start()
     {
-        back_vol.value = PlayerPrefs.GetFloat("Volume_Back");
-        effect_vol.value = PlayerPrefs.GetFloat("Volume_Effect");
+        back_vol.value = PlayerPrefs.GetFloat("Volume_Back" ,100f);
+        effect_vol.value = PlayerPrefs.GetFloat("Volume_Effect" , 100f);
     }
     public void GameStart()
     {
+        SoundManger.i.PlaySound(0);
         StartCoroutine("SceneOn");
         isStart = true;
     }
@@ -26,6 +27,7 @@ public class GameMenu : MonoBehaviour
     {
         Debug.Log("πË∞Ê¿Ωæ«: " + volume);
         PlayerPrefs.SetFloat("Volume_Back", volume);
+
         PlayerPrefs.Save();
     }
     public void setVolume_effect(float volume)
@@ -44,15 +46,23 @@ public class GameMenu : MonoBehaviour
     }
     public void NextScene_Click(int num)
     {
+        SoundManger.i.PlaySound(0);
         Scenes[num+1].SetActive(true);
     }
     public void PrevScene_Click(int num)
     {
+        SoundManger.i.PlaySound(0);
         Scenes[num].SetActive(false);
     }
     public void MainView()
     {
+        SoundManger.i.PlaySound(0);
         SceneManager.LoadScene("Main");
         Time.timeScale = 1f;
+    }
+
+    public void GameEixt()
+    {
+        Application.Quit();
     }
 }

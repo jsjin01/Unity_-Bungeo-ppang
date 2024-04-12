@@ -52,7 +52,18 @@ public class Sword : MonoBehaviour
                 passcnt--;
             }
         }
+        else if (collision.CompareTag("Wall"))
+        {
+            CancelInvoke("SwordDestory");
+            Destroy(gameObject);
+        }
+        else if (collision.CompareTag("Player"))
+        {
+            CancelInvoke("SwordDestory");
+            Destroy(gameObject);
+        }
     }
+
     void SwordDestory()
     {
         Destroy(gameObject);

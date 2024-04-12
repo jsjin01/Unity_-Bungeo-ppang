@@ -70,42 +70,49 @@ public class CardManager : MonoBehaviour
         if (num == 1)
         {
             Debug.Log("붕어빵 달인");
+            SoundManger.i.PlaySound(0);
             evt1();
             selectedCard();
         }
         else if (num == 2)
         {
             Debug.Log("배달이요");
+            SoundManger.i.PlaySound(0);
             evt2();
             selectedCard();
         }
         else if (num == 3)
         {
             Debug.Log("이건 보너스");
+            SoundManger.i.PlaySound(0);
             evt3();
             selectedCard();
         }
         else if (num == 4)
         {
             Debug.Log("따끈따끈 붕어빵");
+            SoundManger.i.PlaySound(0);
             evt4();
             selectedCard();
         }
         else if (num == 5)
         {
             Debug.Log("붕어빵 드릴게요");
+            SoundManger.i.PlaySound(0);
             evt5();
             selectedCard();
         }
         else if (num == 6)
         {
             Debug.Log("왕 큰 붕어빵");
+            SoundManger.i.PlaySound(0);
             evt6();
             selectedCard();
         }
         else if (num == 7)
         {
             Debug.Log("전사붕");
+            SoundManger.i.PlaySound(0);
             standardSet.Remove(6);          //전사붕 선택창 삭제
             standardSet.Remove(13);         //법사붕 선택창 삭제
             standardSet.AddRange(W1Set);    //전사붕 스킬 개방
@@ -119,18 +126,21 @@ public class CardManager : MonoBehaviour
         else if (num == 8)
         {
             Debug.Log("단단한 방패");
+            SoundManger.i.PlaySound(0);
             evt8();
             selectedCard();
         }
         else if (num == 9)
         {
             Debug.Log("방패 강화");
+            SoundManger.i.PlaySound(0);
             evt9();
             selectedCard();
         }
         else if (num == 10)
         {
             Debug.Log("반달 검격");
+            SoundManger.i.PlaySound(0);
             standardSet.Remove(9);       //전사붕 검격 삭제
             standardSet.AddRange(W2Set); //검격 업데이트
             evt10();
@@ -139,24 +149,28 @@ public class CardManager : MonoBehaviour
         else if (num == 11)
         {
             Debug.Log("검격 강화");
+            SoundManger.i.PlaySound(0);
             evt11();
             selectedCard();
         }
         else if (num == 12)
         {
             Debug.Log("연속 검격");
+            SoundManger.i.PlaySound(0);
             evt12();
             selectedCard();
         }
         else if (num == 13)
         {
             Debug.Log("관통 검격");
+            SoundManger.i.PlaySound(0);
             evt13();
             selectedCard();
         }
         else if (num == 14)
         {
             Debug.Log("법사붕");
+            SoundManger.i.PlaySound(0);
             standardSet.Remove(13);         //법사붕 선택지 삭제
             standardSet.Remove(6);          //전사붕 선택창 삭제
             standardSet.AddRange(M1set);    //법사붕 관련 선택지 증가
@@ -170,6 +184,7 @@ public class CardManager : MonoBehaviour
         else if (num == 15)
         {
             Debug.Log("파이어 볼");
+            SoundManger.i.PlaySound(0);
             standardSet.Remove(15);         //파이어볼 선택지 제거
             standardSet.AddRange(fireSet);  //파이어볼 관련 카드 추가
             evt15();
@@ -178,18 +193,21 @@ public class CardManager : MonoBehaviour
         else if (num == 16)
         {
             Debug.Log("마법 강화 : 불");
+            SoundManger.i.PlaySound(0);
             evt16();
             selectedCard();
         }
         else if (num == 17)
         {
             Debug.Log("캐스팅 감소 : 불");
+            SoundManger.i.PlaySound(0);
             evt17();
             selectedCard();
         }
         else if (num == 18)
         {
             Debug.Log("아이스 볼");
+            SoundManger.i.PlaySound(0);
             standardSet.Remove(17);         //아이스볼 선택지 제거
             standardSet.AddRange(iceSet);   //아이스볼 관련 카드 추가
             evt18();
@@ -198,18 +216,21 @@ public class CardManager : MonoBehaviour
         else if (num == 19)
         {
             Debug.Log("마법 강화 : 얼음");
+            SoundManger.i.PlaySound(0);
             evt19();
             selectedCard();
         }
         else if (num == 20)
         {
             Debug.Log("캐스팅 감소 : 얼음");
+            SoundManger.i.PlaySound(0);
             evt20();
             selectedCard();
         }
         else if (num == 21)
         {
             Debug.Log("썬더 볼트");
+            SoundManger.i.PlaySound(0);
             standardSet.Remove(20);             //번개 선택지 제거
             standardSet.AddRange(thunderSet);   //번개 관련 카드 추가
             evt21();
@@ -218,12 +239,14 @@ public class CardManager : MonoBehaviour
         else if (num == 22)
         {
             Debug.Log("깨달음 : 번개");
+            SoundManger.i.PlaySound(0);
             evt22();
             selectedCard();
         }
         else if (num == 23)
         {
             Debug.Log("캐스팅 감소 : 번개");
+            SoundManger.i.PlaySound(0);
             evt23();
             selectedCard();
         }

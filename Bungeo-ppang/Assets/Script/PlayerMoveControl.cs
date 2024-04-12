@@ -84,6 +84,7 @@ public class PlayerMoveControl : MonoBehaviour
         Magic = PlayerManager.i.magic;
         if (isShot)
         {
+            SoundManger.i.PlaySound(3);
             Attack();
         }
     }
@@ -144,7 +145,8 @@ public class PlayerMoveControl : MonoBehaviour
         while (true)
         {
             if (Magic) 
-            { 
+            {
+                SoundManger.i.PlaySound(7);
                 float x1 = Random.Range(-2.7f, 2.7f);
                 Instantiate(magicPrefebs[3], new Vector3(x1,-4.2f,0), rotation); 
             }
@@ -158,6 +160,7 @@ public class PlayerMoveControl : MonoBehaviour
         {
             if (fireball)
             {
+                SoundManger.i.PlaySound(4);
                 float x1 = Random.Range(-2.7f, 2.7f);
                 Instantiate(magicPrefebs[0], new Vector3(x1, -4.2f, 0), rotation);
             }
@@ -171,6 +174,7 @@ public class PlayerMoveControl : MonoBehaviour
         {
             if (iceball)
             {
+                SoundManger.i.PlaySound(5);
                 float x1 = Random.Range(-2.7f, 2.7f);
                 Instantiate(magicPrefebs[1], new Vector3(x1, -4.2f, 0), rotation);
             }
@@ -181,28 +185,18 @@ public class PlayerMoveControl : MonoBehaviour
     {
         while (true)
         {
-            if(thunder)ThunderCreat();
+            if (thunder)
+            {
+                SoundManger.i.PlaySound(6);
+                ThunderCreat();
+            }
             yield return new WaitForSeconds(thunderRate);
         }
     }
 
-    void ColDown(int a)
-    {
-        if (a == 0)
-        {
-            firebalRate -= 1f;
-        }
-        else if (a == 1)
-        {
-            iceballRate -= 1f;
-        }
-        else if (a == 2)
-        {
-            thunderRate -= 1f;
-        }
-    }
     void shieldMove()
     {
+        SoundManger.i.PlaySound(3);
         StartCoroutine(ShootCol());
         Instantiate(shieldPrefebs, transform.position, Quaternion.identity);
     }

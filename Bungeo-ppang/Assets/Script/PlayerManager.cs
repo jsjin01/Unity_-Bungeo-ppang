@@ -200,6 +200,7 @@ public class PlayerManager : MonoBehaviour
             {
                 return;
             }
+            SoundManger.i.PlaySound(12);
             Time.timeScale = 0f;
             gameEnd(); //∞‘¿” ≥°
             gameover.SetActive(true);

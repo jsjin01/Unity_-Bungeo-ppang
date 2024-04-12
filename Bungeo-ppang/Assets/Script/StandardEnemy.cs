@@ -40,25 +40,30 @@ public class StandardEnemy : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             Bungeo_ppong_BulletComponent bullet = other.gameObject.GetComponent<Bungeo_ppong_BulletComponent>();
-
+            hp -= bullet.dmg;
+            SoundManger.i.PlaySound(1);
             StartCoroutine(Hitchange());
-            if (bullet.isShield) //쉴드 상태에서 나온 붕어빵은 데미지 없이 관통
+            if (hp <= 0f)
             {
-                bullet.isShield = false;
+                EnemyDestroy();
             }
-            else
+        }
+        else if (other.CompareTag("Magic"))
+        {
+            MagicBall magicBall = other.gameObject.GetComponent<MagicBall>();
+            hp -= magicBall.dmg;
+            SoundManger.i.PlaySound(1);
+            StartCoroutine(Hitchange());
+            if (hp <= 0f)
             {
-                hp -= bullet.dmg;
-                if (hp <= 0f)
-                {
-                    EnemyDestroy();
-                }
+                EnemyDestroy();
             }
         }
         else if (other.CompareTag("FIRE"))
         {
             MagicBall fireball = other.gameObject.GetComponent<MagicBall>();
             hp -= fireball.dmg;
+            SoundManger.i.PlaySound(1);
             if (hp <= 0f)
             {
                 EnemyDestroy();
@@ -77,6 +82,7 @@ public class StandardEnemy : MonoBehaviour
         {
             MagicBall iceball = other.gameObject.GetComponent<MagicBall>();
             hp -= iceball.dmg;
+            SoundManger.i.PlaySound(1);
             if (hp <= 0f)
             {
                 EnemyDestroy();
@@ -95,6 +101,7 @@ public class StandardEnemy : MonoBehaviour
         {
             Shield shield = other.gameObject.GetComponent<Shield>();
             hp -= shield.dmg;
+            SoundManger.i.PlaySound(1);
             if (hp <= 0f)
             {
                 EnemyDestroy();
@@ -104,6 +111,7 @@ public class StandardEnemy : MonoBehaviour
         {
             Sword sword = other.gameObject.GetComponent<Sword>();
             hp -= sword.dmg;
+            SoundManger.i.PlaySound(1);
             if (hp <= 0f)
             {
                 EnemyDestroy();
@@ -113,6 +121,7 @@ public class StandardEnemy : MonoBehaviour
         {
             Thunder t = other.gameObject.GetComponentInParent<Thunder>();
             hp -= t.dmg;
+            SoundManger.i.PlaySound(1);
             if (hp <= 0f)
             {
                 EnemyDestroy();
@@ -191,6 +200,7 @@ public class StandardEnemy : MonoBehaviour
 
     virtual public IEnumerator Dead()//0.3초 있다가 없어지도록 설계
     {
+        SoundManger.i.PlaySound(2);
         float nowSpeed = speed;
         speed = 0;                  //정지
         rb.velocity = pos.normalized * speed;

@@ -83,7 +83,7 @@ public class Enemy : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             Bungeo_ppong_BulletComponent bullet = other.gameObject.GetComponent<Bungeo_ppong_BulletComponent>();
-
+            SoundManger.i.PlaySound(1);
             StartCoroutine(Hitchange());
             if (bullet.isShield) //쉴드 상태에서 나온 붕어빵은 데미지 없이 관통
             {
@@ -103,6 +103,7 @@ public class Enemy : MonoBehaviour
         {
             MagicBall fireball = other.gameObject.GetComponent<MagicBall>();
             hp -= fireball.dmg;
+            SoundManger.i.PlaySound(1);
             if (hp <= 0f)
             {
                 EnemyDestroy();
@@ -121,6 +122,7 @@ public class Enemy : MonoBehaviour
         {
             MagicBall iceball = other.gameObject.GetComponent<MagicBall>();
             hp -= iceball.dmg;
+            SoundManger.i.PlaySound(1);
             if (hp <= 0f)
             {
                 EnemyDestroy();
@@ -139,6 +141,7 @@ public class Enemy : MonoBehaviour
         {
             MagicBall magicBall= other.gameObject.GetComponent<MagicBall>();
             hp -= magicBall.dmg;
+            SoundManger.i.PlaySound(1);
             anit.SetTrigger("isHit");
             if (hp <= 0f)
             {
@@ -149,6 +152,7 @@ public class Enemy : MonoBehaviour
         {
             Shield shield = other.gameObject.GetComponent<Shield>();
             hp -= shield.dmg;
+            SoundManger.i.PlaySound(1);
             anit.SetTrigger("isHit");
             if (hp <= 0f)
             {
@@ -159,6 +163,7 @@ public class Enemy : MonoBehaviour
         {
             Sword sword = other.gameObject.GetComponent<Sword>();
             hp -= sword.dmg;
+            SoundManger.i.PlaySound(1);
             if (hp <= 0f)
             {
                 EnemyDestroy();
@@ -168,6 +173,7 @@ public class Enemy : MonoBehaviour
         {
             Thunder t = other.gameObject.GetComponentInParent<Thunder>();
             hp -= t.dmg;
+            SoundManger.i.PlaySound(1);
             if (hp <= 0f)
             {
                 EnemyDestroy();
@@ -190,6 +196,7 @@ public class Enemy : MonoBehaviour
 
     virtual public void EnemyDestroy() //적 삭제
     {
+        SoundManger.i.PlaySound(2);
         UIManager.i.GaugeBar_Warrior.value += 0.1f;
         UIManager.i.GaugeBar_Wizard.value += 0.1f;
         hp = MaxHp; //나중에 다시 사용할 때 Hp 100

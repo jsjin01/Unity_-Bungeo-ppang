@@ -103,6 +103,7 @@ public class Bungeo_ppong_BulletComponent : MonoBehaviour
     {
         if (isSword)//검기 소환
         {
+            SoundManger.i.PlaySound(13);
             for (int i = 0; i < swords; i++)
             {
                 SwordCreat();

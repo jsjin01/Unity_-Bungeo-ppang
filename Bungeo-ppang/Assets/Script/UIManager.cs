@@ -33,8 +33,8 @@ public class UIManager : MonoBehaviour
         hp2 = GameObject.Find("Hp 2").GetComponent<RawImage>();
         hp3 = GameObject.Find("Hp 3").GetComponent<RawImage>();
         stageT = GameObject.Find("StageText").GetComponent<Text>();
-        back_vol.value = PlayerPrefs.GetFloat("Volume_Back", 0f);
-        effect_vol.value = PlayerPrefs.GetFloat("Volume_Effect", 0f);
+        back_vol.value = PlayerPrefs.GetFloat("Volume_Back", 100f);
+        effect_vol.value = PlayerPrefs.GetFloat("Volume_Effect", 100f);
     }
     private void Update()
     {
@@ -42,6 +42,7 @@ public class UIManager : MonoBehaviour
         {
             if (Input.anyKey)
             {
+                SoundManger.i.PlaySound(0);
                 Time.timeScale = 1f;
                 GameStart.SetActive(false);
                 startbtn = 0;
@@ -71,10 +72,12 @@ public class UIManager : MonoBehaviour
     }
     public void SettingOn()
     {
+        SoundManger.i.PlaySound(0);
         Time.timeScale = 0f;
     }
     public void SettingOff()
     {
+        SoundManger.i.PlaySound(0);
         Time.timeScale = 1f;
     }
     public void setVolume_background(float volume)
@@ -91,18 +94,21 @@ public class UIManager : MonoBehaviour
     }
     public void Out() //시작화면으로 나가기
     {
+        SoundManger.i.PlaySound(0);
         SceneManager.LoadScene("GameMenu");
         Time.timeScale = 1f;
     }
 
     public void Restart() //재시작
     {
+        SoundManger.i.PlaySound(0);
         SceneManager.LoadScene("Main");
         Time.timeScale = 1f;
 
     }
     public void Quit() //게임 나가기
     {
+        SoundManger.i.PlaySound(0);
         Application.Quit();
     }
     public void SetHp(int hp)
