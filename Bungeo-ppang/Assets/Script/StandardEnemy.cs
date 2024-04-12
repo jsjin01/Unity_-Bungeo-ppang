@@ -112,6 +112,7 @@ public class StandardEnemy : MonoBehaviour
             Sword sword = other.gameObject.GetComponent<Sword>();
             hp -= sword.dmg;
             SoundManger.i.PlaySound(1);
+            StartCoroutine(Hitchange());
             if (hp <= 0f)
             {
                 EnemyDestroy();

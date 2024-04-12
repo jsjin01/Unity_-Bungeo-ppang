@@ -100,6 +100,7 @@ public class Peanut : Enemy
         {
             Sword sword = other.gameObject.GetComponent<Sword>();
             hp -= sword.dmg;
+            anit.SetTrigger("isHit");
             if (hp <= 0f)
             {
                 Instantiate(peanutslice1_Prefebs, transform.position + new Vector3(0.3f, 0f, 0f), Quaternion.identity);

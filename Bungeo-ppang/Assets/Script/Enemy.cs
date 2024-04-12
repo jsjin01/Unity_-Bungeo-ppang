@@ -164,6 +164,7 @@ public class Enemy : MonoBehaviour
             Sword sword = other.gameObject.GetComponent<Sword>();
             hp -= sword.dmg;
             SoundManger.i.PlaySound(1);
+            anit.SetTrigger("isHit");
             if (hp <= 0f)
             {
                 EnemyDestroy();
