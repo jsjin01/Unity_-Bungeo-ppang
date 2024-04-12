@@ -9,8 +9,6 @@ public class GameMenu : MonoBehaviour
     [SerializeField] Slider back_vol;
     [SerializeField] Slider effect_vol;
     [SerializeField] GameObject[] Scenes;
-
-    bool isStart = false;
     private void Start()
     {
         back_vol.value = PlayerPrefs.GetFloat("Volume_Back" ,100f);
@@ -20,7 +18,6 @@ public class GameMenu : MonoBehaviour
     {
         SoundManger.i.PlaySound(0);
         StartCoroutine("SceneOn");
-        isStart = true;
     }
 
     public void setVolume_background(float volume)

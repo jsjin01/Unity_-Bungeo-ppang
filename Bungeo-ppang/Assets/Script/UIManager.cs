@@ -48,17 +48,22 @@ public class UIManager : MonoBehaviour
                 startbtn = 0;
             }
         }
-
-        if (GaugeBar_Warrior.value >= 1.2f || GaugeBar_Wizard.value >=1.8f)    //게이지바가 다 차면
+        if (Warrior_Skill.activeSelf)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (GaugeBar_Warrior.value >= 1.2f)
             {
-                if (Warrior_Skill.activeSelf)
+                if(Input.GetKeyDown(KeyCode.Space))
                 {
                     GaugeBar_Warrior.value = 0f;    //게이지바 초기화
                     AliveEnemyPoolManager.i.WarriorSkill();  //전장외침
                 }
-                else if(Wizard_Skill.activeSelf)
+            }
+        }
+        else if (Wizard_Skill.activeSelf)
+        {
+            if (GaugeBar_Wizard.value >= 1.8f)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
                     GaugeBar_Wizard.value = 0f;     //게이지바 초기화
                     PlayerMoveControl pmc = GameObject.FindObjectOfType<PlayerMoveControl>();
